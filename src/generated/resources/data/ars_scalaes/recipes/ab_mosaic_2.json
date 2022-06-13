@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "ars_nouveau:ab_mosaic"
+  },
+  "result": "ars_scalaes:ab_mosaic_stairs",
+  "count": 1
+}

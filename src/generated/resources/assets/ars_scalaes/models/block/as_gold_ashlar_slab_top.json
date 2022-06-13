@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "side": "ars_scalaes:block/as_gold_ashlar",
+    "bottom": "ars_scalaes:block/as_gold_ashlar",
+    "top": "ars_scalaes:block/as_gold_ashlar"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "side": "ars_scalaes:block/as_gold_stone",
+    "bottom": "ars_scalaes:block/as_gold_stone",
+    "top": "ars_scalaes:block/as_gold_stone"
+  }
+}

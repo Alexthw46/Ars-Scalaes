@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "ars_nouveau:ab_basket"
+  },
+  "result": "ars_scalaes:ab_basket_stairs",
+  "count": 1
+}

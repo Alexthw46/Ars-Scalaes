@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=top": {
+      "model": "ars_scalaes:block/as_gold_basket_slab_top"
+    },
+    "type=bottom": {
+      "model": "ars_scalaes:block/as_gold_basket_slab"
+    },
+    "type=double": {
+      "model": "ars_scalaes:block/as_gold_basket"
+    }
+  }
+}

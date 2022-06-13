@@ -1,0 +1,27 @@
+{
+  "replace": false,
+  "values": [
+    "ars_scalaes:arcane_stone_stairs",
+    "ars_scalaes:as_clover_stairs",
+    "ars_scalaes:as_gold_stone_stairs",
+    "ars_scalaes:as_gold_alt_stairs",
+    "ars_scalaes:as_gold_ashlar_stairs",
+    "ars_scalaes:as_gold_basket_stairs",
+    "ars_scalaes:as_gold_clover_stairs",
+    "ars_scalaes:as_gold_herring_stairs",
+    "ars_scalaes:as_gold_mosaic_stairs",
+    "ars_scalaes:as_gold_slab_stairs",
+    "ars_scalaes:arcane_bricks_stairs",
+    "ars_scalaes:ab_alternating_stairs",
+    "ars_scalaes:ab_basket_stairs",
+    "ars_scalaes:ab_herring_stairs",
+    "ars_scalaes:ab_mosaic_stairs",
+    "ars_scalaes:ab_smooth_stairs",
+    "ars_scalaes:sas_alternating_stairs",
+    "ars_scalaes:sas_ashlar_stairs",
+    "ars_scalaes:sas_basket_stairs",
+    "ars_scalaes:sas_clover_stairs",
+    "ars_scalaes:sas_herring_stairs",
+    "ars_scalaes:sas_mosaic_stairs"
+  ]
+}

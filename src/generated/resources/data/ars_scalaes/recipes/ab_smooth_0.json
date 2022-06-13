@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "ars_nouveau:ab_smooth"
+  },
+  "result": "ars_scalaes:ab_smooth_slab",
+  "count": 1
+}

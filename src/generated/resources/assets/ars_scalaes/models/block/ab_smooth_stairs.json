@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "side": "ars_scalaes:block/ab_smooth",
+    "bottom": "ars_scalaes:block/ab_smooth",
+    "top": "ars_scalaes:block/ab_smooth"
+  }
+}

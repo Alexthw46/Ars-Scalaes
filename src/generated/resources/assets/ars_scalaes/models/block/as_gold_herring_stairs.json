@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "side": "ars_scalaes:block/as_gold_herring",
+    "bottom": "ars_scalaes:block/as_gold_herring",
+    "top": "ars_scalaes:block/as_gold_herring"
+  }
+}

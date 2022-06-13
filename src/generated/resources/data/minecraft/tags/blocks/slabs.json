@@ -1,0 +1,27 @@
+{
+  "replace": false,
+  "values": [
+    "ars_scalaes:arcane_stone_slab",
+    "ars_scalaes:as_clover_slab",
+    "ars_scalaes:as_gold_stone_slab",
+    "ars_scalaes:as_gold_alt_slab",
+    "ars_scalaes:as_gold_ashlar_slab",
+    "ars_scalaes:as_gold_basket_slab",
+    "ars_scalaes:as_gold_clover_slab",
+    "ars_scalaes:as_gold_herring_slab",
+    "ars_scalaes:as_gold_mosaic_slab",
+    "ars_scalaes:as_gold_slab_slab",
+    "ars_scalaes:arcane_bricks_slab",
+    "ars_scalaes:ab_alternating_slab",
+    "ars_scalaes:ab_basket_slab",
+    "ars_scalaes:ab_herring_slab",
+    "ars_scalaes:ab_mosaic_slab",
+    "ars_scalaes:ab_smooth_slab",
+    "ars_scalaes:sas_alternating_slab",
+    "ars_scalaes:sas_ashlar_slab",
+    "ars_scalaes:sas_basket_slab",
+    "ars_scalaes:sas_clover_slab",
+    "ars_scalaes:sas_herring_slab",
+    "ars_scalaes:sas_mosaic_slab"
+  ]
+}

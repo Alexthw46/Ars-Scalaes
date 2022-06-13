@@ -1,0 +1,27 @@
+{
+  "replace": false,
+  "values": [
+    "ars_scalaes:arcane_stone_wall",
+    "ars_scalaes:as_clover_wall",
+    "ars_scalaes:as_gold_stone_wall",
+    "ars_scalaes:as_gold_alt_wall",
+    "ars_scalaes:as_gold_ashlar_wall",
+    "ars_scalaes:as_gold_basket_wall",
+    "ars_scalaes:as_gold_clover_wall",
+    "ars_scalaes:as_gold_herring_wall",
+    "ars_scalaes:as_gold_mosaic_wall",
+    "ars_scalaes:as_gold_slab_wall",
+    "ars_scalaes:arcane_bricks_wall",
+    "ars_scalaes:ab_alternating_wall",
+    "ars_scalaes:ab_basket_wall",
+    "ars_scalaes:ab_herring_wall",
+    "ars_scalaes:ab_mosaic_wall",
+    "ars_scalaes:ab_smooth_wall",
+    "ars_scalaes:sas_alternating_wall",
+    "ars_scalaes:sas_ashlar_wall",
+    "ars_scalaes:sas_basket_wall",
+    "ars_scalaes:sas_clover_wall",
+    "ars_scalaes:sas_herring_wall",
+    "ars_scalaes:sas_mosaic_wall"
+  ]
+}

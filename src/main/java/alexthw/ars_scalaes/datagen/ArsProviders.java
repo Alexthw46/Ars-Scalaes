@@ -176,7 +176,7 @@ public class ArsProviders {
 
         @Override
         public Path getPath(ResourceLocation category, String fileName) {
-            return this.generator.getOutputFolder().resolve("data/"+ root +"/patchouli_books/example/en_us/entries/" + category.getPath() + "/" + fileName + ".json");
+            return this.generator.getOutputFolder().resolve("data/"+ root +"/patchouli_books/scales/en_us/entries/" + category.getPath() + "/" + fileName + ".json");
         }
 
         ImbuementPage ImbuementPage(ItemLike item){

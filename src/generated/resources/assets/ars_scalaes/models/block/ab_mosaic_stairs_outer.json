@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "side": "ars_scalaes:block/ab_mosaic",
+    "bottom": "ars_scalaes:block/ab_mosaic",
+    "top": "ars_scalaes:block/ab_mosaic"
+  }
+}
