@@ -3,6 +3,7 @@ package alexthw.ars_scalaes;
 import com.hollingsworth.arsnouveau.api.event.SpellModifierEvent;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.silentchaos512.scalinghealth.capability.IPlayerData;
 import net.silentchaos512.scalinghealth.utils.config.SHPlayers;
 
 public class ScalingHealthCompatEventHandler {
@@ -11,6 +12,7 @@ public class ScalingHealthCompatEventHandler {
     public static void scalingSpellDamage(SpellModifierEvent event){
 
         if (event.caster instanceof Player player) {
+            if (SHPlayers.getPlayerData(player) == null) return;
             int magicLevel = SHPlayers.getPlayerData(player).getPowerCrystals();
             double magicProficiency = magicLevel * ConfigHandler.Common.SCALING_SPELL_DMG.get();
             event.builder.addDamageModifier(magicProficiency);

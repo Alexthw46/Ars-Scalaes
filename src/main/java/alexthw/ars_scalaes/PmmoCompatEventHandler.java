@@ -30,7 +30,7 @@ public class PmmoCompatEventHandler {
             }
             if (hasEffect) {
                 double xpAward = ConfigHandler.Common.MANA_XP.get() * manaCost;
-                XP.awardXp(player, Skill.MAGIC.name, null, xpAward, false, false, false);
+                XP.awardXp(player, Skill.MAGIC.toString(), null, xpAward, false, false, false);
             }
         }
     }
@@ -39,7 +39,7 @@ public class PmmoCompatEventHandler {
     @SubscribeEvent
     public static void dmgMultiplierByLevel(SpellModifierEvent event){
         if (event.caster instanceof Player player){
-            int magicLevel = Skill.getLevel(Skill.MAGIC.name, player.getUUID());
+            int magicLevel = Skill.getLevel(Skill.MAGIC.toString(), player.getUUID());
             double magicProficiency = magicLevel * ConfigHandler.Common.LEVEL_TO_SPELL_DMG.get();
             event.builder.addDamageModifier(magicProficiency);
         }
@@ -48,8 +48,8 @@ public class PmmoCompatEventHandler {
     @SubscribeEvent
     public static void dmgReductionByLevel(SpellDamageEvent event){
         if (event.target instanceof Player player) {
-            int magicLevel = Skill.getLevel(Skill.MAGIC.name, player.getUUID());
-            int enduranceLevel = Skill.getLevel(Skill.ENDURANCE.name, player.getUUID());
+            int magicLevel = Skill.getLevel(Skill.MAGIC.toString(), player.getUUID());
+            int enduranceLevel = Skill.getLevel(Skill.ENDURANCE.toString(), player.getUUID());
             event.damage = (float) (event.damage * (1 - (magicLevel + enduranceLevel) * ConfigHandler.Common.LEVEL_TO_SPELL_RES.get()));
         }
     }
@@ -57,17 +57,17 @@ public class PmmoCompatEventHandler {
     @SubscribeEvent
     public static void maxManaByLevel(MaxManaCalcEvent event)
     {
-        int magicLevel = Skill.getLevel(Skill.MAGIC.name, event.getEntity().getUUID());
+        int magicLevel = Skill.getLevel(Skill.MAGIC.toString(), event.getEntity().getUUID());
         int maxMana = event.getMax();
-        double manaBonus = 1.0 + magicLevel * ConfigHandler.Common.MAX_BONUS.get();
+        double manaBonus = 1.0D + magicLevel * ConfigHandler.Common.MAX_BONUS.get();
         event.setMax((int)(maxMana * manaBonus));
     }
     @SubscribeEvent
     public static void manaRegenByLevel(ManaRegenCalcEvent event)
     {
-        double magicLevel = Skill.getLevel(Skill.MAGIC.name, event.getEntity().getUUID());
+        double magicLevel = Skill.getLevel(Skill.MAGIC.toString(), event.getEntity().getUUID());
         double regen = event.getRegen();
-        double manaBonus = 1.0 + magicLevel * ConfigHandler.Common.REGEN_BONUS.get();
+        double manaBonus = 1.0D + magicLevel * ConfigHandler.Common.REGEN_BONUS.get();
         event.setRegen(regen * manaBonus);
     }
 

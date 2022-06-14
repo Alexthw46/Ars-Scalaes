@@ -27,11 +27,11 @@ public class ConfigHandler {
             builder.pop();
 
             builder.comment("Pmmo scaling").push("PMMO");
-            MANA_XP = builder.comment("XP gained per Mana spent").define("ars_mana", .1d);
+            MANA_XP = builder.comment("XP gained per Mana spent").define("ars_mana", .05d);
             MAX_BONUS = builder.comment("% Bonus to Max Mana per level").define("ars_max_bonus", .01d);
             REGEN_BONUS = builder.comment("% Bonus to Mana Regen per level").define("ars_regen_bonus", .00666d);
             LEVEL_TO_SPELL_DMG = builder.comment("% Bonus to Spell Damage per level").define("ars_damage_bonus",.0d);
-            LEVEL_TO_SPELL_DMG = builder.comment("% Bonus to Spell Resistance per level").define("ars_defense_bonus",.0d);
+            LEVEL_TO_SPELL_RES = builder.comment("% Bonus to Spell Resistance per level").define("ars_defense_bonus",.0d);
 
             builder.pop();
 
