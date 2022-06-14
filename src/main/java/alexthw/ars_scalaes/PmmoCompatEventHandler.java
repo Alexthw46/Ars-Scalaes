@@ -4,8 +4,8 @@ import com.hollingsworth.arsnouveau.api.event.*;
 import com.hollingsworth.arsnouveau.api.spell.AbstractEffect;
 import com.hollingsworth.arsnouveau.api.spell.AbstractSpellPart;
 import com.hollingsworth.arsnouveau.api.spell.Spell;
+import harmonised.pmmo.api.APIUtils;
 import harmonised.pmmo.skills.Skill;
-import harmonised.pmmo.util.XP;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -30,7 +30,7 @@ public class PmmoCompatEventHandler {
             }
             if (hasEffect) {
                 double xpAward = ConfigHandler.Common.MANA_XP.get() * manaCost;
-                XP.awardXp(player, Skill.MAGIC.toString(), null, xpAward, false, false, false);
+                APIUtils.addXp(Skill.MAGIC.toString(), player.getUUID(), xpAward,null, false, false);
             }
         }
     }
@@ -39,7 +39,7 @@ public class PmmoCompatEventHandler {
     @SubscribeEvent
     public static void dmgMultiplierByLevel(SpellModifierEvent event){
         if (event.caster instanceof Player player){
-            int magicLevel = Skill.getLevel(Skill.MAGIC.toString(), player.getUUID());
+            int magicLevel = APIUtils.getLevel(Skill.MAGIC.toString(), player);
             double magicProficiency = magicLevel * ConfigHandler.Common.LEVEL_TO_SPELL_DMG.get();
             event.builder.addDamageModifier(magicProficiency);
         }
@@ -47,28 +47,35 @@ public class PmmoCompatEventHandler {
 
     @SubscribeEvent
     public static void dmgReductionByLevel(SpellDamageEvent event){
+
         if (event.target instanceof Player player) {
-            int magicLevel = Skill.getLevel(Skill.MAGIC.toString(), player.getUUID());
-            int enduranceLevel = Skill.getLevel(Skill.ENDURANCE.toString(), player.getUUID());
+            int magicLevel = APIUtils.getLevel(Skill.MAGIC.toString(), player);
+            int enduranceLevel = APIUtils.getLevel(Skill.ENDURANCE.toString(), player);
             event.damage = (float) (event.damage * (1 - (magicLevel + enduranceLevel) * ConfigHandler.Common.LEVEL_TO_SPELL_RES.get()));
         }
+
     }
 
     @SubscribeEvent
     public static void maxManaByLevel(MaxManaCalcEvent event)
     {
-        int magicLevel = Skill.getLevel(Skill.MAGIC.toString(), event.getEntity().getUUID());
-        int maxMana = event.getMax();
-        double manaBonus = 1.0D + magicLevel * ConfigHandler.Common.MAX_BONUS.get();
-        event.setMax((int)(maxMana * manaBonus));
+        if (event.getEntityLiving() instanceof Player player) {
+            int magicLevel = APIUtils.getLevel(Skill.MAGIC.toString(), player);
+            int maxMana = event.getMax();
+            double manaBonus = 1.0D + magicLevel * ConfigHandler.Common.MAX_BONUS.get();
+            event.setMax((int) (maxMana * manaBonus));
+        }
     }
     @SubscribeEvent
     public static void manaRegenByLevel(ManaRegenCalcEvent event)
     {
-        double magicLevel = Skill.getLevel(Skill.MAGIC.toString(), event.getEntity().getUUID());
+        if (event.getEntityLiving() instanceof Player player) {
+        double magicLevel = APIUtils.getLevel(Skill.MAGIC.toString(), player);
         double regen = event.getRegen();
         double manaBonus = 1.0D + magicLevel * ConfigHandler.Common.REGEN_BONUS.get();
         event.setRegen(regen * manaBonus);
+        }
+
     }
 
 
