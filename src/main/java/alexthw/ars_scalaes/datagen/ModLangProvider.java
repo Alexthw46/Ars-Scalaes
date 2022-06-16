@@ -27,16 +27,20 @@ public class ModLangProvider extends LanguageProvider {
         decoBlockPackLang(ModRegistry.ARCANE_STONE_GOLD_MOSAIC,"Gilded Brick: Mosaic");
         decoBlockPackLang(ModRegistry.ARCANE_STONE_GOLD_SLAB,"Gilded Slabs");
         decoBlockPackLang(ModRegistry.ARCANE_BRICK_ALT,"Arcane Brick: Alternative");
-        decoBlockPackLang(ModRegistry.ARCANE_BRICK_BASKET,"Arcane Brick: Basketweave");
-        decoBlockPackLang(ModRegistry.ARCANE_BRICK_HERRING,"Arcane Brick: Herringbone");
-        decoBlockPackLang(ModRegistry.ARCANE_BRICK_MOSAIC,"Arcane Brick: Mosaic");
-        decoBlockPackLang(ModRegistry.ARCANE_STONE_SMOOTH,"Arcane Brick: Smooth");
-        decoBlockPackLang(ModRegistry.ARCANE_BRICK_SMOOTH_ALT,"Arcane Brick: Smooth Alternate");
-        decoBlockPackLang(ModRegistry.ARCANE_BRICK_SMOOTH_ASHLAR,"Arcane Brick: Smooth Ashlar");
-        decoBlockPackLang(ModRegistry.ARCANE_BRICK_SMOOTH_CLOVER,"Arcane Brick: Smooth Clover");
-        decoBlockPackLang(ModRegistry.ARCANE_BRICK_SMOOTH_BASKET,"Arcane Brick: Smooth Basketweave");
-        decoBlockPackLang(ModRegistry.ARCANE_BRICK_SMOOTH_HERRING,"Arcane Brick: Smooth Herringbone");
-        decoBlockPackLang(ModRegistry.ARCANE_BRICK_SMOOTH_MOSAIC,"Arcane Brick: Smooth Mosaic");
+        decoBlockPackLang(ModRegistry.ARCANE_BRICK_BASKET, "Arcane Brick: Basketweave");
+        decoBlockPackLang(ModRegistry.ARCANE_BRICK_HERRING, "Arcane Brick: Herringbone");
+        decoBlockPackLang(ModRegistry.ARCANE_BRICK_MOSAIC, "Arcane Brick: Mosaic");
+        decoBlockPackLang(ModRegistry.ARCANE_STONE_SMOOTH, "Arcane Brick: Smooth");
+        decoBlockPackLang(ModRegistry.ARCANE_BRICK_SMOOTH_ALT, "Arcane Brick: Smooth Alternate");
+        decoBlockPackLang(ModRegistry.ARCANE_BRICK_SMOOTH_ASHLAR, "Arcane Brick: Smooth Ashlar");
+        decoBlockPackLang(ModRegistry.ARCANE_BRICK_SMOOTH_CLOVER, "Arcane Brick: Smooth Clover");
+        decoBlockPackLang(ModRegistry.ARCANE_BRICK_SMOOTH_BASKET, "Arcane Brick: Smooth Basketweave");
+        decoBlockPackLang(ModRegistry.ARCANE_BRICK_SMOOTH_HERRING, "Arcane Brick: Smooth Herringbone");
+        decoBlockPackLang(ModRegistry.ARCANE_BRICK_SMOOTH_MOSAIC, "Arcane Brick: Smooth Mosaic");
+
+        add("ars_nouveau.glyph_name.resize", "Resize");
+        add("item.ars_nouveau.glyph_resize", "Glyph of Resize");
+
     }
 
     private void decoBlockPackLang(DecoBlockPack decoBlockPack, String name) {

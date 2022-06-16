@@ -1,7 +1,6 @@
 package alexthw.ars_scalaes;
 
 import alexthw.ars_scalaes.registry.ModRegistry;
-import com.hollingsworth.arsnouveau.setup.ItemsRegistry;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
@@ -13,7 +12,6 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import software.bernie.example.registry.ItemRegistry;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(ArsScalaes.MODID)
@@ -31,12 +29,14 @@ public class ArsScalaes
         IEventBus modbus = FMLJavaModLoadingContext.get().getModEventBus();
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ConfigHandler.COMMON_SPEC);
         ModRegistry.registerRegistries(modbus);
-        //ArsNouveauRegistry.registerGlyphs();
-        if (ModList.get().isLoaded("pmmo")){
+        if (ModList.get().isLoaded("pmmo")) {
             MinecraftForge.EVENT_BUS.register(PmmoCompatEventHandler.class);
         }
-        if (ModList.get().isLoaded("scaling_health")){
+        if (ModList.get().isLoaded("scaling_health")) {
             MinecraftForge.EVENT_BUS.register(ScalingHealthCompatEventHandler.class);
+        }
+        if (ModList.get().isLoaded("pehkui")) {
+            ArsNouveauRegistry.registerGlyphs();
         }
         modbus.addListener(this::setup);
         modbus.addListener(this::doClientStuff);
