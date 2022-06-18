@@ -30,7 +30,7 @@ public class PmmoCompatEventHandler {
             }
             if (hasEffect) {
                 double xpAward = ConfigHandler.Common.MANA_XP.get() * manaCost;
-                APIUtils.addXp(Skill.MAGIC.toString(), player.getUUID(), xpAward,null, false, false);
+                APIUtils.addXp("magic", player.getUUID(), xpAward, null, false, false);
             }
         }
     }
@@ -39,7 +39,7 @@ public class PmmoCompatEventHandler {
     @SubscribeEvent
     public static void dmgMultiplierByLevel(SpellModifierEvent event){
         if (event.caster instanceof Player player){
-            int magicLevel = APIUtils.getLevel(Skill.MAGIC.toString(), player);
+            int magicLevel = APIUtils.getLevel("magic", player);
             double magicProficiency = magicLevel * ConfigHandler.Common.LEVEL_TO_SPELL_DMG.get();
             event.builder.addDamageModifier(magicProficiency);
         }
@@ -49,7 +49,7 @@ public class PmmoCompatEventHandler {
     public static void dmgReductionByLevel(SpellDamageEvent event){
 
         if (event.target instanceof Player player) {
-            int magicLevel = APIUtils.getLevel(Skill.MAGIC.toString(), player);
+            int magicLevel = APIUtils.getLevel("magic", player);
             int enduranceLevel = APIUtils.getLevel(Skill.ENDURANCE.toString(), player);
             event.damage = (float) (event.damage * (1 - (magicLevel + enduranceLevel) * ConfigHandler.Common.LEVEL_TO_SPELL_RES.get()));
         }
@@ -60,7 +60,7 @@ public class PmmoCompatEventHandler {
     public static void maxManaByLevel(MaxManaCalcEvent event) {
 
         if (event.getEntityLiving() instanceof Player player) {
-            int magicLevel = APIUtils.getLevel(Skill.MAGIC.toString(), player);
+            int magicLevel = APIUtils.getLevel("magic", player);
             int maxMana = event.getMax();
             double manaBonus = 1.0D + magicLevel * ConfigHandler.Common.MAX_BONUS.get();
             event.setMax((int) (maxMana * manaBonus));
@@ -72,7 +72,7 @@ public class PmmoCompatEventHandler {
     public static void manaRegenByLevel(ManaRegenCalcEvent event) {
 
         if (event.getEntityLiving() instanceof Player player) {
-            double magicLevel = APIUtils.getLevel(Skill.MAGIC.toString(), player);
+            double magicLevel = APIUtils.getLevel("magic", player);
             double regen = event.getRegen();
             double manaBonus = 1.0D + magicLevel * ConfigHandler.Common.REGEN_BONUS.get();
             event.setRegen(regen * manaBonus);

@@ -38,9 +38,15 @@ public class ModLangProvider extends LanguageProvider {
         decoBlockPackLang(ModRegistry.ARCANE_BRICK_SMOOTH_HERRING, "Arcane Brick: Smooth Herringbone");
         decoBlockPackLang(ModRegistry.ARCANE_BRICK_SMOOTH_MOSAIC, "Arcane Brick: Smooth Mosaic");
 
-        add("ars_nouveau.glyph_name.resize", "Resize");
         add("item.ars_nouveau.glyph_resize", "Glyph of Resize");
-
+        add("ars_nouveau.glyph_name.resize", "Resize");
+        add("ars_nouveau.glyph_desc.resize", "Changes the size of a living entity. Amplify to grow, Dampen to shrink, do not augment to restore original size.");
+        add("item.ars_nouveau.glyph_shrink", "Glyph of Shrink");
+        add("ars_nouveau.glyph_name.shrink", "Shrink");
+        add("ars_nouveau.glyph_desc.shrink", "Shrinks an entity. Unlike Resize, shrinking is cumulative with multiple casts.");
+        add("item.ars_nouveau.glyph_expand", "Glyph of Expand");
+        add("ars_nouveau.glyph_name.expand", "Expand");
+        add("ars_nouveau.glyph_desc.expand", "Make an entity grow in size. Unlike Resize, expansion is cumulative with multiple casts.");
     }
 
     private void decoBlockPackLang(DecoBlockPack decoBlockPack, String name) {

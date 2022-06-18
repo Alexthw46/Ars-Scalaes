@@ -2,6 +2,9 @@ package alexthw.ars_scalaes.datagen;
 
 import alexthw.ars_scalaes.ArsNouveauRegistry;
 import alexthw.ars_scalaes.ArsScalaes;
+import alexthw.ars_scalaes.glyph.EffectExpand;
+import alexthw.ars_scalaes.glyph.EffectResize;
+import alexthw.ars_scalaes.glyph.EffectShrink;
 import com.hollingsworth.arsnouveau.api.enchanting_apparatus.EnchantingApparatusRecipe;
 import com.hollingsworth.arsnouveau.api.familiar.AbstractFamiliarHolder;
 import com.hollingsworth.arsnouveau.api.ritual.AbstractRitual;
@@ -12,6 +15,7 @@ import com.hollingsworth.arsnouveau.common.datagen.ApparatusRecipeProvider;
 import com.hollingsworth.arsnouveau.common.datagen.GlyphRecipeProvider;
 import com.hollingsworth.arsnouveau.common.datagen.ImbuementRecipeProvider;
 import com.hollingsworth.arsnouveau.common.datagen.patchouli.*;
+import com.hollingsworth.arsnouveau.setup.ItemsRegistry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.HashCache;
@@ -36,6 +40,10 @@ public class ArsProviders {
 
             Path output = this.generator.getOutputFolder();
 
+            add(get(EffectResize.INSTANCE).withItem(ItemsRegistry.MANIPULATION_ESSENCE).withItem(ItemsRegistry.ABJURATION_ESSENCE).withItem(Items.BROWN_MUSHROOM));
+            add(get(EffectShrink.INSTANCE).withItem(ItemsRegistry.MANIPULATION_ESSENCE).withItem(ItemsRegistry.ABJURATION_ESSENCE).withItem(Items.TURTLE_EGG));
+            add(get(EffectExpand.INSTANCE).withItem(ItemsRegistry.MANIPULATION_ESSENCE).withItem(ItemsRegistry.ABJURATION_ESSENCE).withItem(Items.PUFFERFISH));
+
             for (GlyphRecipe recipe : recipes) {
                 Path path = getScribeGlyphPath(output, recipe.output.getItem());
                 DataProvider.save(GSON, cache, recipe.asRecipe(), path);
@@ -45,7 +53,7 @@ public class ArsProviders {
 
         @Override
         public String getName() {
-            return "Example Glyph Recipes";
+            return "ArsScalaes Glyph Recipes";
         }
     }
 
@@ -75,7 +83,7 @@ public class ArsProviders {
 
         @Override
         public String getName() {
-            return "Example Apparatus";
+            return "ArsScalaes Apparatus";
         }
     }
 
@@ -102,7 +110,7 @@ public class ArsProviders {
 
         @Override
         public String getName() {
-            return "Example Imbuement";
+            return "ArsScalaes Imbuement";
         }
 
     }
@@ -118,7 +126,7 @@ public class ArsProviders {
         public void run(HashCache cache) throws IOException {
 
             for (AbstractSpellPart spell : ArsNouveauRegistry.registeredSpells) {
-                addGlyphPage(spell);
+                //addGlyphPage(spell);
             }
 
             //check the superclass for examples
@@ -171,7 +179,7 @@ public class ArsProviders {
          */
         @Override
         public String getName() {
-            return "Example Patchouli Datagen";
+            return "ArsScalaes Patchouli Datagen";
         }
 
         @Override
