@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "ars_scalaes:block/sourcestone_mosaic",
+    "side": "ars_scalaes:block/sourcestone_mosaic",
+    "top": "ars_scalaes:block/sourcestone_mosaic"
+  }
+}

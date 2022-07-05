@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "side": "ars_scalaes:block/ab_herring",
-    "bottom": "ars_scalaes:block/ab_herring",
-    "top": "ars_scalaes:block/ab_herring"
-  }
-}

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "side": "ars_scalaes:block/sas_ashlar",
-    "bottom": "ars_scalaes:block/sas_ashlar",
-    "top": "ars_scalaes:block/sas_ashlar"
-  }
-}

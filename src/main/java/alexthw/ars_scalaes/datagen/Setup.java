@@ -18,15 +18,14 @@ public class Setup {
         DataGenerator gen = event.getGenerator();
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
 
-        gen.addProvider(new ModBlockStateProvider(gen, existingFileHelper));
-        gen.addProvider(new ModItemModelProvider(gen, existingFileHelper));
-        gen.addProvider(new ModBlockTagsProvider(gen,existingFileHelper));
-        //gen.addProvider(new ArsProviders.ImbuementProvider(gen));
-        //gen.addProvider(new ArsProviders.GlyphProvider(gen));
-        //gen.addProvider(new ArsProviders.EnchantingAppProvider(gen));
-        gen.addProvider(new ArsProviders.PatchouliProvider(gen));
-        gen.addProvider(new ModLangProvider(gen, "en_us"));
-        gen.addProvider(new ModRecipeProvider(gen));
+        gen.addProvider(event.includeClient(), new ModBlockStateProvider(gen, existingFileHelper));
+        gen.addProvider(event.includeClient(), new ModItemModelProvider(gen, existingFileHelper));
+        gen.addProvider(event.includeServer(), new ModBlockTagsProvider(gen, existingFileHelper));
+        //gen.addProvider(event.includeServer(),new ArsProviders.ImbuementProvider(gen));
+        //gen.addProvider(event.includeServer(),new ArsProviders.GlyphProvider(gen));
+        //gen.addProvider(event.includeServer(),new ArsProviders.EnchantingAppProvider(gen));
+        gen.addProvider(event.includeServer(), new ArsProviders.PatchouliProvider(gen));
+        gen.addProvider(event.includeServer(), new ModRecipeProvider(gen));
     }
 
     public static <T> Collection<T> takeAll(Collection<T> src, Predicate<T> pred)

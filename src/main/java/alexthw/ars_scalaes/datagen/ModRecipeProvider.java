@@ -4,8 +4,7 @@ import alexthw.ars_scalaes.ArsScalaes;
 import alexthw.ars_scalaes.block.DecoBlockPack;
 import alexthw.ars_scalaes.registry.ModRegistry;
 import com.hollingsworth.arsnouveau.ArsNouveau;
-import com.hollingsworth.arsnouveau.common.block.ModBlock;
-import com.hollingsworth.arsnouveau.setup.BlockRegistry;
+import com.hollingsworth.arsnouveau.common.lib.LibBlockNames;
 import com.hollingsworth.arsnouveau.setup.ItemsRegistry;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.DataGenerator;
@@ -15,6 +14,8 @@ import net.minecraft.data.recipes.SingleItemRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.function.Consumer;
 
@@ -26,33 +27,36 @@ public class ModRecipeProvider extends RecipeProvider {
     @Override
     protected void buildCraftingRecipes(Consumer<FinishedRecipe> pFinishedRecipeConsumer) {
 
-        buildDecoPack(pFinishedRecipeConsumer, BlockRegistry.ARCANE_STONE, ModRegistry.ARCANE_STONE);
-        buildDecoPack(pFinishedRecipeConsumer, BlockRegistry.AB_CLOVER, ModRegistry.ARCANE_STONE_CLOVER);
-        buildDecoPack(pFinishedRecipeConsumer, BlockRegistry.AS_GOLD_CLOVER, ModRegistry.ARCANE_STONE_GOLD_CLOVER);
-        buildDecoPack(pFinishedRecipeConsumer, BlockRegistry.AS_GOLD_STONE, ModRegistry.ARCANE_STONE_GOLD);
-        buildDecoPack(pFinishedRecipeConsumer, BlockRegistry.AS_GOLD_ALT, ModRegistry.ARCANE_STONE_GOLD_ALT);
-        buildDecoPack(pFinishedRecipeConsumer, BlockRegistry.AS_GOLD_ASHLAR, ModRegistry.ARCANE_STONE_GOLD_ASHLAR);
-        buildDecoPack(pFinishedRecipeConsumer, BlockRegistry.AS_GOLD_BASKET, ModRegistry.ARCANE_STONE_GOLD_BASKET);
-        buildDecoPack(pFinishedRecipeConsumer, BlockRegistry.AS_GOLD_HERRING, ModRegistry.ARCANE_STONE_GOLD_HERRING);
-        buildDecoPack(pFinishedRecipeConsumer, BlockRegistry.AS_GOLD_MOSAIC, ModRegistry.ARCANE_STONE_GOLD_MOSAIC);
-        buildDecoPack(pFinishedRecipeConsumer, BlockRegistry.AS_GOLD_SLAB, ModRegistry.ARCANE_STONE_GOLD_SLAB);
+        buildDecoPack(pFinishedRecipeConsumer, LibBlockNames.SOURCESTONE, ModRegistry.SOURCESTONE);
+        buildDecoPack(pFinishedRecipeConsumer, LibBlockNames.SOURCESTONE_MOSAIC, ModRegistry.SOURCESTONE_MOSAIC);
+        buildDecoPack(pFinishedRecipeConsumer, LibBlockNames.SOURCESTONE_BASKET, ModRegistry.SOURCESTONE_BASKET);
+        buildDecoPack(pFinishedRecipeConsumer, LibBlockNames.SOURCESTONE_ALTERNATING, ModRegistry.SOURCESTONE_ALTERNATING);
+        buildDecoPack(pFinishedRecipeConsumer, LibBlockNames.SOURCESTONE_SMALL_BRICKS, ModRegistry.SOURCESTONE_SMALL_BRICKS);
+        buildDecoPack(pFinishedRecipeConsumer, LibBlockNames.SOURCESTONE_LARGE_BRICKS, ModRegistry.SOURCESTONE_LARGE_BRICKS);
 
-        buildDecoPack(pFinishedRecipeConsumer, BlockRegistry.ARCANE_BRICKS, ModRegistry.ARCANE_BRICK);
-        buildDecoPack(pFinishedRecipeConsumer, BlockRegistry.AB_ALTERNATE, ModRegistry.ARCANE_BRICK_ALT);
-        buildDecoPack(pFinishedRecipeConsumer, BlockRegistry.AB_BASKET, ModRegistry.ARCANE_BRICK_BASKET);
-        buildDecoPack(pFinishedRecipeConsumer, BlockRegistry.AB_HERRING, ModRegistry.ARCANE_BRICK_HERRING);
-        buildDecoPack(pFinishedRecipeConsumer, BlockRegistry.AB_MOSAIC, ModRegistry.ARCANE_BRICK_MOSAIC);
+        buildDecoPack(pFinishedRecipeConsumer, LibBlockNames.GILDED_SOURCESTONE_MOSAIC, ModRegistry.GILDED_SOURCESTONE_MOSAIC);
+        buildDecoPack(pFinishedRecipeConsumer, LibBlockNames.GILDED_SOURCESTONE_BASKET, ModRegistry.GILDED_SOURCESTONE_BASKET);
+        buildDecoPack(pFinishedRecipeConsumer, LibBlockNames.GILDED_SOURCESTONE_ALTERNATING, ModRegistry.GILDED_SOURCESTONE_ALTERNATING);
+        buildDecoPack(pFinishedRecipeConsumer, LibBlockNames.GILDED_SOURCESTONE_SMALL_BRICKS, ModRegistry.GILDED_SOURCESTONE_SMALL_BRICKS);
+        buildDecoPack(pFinishedRecipeConsumer, LibBlockNames.GILDED_SOURCESTONE_LARGE_BRICKS, ModRegistry.GILDED_SOURCESTONE_LARGE_BRICKS);
 
-        buildDecoPack(pFinishedRecipeConsumer, BlockRegistry.AB_SMOOTH, ModRegistry.ARCANE_STONE_SMOOTH);
-        buildDecoPack(pFinishedRecipeConsumer, BlockRegistry.AB_SMOOTH_ALTERNATING, ModRegistry.ARCANE_BRICK_SMOOTH_ALT);
-        buildDecoPack(pFinishedRecipeConsumer, BlockRegistry.AB_SMOOTH_ASHLAR, ModRegistry.ARCANE_BRICK_SMOOTH_ASHLAR);
-        buildDecoPack(pFinishedRecipeConsumer, BlockRegistry.AB_SMOOTH_BASKET, ModRegistry.ARCANE_BRICK_SMOOTH_BASKET);
-        buildDecoPack(pFinishedRecipeConsumer, BlockRegistry.AB_SMOOTH_CLOVER, ModRegistry.ARCANE_BRICK_SMOOTH_CLOVER);
-        buildDecoPack(pFinishedRecipeConsumer, BlockRegistry.AB_SMOOTH_HERRING, ModRegistry.ARCANE_BRICK_SMOOTH_HERRING);
-        buildDecoPack(pFinishedRecipeConsumer, BlockRegistry.AB_SMOOTH_MOSAIC, ModRegistry.ARCANE_BRICK_SMOOTH_MOSAIC);
+        buildDecoPack(pFinishedRecipeConsumer, LibBlockNames.SMOOTH_SOURCESTONE_MOSAIC, ModRegistry.SMOOTH_SOURCESTONE_MOSAIC);
+        buildDecoPack(pFinishedRecipeConsumer, LibBlockNames.SMOOTH_SOURCESTONE_BASKET, ModRegistry.SMOOTH_SOURCESTONE_BASKET);
+        buildDecoPack(pFinishedRecipeConsumer, LibBlockNames.SMOOTH_SOURCESTONE_ALTERNATING, ModRegistry.SMOOTH_SOURCESTONE_ALTERNATING);
+        buildDecoPack(pFinishedRecipeConsumer, LibBlockNames.SMOOTH_SOURCESTONE_SMALL_BRICKS, ModRegistry.SMOOTH_SOURCESTONE_SMALL_BRICKS);
+        buildDecoPack(pFinishedRecipeConsumer, LibBlockNames.SMOOTH_SOURCESTONE_LARGE_BRICKS, ModRegistry.SMOOTH_SOURCESTONE_LARGE_BRICKS);
+
+        buildDecoPack(pFinishedRecipeConsumer, LibBlockNames.SMOOTH_GILDED_SOURCESTONE_MOSAIC, ModRegistry.SMOOTH_GILDED_SOURCESTONE_MOSAIC);
+        buildDecoPack(pFinishedRecipeConsumer, LibBlockNames.SMOOTH_GILDED_SOURCESTONE_BASKET, ModRegistry.SMOOTH_GILDED_SOURCESTONE_BASKET);
+        buildDecoPack(pFinishedRecipeConsumer, LibBlockNames.SMOOTH_GILDED_SOURCESTONE_ALTERNATING, ModRegistry.SMOOTH_GILDED_SOURCESTONE_ALTERNATING);
+        buildDecoPack(pFinishedRecipeConsumer, LibBlockNames.SMOOTH_GILDED_SOURCESTONE_SMALL_BRICKS, ModRegistry.SMOOTH_GILDED_SOURCESTONE_SMALL_BRICKS);
+        buildDecoPack(pFinishedRecipeConsumer, LibBlockNames.SMOOTH_GILDED_SOURCESTONE_LARGE_BRICKS, ModRegistry.SMOOTH_GILDED_SOURCESTONE_LARGE_BRICKS);
+
     }
 
-    private void buildDecoPack(Consumer<FinishedRecipe> consumer, ModBlock block, DecoBlockPack decoBlockPack) {
+    private void buildDecoPack(Consumer<FinishedRecipe> consumer, String blockKey, DecoBlockPack decoBlockPack) {
+        Block block = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(ArsNouveau.MODID, blockKey));
+        if (block == null) return;
         makeStonecutter(consumer, block, decoBlockPack.getSlab(), decoBlockPack.basename);
         makeStonecutter(consumer, block, decoBlockPack.getWall(), decoBlockPack.basename);
         makeStonecutter(consumer, block, decoBlockPack.getStairs(), decoBlockPack.basename);
@@ -61,6 +65,7 @@ public class ModRecipeProvider extends RecipeProvider {
 
 
     private static int STONECUTTER_COUNTER = 0;
+
     public static void makeStonecutter(Consumer<FinishedRecipe> consumer, ItemLike input, ItemLike output, String reg) {
         SingleItemRecipeBuilder.stonecutting(Ingredient.of(input), output).unlockedBy("has_journal", InventoryChangeTrigger.TriggerInstance.hasItems(ItemsRegistry.WORN_NOTEBOOK)).save(consumer, new ResourceLocation(ArsScalaes.MODID, reg + "_" + STONECUTTER_COUNTER));
         STONECUTTER_COUNTER++;

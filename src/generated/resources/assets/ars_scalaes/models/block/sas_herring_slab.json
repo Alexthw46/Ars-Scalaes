@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "side": "ars_scalaes:block/sas_herring",
-    "bottom": "ars_scalaes:block/sas_herring",
-    "top": "ars_scalaes:block/sas_herring"
-  }
-}

@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "ars_nouveau:as_gold_clover"
-  },
-  "result": "ars_scalaes:as_gold_clover_wall",
-  "count": 1
-}

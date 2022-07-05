@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "ars_nouveau:sas_clover"
-  },
-  "result": "ars_scalaes:sas_clover_wall",
-  "count": 1
-}

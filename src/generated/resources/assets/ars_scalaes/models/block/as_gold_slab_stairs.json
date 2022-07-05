@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "side": "ars_scalaes:block/as_gold_slab",
-    "bottom": "ars_scalaes:block/as_gold_slab",
-    "top": "ars_scalaes:block/as_gold_slab"
-  }
-}

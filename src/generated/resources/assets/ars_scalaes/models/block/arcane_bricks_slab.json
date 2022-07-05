@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "side": "ars_scalaes:block/arcane_bricks",
-    "bottom": "ars_scalaes:block/arcane_bricks",
-    "top": "ars_scalaes:block/arcane_bricks"
-  }
-}

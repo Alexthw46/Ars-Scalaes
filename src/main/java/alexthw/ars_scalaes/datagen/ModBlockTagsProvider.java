@@ -1,6 +1,7 @@
 package alexthw.ars_scalaes.datagen;
 
 import alexthw.ars_scalaes.ArsScalaes;
+import com.hollingsworth.arsnouveau.common.datagen.BlockTagProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.tags.BlockTags;
@@ -28,6 +29,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.SLABS).add(getModBlocks(b -> b instanceof SlabBlock));
         tag(BlockTags.STAIRS).add(getModBlocks(b -> b instanceof StairBlock));
         tag(BlockTags.WALLS).add(getModBlocks(b -> b instanceof WallBlock));
+
+        tag(BlockTagProvider.DECORATIVE_AN).add(getModBlocks(b -> b instanceof WallBlock || b instanceof StairBlock || b instanceof SlabBlock));
     }
 
 

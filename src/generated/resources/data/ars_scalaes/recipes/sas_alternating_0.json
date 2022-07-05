@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "ars_nouveau:sas_alternating"
-  },
-  "result": "ars_scalaes:sas_alternating_slab",
-  "count": 1
-}

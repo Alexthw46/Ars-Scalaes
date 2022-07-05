@@ -1,10 +1,14 @@
 package alexthw.ars_scalaes.block;
 
-import com.hollingsworth.arsnouveau.setup.BlockRegistry;
+import com.hollingsworth.arsnouveau.ArsNouveau;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+
+import java.util.function.Supplier;
 
 import static alexthw.ars_scalaes.registry.ModRegistry.addBlock;
 
@@ -12,7 +16,7 @@ public class DecoBlockPack {
     DeferredRegister<Block> registry;
     public String basename;
     net.minecraft.world.level.block.state.BlockBehaviour.Properties props;
-    RegistryObject<Block> full;
+    Supplier<Block> full;
     RegistryObject<Block> slab;
     RegistryObject<Block> stair;
     RegistryObject<Block> wall = null;
@@ -23,10 +27,10 @@ public class DecoBlockPack {
         this.registry = blocks;
         this.basename = basename;
         this.props = props;
-        //this.full = addBlock(basename, () -> new DecoBlock(props));
+        this.full = () -> ForgeRegistries.BLOCKS.getValue(new ResourceLocation(ArsNouveau.MODID, basename));
         this.slab = addBlock(basename + "_slab", () -> new SlabBlock(props));
-        this.stair = addBlock(basename + "_stairs", () ->  new StairBlock(
-                () -> BlockRegistry.ARCANE_STONE.defaultBlockState(), props));
+        this.stair = addBlock(basename + "_stairs", () -> new StairBlock(
+                () -> this.full.get().defaultBlockState(), props));
     }
 
     public DecoBlockPack addWall() {

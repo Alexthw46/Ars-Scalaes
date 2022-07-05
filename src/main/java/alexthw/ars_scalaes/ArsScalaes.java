@@ -21,7 +21,7 @@ public class ArsScalaes
     public static final CreativeModeTab TAB = new CreativeModeTab(MODID) {
         @Override
         public ItemStack makeIcon() {
-            return ModRegistry.ARCANE_STONE.getStairs().asItem().getDefaultInstance();
+            return ModRegistry.SOURCESTONE.getStairs().asItem().getDefaultInstance();
         }
     } ;
 
@@ -32,11 +32,11 @@ public class ArsScalaes
         if (ModList.get().isLoaded("pmmo")) {
             MinecraftForge.EVENT_BUS.register(PmmoCompatEventHandler.class);
         }
-        if (ModList.get().isLoaded("scaling_health")) {
+        if (false && ModList.get().isLoaded("scaling_health")) {
             MinecraftForge.EVENT_BUS.register(ScalingHealthCompatEventHandler.class);
         }
         if (ModList.get().isLoaded("pehkui")) {
-            ArsNouveauRegistry.registerGlyphs();
+            ArsNouveauRegistry.registerPehkuiGlyphs();
         }
         modbus.addListener(this::setup);
         modbus.addListener(this::doClientStuff);

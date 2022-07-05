@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "side": "ars_scalaes:block/as_clover",
-    "bottom": "ars_scalaes:block/as_clover",
-    "top": "ars_scalaes:block/as_clover"
-  }
-}

@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "ars_nouveau:sas_herring"
-  },
-  "result": "ars_scalaes:sas_herring_slab",
-  "count": 1
-}

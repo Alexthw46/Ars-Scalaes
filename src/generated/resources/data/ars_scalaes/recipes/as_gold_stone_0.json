@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "ars_nouveau:as_gold_stone"
-  },
-  "result": "ars_scalaes:as_gold_stone_slab",
-  "count": 1
-}

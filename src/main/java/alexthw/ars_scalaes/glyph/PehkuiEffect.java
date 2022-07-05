@@ -1,28 +1,19 @@
 package alexthw.ars_scalaes.glyph;
 
-import com.hollingsworth.arsnouveau.api.spell.*;
+import com.hollingsworth.arsnouveau.api.spell.AbstractAugment;
+import com.hollingsworth.arsnouveau.api.spell.AbstractEffect;
+import com.hollingsworth.arsnouveau.api.spell.SpellTier;
 import com.hollingsworth.arsnouveau.common.spell.augment.AugmentAmplify;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.HitResult;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
 
+import static alexthw.ars_scalaes.datagen.ArsProviders.prefix;
+
 public class PehkuiEffect extends AbstractEffect {
 
     public PehkuiEffect(String tag, String description) {
-        super(tag, description);
-    }
-
-    @Override
-    public boolean isRenderAsIcon() {
-        return false;
-    }
-
-    @Override
-    public boolean wouldSucceed(HitResult rayTraceResult, Level world, LivingEntity shooter, SpellStats spellStats, SpellContext spellContext) {
-        return rayTraceResult.getType() == HitResult.Type.ENTITY;
+        super(prefix("glyph_" + tag), description);
     }
 
     @Override

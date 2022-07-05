@@ -13,7 +13,7 @@ public class ArsNouveauRegistry {
 
     public static List<AbstractSpellPart> registeredSpells = new ArrayList<>(); //this will come handy for datagen
 
-    public static void registerGlyphs() {
+    public static void registerPehkuiGlyphs() {
         register(EffectResize.INSTANCE);
         register(EffectExpand.INSTANCE);
         register(EffectShrink.INSTANCE);

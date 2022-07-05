@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "ars_nouveau:arcane_stone"
-  },
-  "result": "ars_scalaes:arcane_stone_wall",
-  "count": 1
-}
