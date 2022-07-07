@@ -148,7 +148,7 @@ dependencies {
     implementation fg.deobf("software.bernie.geckolib:geckolib-1.18-forge:${gecko_version}")
     implementation fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}") // Adds the full JEI mod as a full dependency
     implementation fg.deobf("top.theillusivec4.curios:curios-forge:${mc_version}-${curio_version}")
-    /*compileOnly*/ implementation fg.deobf("curse.maven:project_mmo-353935:3809102")
+    /*compileOnly*/ implementation fg.deobf("curse.maven:project_mmo-353935:3855516")
     compileOnly/*implementation*/ fg.deobf("curse.maven:scaling_health-248027:3788314")
     compileOnly/*implementation*/ fg.deobf("curse.maven:silent_chaos-242998:3708359")
     /*compileOnly*/ implementation fg.deobf("com.github.Virtuoel:Pehkui:3.3.2-1.18.2-forge")
