@@ -15,7 +15,7 @@ public class PmmoCompatEventHandler {
     @SubscribeEvent
     public static void awardSpellCastXp(SpellCastEvent event)
     {
-        LivingEntity entity = event.getEntityLiving();
+        LivingEntity entity = event.getEntity();
         if (entity instanceof ServerPlayer player) {
 
             Spell spell = event.spell;
@@ -58,7 +58,7 @@ public class PmmoCompatEventHandler {
     @SubscribeEvent
     public static void maxManaByLevel(MaxManaCalcEvent event) {
 
-        if (event.getEntityLiving() instanceof Player player) {
+        if (event.getEntity() instanceof Player player) {
             int magicLevel = APIUtils.getLevel("magic", player);
             int maxMana = event.getMax();
             double manaBonus = 1.0D + magicLevel * ConfigHandler.Common.MAX_BONUS.get();
@@ -70,7 +70,7 @@ public class PmmoCompatEventHandler {
     @SubscribeEvent
     public static void manaRegenByLevel(ManaRegenCalcEvent event) {
 
-        if (event.getEntityLiving() instanceof Player player) {
+        if (event.getEntity() instanceof Player player) {
             double magicLevel = APIUtils.getLevel("magic", player);
             double regen = event.getRegen();
             double manaBonus = 1.0D + magicLevel * ConfigHandler.Common.REGEN_BONUS.get();

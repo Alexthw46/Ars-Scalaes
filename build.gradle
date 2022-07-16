@@ -18,6 +18,7 @@ buildscript {
     }
 
 }
+apply from: 'https://raw.githubusercontent.com/SizableShrimp/ForgeUpdatesRemapper/main/remapper.gradle'
 
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.spongepowered.mixin'
@@ -154,11 +155,11 @@ dependencies {
     runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}")
 
     implementation fg.deobf("top.theillusivec4.curios:curios-forge:${mc_version}-${curio_version}")
-    /*compileOnly*/ implementation fg.deobf("curse.maven:project_mmo-353935:3852651")
+    /*compileOnly*/ implementation fg.deobf("curse.maven:project_mmo-353935:3877694")
     compileOnly/*implementation*/ fg.deobf("curse.maven:scaling_health-248027:3788314")
     compileOnly/*implementation*/ fg.deobf("curse.maven:silent_chaos-242998:3708359")
     /*compileOnly*/ implementation fg.deobf("com.github.Virtuoel:Pehkui:3.3.3-${mc_version}-forge")
-    implementation fg.deobf("vazkii.patchouli:Patchouli:${mc_version}-73")
+    implementation fg.deobf("vazkii.patchouli:Patchouli:${mc_version}-75")
 
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
 
