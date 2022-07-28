@@ -6,7 +6,7 @@
 # The name of the mod loader type to load - for regular FML @Mod mods it should be javafml
 modLoader = "javafml" #mandatory
 # A version range to match for said mod loader - for regular FML @Mod it will be the forge version
-loaderVersion = "[40,)" #mandatory (28 is current forge version)
+loaderVersion = "[41,)" #mandatory (28 is current forge version)
 # A URL to refer people to when problems occur with this mod
 issueTrackerURL = "http://my.issue.tracker/" #optional
 
@@ -26,12 +26,12 @@ displayName = "Ars Nouveau Scaling Compats" #mandatory
 # A file name (in the root of the mod JAR) containing a logo for display
 #logoFile="examplemod.png" #optional
 # A text field displayed in the mod UI
-credits = "" #optional
+credits = "ToxicMintTea for old Pmmo bridge, a big hug to dev of Identity, Pehkui and Pmmo for their api that makes bridges easy." #optional
 # A text field displayed in the mod UI
-authors="Alexthw, ToxicMintTea" #optional
+authors = "Alexthw" #optional
 # The description text for the mod (multi line!) (#mandatory)
-description='''
-Starbuncles will conquer the world
+description = '''
+Conquer the world with Starbuncle scaling!
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.ars_scalaes]] #optional
@@ -76,5 +76,12 @@ side = "BOTH"
 modId = "pehkui"
 mandatory = false
 versionRange = "[1.19-3.3.3,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.ars_scalaes]]
+modId = "ars_elemental"
+mandatory = false
+versionRange = "[1.19-0.5.0.16,)"
 ordering = "AFTER"
 side = "BOTH"

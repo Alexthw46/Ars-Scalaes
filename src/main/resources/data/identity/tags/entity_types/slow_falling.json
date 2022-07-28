@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "ars_nouveau:whirlisprig",
+    {
+      "id": "ars_elemental:firenando_entity",
+      "required": false
+    }
+  ]
+}

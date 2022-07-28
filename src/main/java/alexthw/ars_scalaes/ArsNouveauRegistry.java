@@ -1,6 +1,7 @@
 package alexthw.ars_scalaes;
 
 import alexthw.ars_scalaes.glyph.EffectExpand;
+import alexthw.ars_scalaes.glyph.EffectMorph;
 import alexthw.ars_scalaes.glyph.EffectResize;
 import alexthw.ars_scalaes.glyph.EffectShrink;
 import com.hollingsworth.arsnouveau.api.ArsNouveauAPI;
@@ -19,9 +20,12 @@ public class ArsNouveauRegistry {
         register(EffectShrink.INSTANCE);
     }
 
-    public static void register(AbstractSpellPart spellPart){
+    public static void register(AbstractSpellPart spellPart) {
         ArsNouveauAPI.getInstance().registerSpell(spellPart);
         registeredSpells.add(spellPart);
     }
 
+    public static void registerIdentityGlyphs() {
+        register(EffectMorph.INSTANCE);
+    }
 }

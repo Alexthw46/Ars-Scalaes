@@ -1,5 +1,6 @@
 package alexthw.ars_scalaes;
 
+import alexthw.ars_scalaes.identity.IdentityReg;
 import alexthw.ars_scalaes.registry.ModRegistry;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
@@ -32,20 +33,24 @@ public class ArsScalaes
         if (ModList.get().isLoaded("pmmo")) {
             MinecraftForge.EVENT_BUS.register(PmmoCompatEventHandler.class);
         }
-        if (false && ModList.get().isLoaded("scaling_health")) {
+        if (ModList.get().isLoaded("scaling_health")) {
             MinecraftForge.EVENT_BUS.register(ScalingHealthCompatEventHandler.class);
         }
         if (ModList.get().isLoaded("pehkui")) {
             ArsNouveauRegistry.registerPehkuiGlyphs();
+        }
+        if (ModList.get().isLoaded("identity")) {
+            ArsNouveauRegistry.registerIdentityGlyphs();
         }
         modbus.addListener(this::setup);
         modbus.addListener(this::doClientStuff);
         MinecraftForge.EVENT_BUS.register(this);
     }
 
-    private void setup(final FMLCommonSetupEvent event)
-    {
-
+    private void setup(final FMLCommonSetupEvent event) {
+        if (ModList.get().isLoaded("identity")) {
+            event.enqueueWork(IdentityReg::init);
+        }
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
