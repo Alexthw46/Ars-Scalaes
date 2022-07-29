@@ -30,7 +30,6 @@ public class PmmoCompatEventHandler {
         APIUtils.registerPerk(prefix("mana_boost"), MANA_BOOST, MANA_BOOST_TERM, PerkSide.BOTH);
     }
 
-
     @SubscribeEvent
     public static void awardSpellCastXp(SpellCastEvent event) {
         LivingEntity entity = event.getEntity();
@@ -73,30 +72,6 @@ public class PmmoCompatEventHandler {
 
     }
 
-    @Deprecated
-    public static void maxManaByLevel(MaxManaCalcEvent event) {
-
-        if (event.getEntity() instanceof Player player) {
-            int magicLevel = APIUtils.getLevel("magic", player);
-            int maxMana = event.getMax();
-            double manaBonus = 1.0D + magicLevel * ConfigHandler.Common.MAX_BONUS.get();
-            event.setMax((int) (maxMana * manaBonus));
-        }
-
-    }
-
-    @Deprecated
-    public static void manaRegenByLevel(ManaRegenCalcEvent event) {
-
-        if (event.getEntity() instanceof Player player) {
-            double magicLevel = APIUtils.getLevel("magic", player);
-            double regen = event.getRegen();
-            double manaBonus = 1.0D + magicLevel * ConfigHandler.Common.REGEN_BONUS.get();
-            event.setRegen(regen * manaBonus);
-        }
-
-    }
-
     private static final CompoundTag NONE = new CompoundTag();
 
     private static final UUID manaRegenModifierID = UUID.fromString("57552ec6-c5d4-4df1-987e-bd99acb41fa9");
@@ -108,17 +83,14 @@ public class PmmoCompatEventHandler {
         double boostPerLevel = nbt.contains(APIUtils.PER_LEVEL) ? nbt.getDouble(APIUtils.PER_LEVEL) : .06d;
         AttributeInstance manaAttribute = player.getAttribute(ManaAttributes.MANA_REGEN.get());
 
-        if (manaAttribute != null) {
-            int regenBoost = (int) Math.min(maxRegenBoost, level * boostPerLevel);
+        double regenBoost = Math.min(maxRegenBoost, level * boostPerLevel);
 
-
-            if (manaAttribute.getModifier(manaRegenModifierID) == null || manaAttribute.getModifier(manaRegenModifierID).getAmount() != regenBoost) {
-                AttributeModifier speedModifier = new AttributeModifier(manaRegenModifierID, "Mana Regen bonus thanks to Magic Level", regenBoost, AttributeModifier.Operation.ADDITION);
-                manaAttribute.removeModifier(manaRegenModifierID);
-                manaAttribute.addPermanentModifier(speedModifier);
-            }
-
+        if (manaAttribute.getModifier(manaRegenModifierID) == null || manaAttribute.getModifier(manaRegenModifierID).getAmount() != regenBoost) {
+            AttributeModifier speedModifier = new AttributeModifier(manaRegenModifierID, "Mana Regen bonus thanks to Magic Level", regenBoost, AttributeModifier.Operation.ADDITION);
+            manaAttribute.removeModifier(manaRegenModifierID);
+            manaAttribute.addPermanentModifier(speedModifier);
         }
+
         return NONE;
     };
 
@@ -134,7 +106,7 @@ public class PmmoCompatEventHandler {
         double boostPerLevel = nbt.contains(APIUtils.PER_LEVEL) ? nbt.getDouble(APIUtils.PER_LEVEL) : 3.0d;
         AttributeInstance manaAttribute = player.getAttribute(ManaAttributes.MAX_MANA.get());
 
-        double manaBoost = Math.min(maxManaBoost, level * boostPerLevel);
+        int manaBoost = (int) Math.min(maxManaBoost, level * boostPerLevel);
 
         if (manaAttribute.getModifier(manaMaxModifierID) == null || manaAttribute.getModifier(manaMaxModifierID).getAmount() != manaBoost) {
             AttributeModifier manaModifier = new AttributeModifier(manaMaxModifierID, "Max Mana bonus thanks to Magic Level", manaBoost, AttributeModifier.Operation.ADDITION);
