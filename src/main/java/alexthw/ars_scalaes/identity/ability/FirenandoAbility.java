@@ -41,7 +41,7 @@ public class FirenandoAbility extends IdentityAbility<FirenandoEntity> {
 
     @Override
     public int getCooldown(FirenandoEntity entity) {
-        return 200;
+        return 120;
     }
 
     @Override

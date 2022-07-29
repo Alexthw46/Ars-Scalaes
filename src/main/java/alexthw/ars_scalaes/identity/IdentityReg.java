@@ -3,6 +3,7 @@ package alexthw.ars_scalaes.identity;
 import alexthw.ars_scalaes.identity.ability.StarbuncleAbility;
 import alexthw.ars_scalaes.identity.ability.WealdWalkerAbility;
 import alexthw.ars_scalaes.identity.ability.WhirlisprigAbility;
+import alexthw.ars_scalaes.identity.ability.WixieAbility;
 import alexthw.ars_scalaes.identity.rendering.StarbuncleTypeProvider;
 import com.hollingsworth.arsnouveau.common.entity.ModEntities;
 import draylar.identity.ability.AbilityRegistry;
@@ -48,6 +49,7 @@ public class IdentityReg {
 
         AbilityRegistry.register(ModEntities.STARBUNCLE_TYPE.get(), new StarbuncleAbility<>());
         AbilityRegistry.register(ModEntities.WHIRLISPRIG_TYPE.get(), new WhirlisprigAbility<>());
+        AbilityRegistry.register(ModEntities.ENTITY_WIXIE_TYPE.get(), new WixieAbility());
 
         IdentityTickHandlers.register(ModEntities.WHIRLISPRIG_TYPE.get(), new WhirlSprigTickHandler());
 

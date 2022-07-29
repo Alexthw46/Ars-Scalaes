@@ -1,5 +1,6 @@
-package alexthw.ars_scalaes;
+package alexthw.ars_scalaes.pmmo;
 
+import alexthw.ars_scalaes.ConfigHandler;
 import com.hollingsworth.arsnouveau.api.event.*;
 import com.hollingsworth.arsnouveau.api.spell.AbstractEffect;
 import com.hollingsworth.arsnouveau.api.spell.AbstractSpellPart;

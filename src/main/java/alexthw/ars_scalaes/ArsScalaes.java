@@ -1,6 +1,7 @@
 package alexthw.ars_scalaes;
 
 import alexthw.ars_scalaes.identity.IdentityReg;
+import alexthw.ars_scalaes.pmmo.PmmoCompatEventHandler;
 import alexthw.ars_scalaes.registry.ModRegistry;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
