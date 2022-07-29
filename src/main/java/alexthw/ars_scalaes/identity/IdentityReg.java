@@ -4,8 +4,9 @@ import alexthw.ars_scalaes.identity.ability.StarbuncleAbility;
 import alexthw.ars_scalaes.identity.ability.WealdWalkerAbility;
 import alexthw.ars_scalaes.identity.ability.WhirlisprigAbility;
 import alexthw.ars_scalaes.identity.ability.WixieAbility;
+import alexthw.ars_scalaes.identity.rendering.ColorVariantProvider;
 import alexthw.ars_scalaes.identity.rendering.StarbuncleTypeProvider;
-import com.hollingsworth.arsnouveau.common.entity.ModEntities;
+import com.hollingsworth.arsnouveau.common.entity.*;
 import draylar.identity.ability.AbilityRegistry;
 import draylar.identity.api.IdentityTickHandlers;
 import draylar.identity.api.variant.IdentityType;
@@ -29,12 +30,11 @@ public class IdentityReg {
     private static void initVariants(Map<EntityType<? extends LivingEntity>, TypeProvider<?>> variants) {
         variants.put(ModEntities.STARBUNCLE_TYPE.get(), new StarbuncleTypeProvider());
 
-        /*
+
         variants.put(ModEntities.WHIRLISPRIG_TYPE.get(), new ColorVariantProvider<Whirlisprig>());
         variants.put(ModEntities.ENTITY_DRYGMY.get(), new ColorVariantProvider<EntityDrygmy>());
         variants.put(ModEntities.ENTITY_BOOKWYRM_TYPE.get(), new ColorVariantProvider<EntityBookwyrm>());
         variants.put(ModEntities.ENTITY_WIXIE_TYPE.get(), new ColorVariantProvider<EntityWixie>());
-         */
 
         if (ModList.get().isLoaded("ars_elemental")) ElementalModule.variants(variants);
 

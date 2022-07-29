@@ -1,6 +1,6 @@
 package alexthw.ars_scalaes.identity.rendering;
 
-import alexthw.ars_scalaes.identity.IVariantColorProvider;
+import com.hollingsworth.arsnouveau.api.client.IVariantColorProvider;
 import draylar.identity.api.variant.TypeProvider;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;

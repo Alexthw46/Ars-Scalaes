@@ -1,6 +1,7 @@
 package alexthw.ars_scalaes.identity.ability;
 
 import com.hollingsworth.arsnouveau.common.entity.EntityWixie;
+import com.hollingsworth.arsnouveau.common.potions.ModPotions;
 import com.hollingsworth.arsnouveau.setup.ItemsRegistry;
 import draylar.identity.ability.IdentityAbility;
 import net.minecraft.world.effect.MobEffect;
@@ -23,12 +24,14 @@ public class WixieAbility extends IdentityAbility<EntityWixie> {
 
     public static ArrayList<MobEffect> goodEffectTable = new ArrayList<>(Arrays.asList(
             MobEffects.SATURATION, MobEffects.MOVEMENT_SPEED, MobEffects.DIG_SPEED, MobEffects.DAMAGE_BOOST,
-            MobEffects.ABSORPTION, MobEffects.FIRE_RESISTANCE, MobEffects.REGENERATION, MobEffects.DOLPHINS_GRACE
+            MobEffects.ABSORPTION, MobEffects.FIRE_RESISTANCE, MobEffects.REGENERATION, MobEffects.DOLPHINS_GRACE,
+            ModPotions.MANA_REGEN_EFFECT.get(), ModPotions.DEFENCE_EFFECT.get()
     ));
 
     public static ArrayList<MobEffect> badEffectTable = new ArrayList<>(Arrays.asList(
             MobEffects.MOVEMENT_SLOWDOWN, MobEffects.WEAKNESS, MobEffects.LEVITATION, MobEffects.POISON,
-            MobEffects.CONFUSION, MobEffects.BLINDNESS, MobEffects.DARKNESS, MobEffects.DIG_SLOWDOWN, MobEffects.HARM
+            MobEffects.CONFUSION, MobEffects.BLINDNESS, MobEffects.DARKNESS, MobEffects.DIG_SLOWDOWN, MobEffects.HARM,
+            ModPotions.FREEZING_EFFECT.get(), ModPotions.BLAST_EFFECT.get(), ModPotions.HEX_EFFECT.get()
     ));
 
     @Override
