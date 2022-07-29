@@ -154,8 +154,12 @@ dependencies {
     /*compileOnly*/ implementation fg.deobf("com.github.Virtuoel:Pehkui:3.3.2-1.18.2-forge")
     implementation fg.deobf("vazkii.patchouli:Patchouli:${mc_version}-67")
     runtimeOnly fg.deobf("curse.maven:instrumentum-580179:3820924")
-    runtimeOnly fg.deobf("curse.maven:elemental-561470:3834517")
+    implementation fg.deobf("curse.maven:elemental-561470:3834517")
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
+
+    runtimeOnly fg.deobf("curse.maven:arch-419699:3893735")
+    /*compileOnly*/ implementation fg.deobf("curse.maven:identity-391390:3807264")
+
 
 }
 

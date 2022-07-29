@@ -6,11 +6,10 @@ import com.hollingsworth.arsnouveau.api.spell.SpellStats;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
+import net.minecraftforge.common.ForgeConfigSpec;
 import org.jetbrains.annotations.Nullable;
 import virtuoel.pehkui.api.ScaleData;
 import virtuoel.pehkui.api.ScaleTypes;
-
-import static alexthw.ars_scalaes.ConfigHandler.Common.MAX_SHRINKING;
 
 public class EffectShrink extends PehkuiEffect {
 
@@ -25,8 +24,14 @@ public class EffectShrink extends PehkuiEffect {
 
         ScaleData data = ScaleTypes.BASE.getScaleData(rayTraceResult.getEntity());
 
-        data.setTargetScale((float) Math.max(MAX_SHRINKING.get(), data.getScale() / (1.2 + spellStats.getAmpMultiplier())));
+        data.setTargetScale((float) Math.max(minScaling.get(), data.getScale() / (1.2 + spellStats.getAmpMultiplier())));
 
+    }
+
+    @Override
+    public void buildConfig(ForgeConfigSpec.Builder builder) {
+        super.buildConfig(builder);
+        minScaling = builder.comment("Define the minimum size that can be reached.").defineInRange("min_scaling", 0.2D, 0.01D, 1D);
     }
 
 }

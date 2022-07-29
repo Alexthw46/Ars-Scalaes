@@ -5,11 +5,16 @@ import com.hollingsworth.arsnouveau.common.spell.augment.AugmentAmplify;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.HitResult;
+import net.minecraftforge.common.ForgeConfigSpec;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
 
 public class PehkuiEffect extends AbstractEffect {
+
+    public ForgeConfigSpec.DoubleValue minScaling;
+    public ForgeConfigSpec.DoubleValue maxScaling;
+    public ForgeConfigSpec.DoubleValue scalingFactor;
 
     public PehkuiEffect(String tag, String description) {
         super(tag, description);

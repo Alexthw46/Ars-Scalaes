@@ -194,7 +194,7 @@ public class ArsProviders {
     }
 
     static String root = ArsScalaes.MODID;
-    static ResourceLocation prefix(String path){
+    public static ResourceLocation prefix(String path){
         return new ResourceLocation(ArsScalaes.MODID, path);
     }
 

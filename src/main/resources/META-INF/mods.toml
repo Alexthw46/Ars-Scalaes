@@ -72,3 +72,9 @@ Starbuncles will conquer the world
     versionRange="[2.5.0,)"
     ordering="AFTER"
     side="BOTH"
+[[dependencies.ars_scalaes]]
+    modId="pmmo"
+    mandatory=false
+    versionRange="[2.0,3.0)"
+    ordering="AFTER"
+    side="BOTH"
