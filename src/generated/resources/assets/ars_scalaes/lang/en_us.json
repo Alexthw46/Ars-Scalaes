@@ -74,5 +74,8 @@
   "item.ars_nouveau.glyph_expand": "Glyph of Expand",
   "item.ars_nouveau.glyph_resize": "Glyph of Resize",
   "item.ars_nouveau.glyph_shrink": "Glyph of Shrink",
+  "item.ars_nouveau.glyph_morph": "Glyph of Morph",
+  "ars_nouveau.glyph_name.morph": "Morph",
+  "ars_nouveau.glyph_desc.morph": "Morphs into the entity hit. Use on self to break the morph. Enabled when Identity is loaded.",
   "itemGroup.ars_scalaes": "Ars Scalaes - Scaling and Stairs"
 }

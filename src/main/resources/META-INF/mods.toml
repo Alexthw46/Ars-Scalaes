@@ -45,6 +45,7 @@ Starbuncles will conquer the world
     ordering="NONE"
     # Side this dependency is applied on - BOTH, CLIENT or SERVER
     side="BOTH"
+
 # Here's another dependency
 [[dependencies.ars_scalaes]]
     modId="patchouli"
@@ -66,15 +67,17 @@ Starbuncles will conquer the world
     versionRange="[3.0.1,)"
     ordering="AFTER"
     side="BOTH"
+
 [[dependencies.ars_scalaes]]
     modId="ars_nouveau"
     mandatory=true
     versionRange="[2.5.0,)"
     ordering="AFTER"
     side="BOTH"
+
 [[dependencies.ars_scalaes]]
     modId="pmmo"
     mandatory=false
-    versionRange="[2.0,3.0)"
+    versionRange="[1.18.2-2.0.0.8, 1.18.2-3.0)"
     ordering="AFTER"
     side="BOTH"
