@@ -1,7 +1,9 @@
 package alexthw.ars_scalaes.pmmo;
 
 import alexthw.ars_scalaes.ConfigHandler;
-import com.hollingsworth.arsnouveau.api.event.*;
+import com.hollingsworth.arsnouveau.api.event.SpellCastEvent;
+import com.hollingsworth.arsnouveau.api.event.SpellDamageEvent;
+import com.hollingsworth.arsnouveau.api.event.SpellModifierEvent;
 import com.hollingsworth.arsnouveau.api.mana.ManaAttributes;
 import com.hollingsworth.arsnouveau.api.spell.AbstractEffect;
 import com.hollingsworth.arsnouveau.api.spell.AbstractSpellPart;
@@ -85,7 +87,7 @@ public class PmmoCompatEventHandler {
 
         double regenBoost = Math.min(maxRegenBoost, level * boostPerLevel);
 
-        if (manaAttribute.getModifier(manaRegenModifierID) == null || manaAttribute.getModifier(manaRegenModifierID).getAmount() != regenBoost) {
+        if (manaAttribute != null && (manaAttribute.getModifier(manaRegenModifierID).getAmount() != regenBoost || manaAttribute.getModifier(manaRegenModifierID) == null)) {
             AttributeModifier speedModifier = new AttributeModifier(manaRegenModifierID, "Mana Regen bonus thanks to Magic Level", regenBoost, AttributeModifier.Operation.ADDITION);
             manaAttribute.removeModifier(manaRegenModifierID);
             manaAttribute.addPermanentModifier(speedModifier);
@@ -108,7 +110,7 @@ public class PmmoCompatEventHandler {
 
         int manaBoost = (int) Math.min(maxManaBoost, level * boostPerLevel);
 
-        if (manaAttribute.getModifier(manaMaxModifierID) == null || manaAttribute.getModifier(manaMaxModifierID).getAmount() != manaBoost) {
+        if (manaAttribute != null && (manaAttribute.getModifier(manaMaxModifierID) == null || manaAttribute.getModifier(manaMaxModifierID).getAmount() != manaBoost)) {
             AttributeModifier manaModifier = new AttributeModifier(manaMaxModifierID, "Max Mana bonus thanks to Magic Level", manaBoost, AttributeModifier.Operation.ADDITION);
             manaAttribute.removeModifier(manaMaxModifierID);
             manaAttribute.addPermanentModifier(manaModifier);

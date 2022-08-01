@@ -26,6 +26,7 @@ public class Setup {
         //gen.addProvider(event.includeServer(),new ArsProviders.EnchantingAppProvider(gen));
         gen.addProvider(event.includeServer(), new ArsProviders.PatchouliProvider(gen));
         gen.addProvider(event.includeServer(), new ModRecipeProvider(gen));
+        gen.addProvider(event.includeServer(), new ModLootTables(gen));
     }
 
     public static <T> Collection<T> takeAll(Collection<T> src, Predicate<T> pred)
