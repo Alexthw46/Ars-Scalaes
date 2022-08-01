@@ -27,6 +27,7 @@ public class Setup {
         gen.addProvider(new ArsProviders.PatchouliProvider(gen));
         gen.addProvider(new ModLangProvider(gen, "en_us"));
         gen.addProvider(new ModRecipeProvider(gen));
+        gen.addProvider(new ModLootTables(gen));
     }
 
     public static <T> Collection<T> takeAll(Collection<T> src, Predicate<T> pred)
