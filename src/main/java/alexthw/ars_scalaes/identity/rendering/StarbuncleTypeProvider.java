@@ -5,41 +5,47 @@ import draylar.identity.api.variant.TypeProvider;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.Level;
 
+import java.util.List;
+
 public class StarbuncleTypeProvider extends TypeProvider<Starbuncle> {
+
+    static List<String> colorCache = List.of(Starbuncle.carbyColors);
 
     @Override
     public int getVariantData(Starbuncle starbuncle) {
         int isTamed = starbuncle.isTamed() ? 1 : -1;
-        return isTamed * DyeColor.valueOf(starbuncle.getColor().toUpperCase()).getId();
+        return isTamed * colorCache.indexOf(starbuncle.getColor().toLowerCase());
     }
 
     @Override
     public Starbuncle create(EntityType<Starbuncle> entityType, Level level, int i) {
         Starbuncle starbuncle = new Starbuncle(entityType, level);
-        if (i < 0) {
-            starbuncle.setColor(DyeColor.byId(-i).getName().toLowerCase());
-        } else {
-            starbuncle.setTamed(true);
-            starbuncle.setColor(DyeColor.byId(i).getName().toLowerCase());
+        if (i < colorCache.size()) {
+            String color = colorCache.get(Math.abs(i)).toLowerCase();
+            if (i < 0) {
+                starbuncle.setColor(color);
+            } else {
+                starbuncle.setTamed(true);
+                starbuncle.setColor(color);
+            }
         }
         return starbuncle;
     }
 
     @Override
     public int getFallbackData() {
-        return DyeColor.ORANGE.getId();
+        return 1;
     }
 
     @Override
     public int getRange() {
-        return DyeColor.BLACK.getId();
+        return Starbuncle.carbyColors.length - 1;
     }
 
     @Override
     public Component modifyText(Starbuncle starbuncle, MutableComponent mutableComponent) {
-        return mutableComponent.append(starbuncle.getColor());
+        return mutableComponent.append(" " + starbuncle.getColor());
     }
 }

@@ -27,7 +27,6 @@ public class WealdWalkerAbility<E extends WealdWalker> extends IdentityAbility<E
         EntityProjectileSpell projectileSpell = new EntityProjectileSpell(level, resolver);
         projectileSpell.shoot(player, player.getXRot(), player.getYRot(), 0.0F, 1.0f, 0.8f);
         level.addFreshEntity(projectileSpell);
-        //Networking.sendToNearby(level, e, new PacketAnimEntity(e.getId(), WealdWalker.Animations.CAST.ordinal()));
 
     }
 

@@ -27,7 +27,7 @@ public class FirenandoProvider extends TypeProvider<FirenandoEntity> {
 
     @Override
     public int getRange() {
-        return 2;
+        return 1;
     }
 
     @Override

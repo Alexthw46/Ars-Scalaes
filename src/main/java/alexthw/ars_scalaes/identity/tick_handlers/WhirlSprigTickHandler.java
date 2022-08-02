@@ -1,4 +1,4 @@
-package alexthw.ars_scalaes.identity;
+package alexthw.ars_scalaes.identity.tick_handlers;
 
 import com.hollingsworth.arsnouveau.common.entity.Whirlisprig;
 import draylar.identity.api.IdentityTickHandler;

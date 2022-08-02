@@ -28,11 +28,11 @@ public class MermaidProvider extends TypeProvider<MermaidEntity> {
 
     @Override
     public int getRange() {
-        return 4;
+        return MermaidEntity.Variants.values().length - 1;
     }
 
     @Override
     public Component modifyText(MermaidEntity mermaidEntity, MutableComponent mutableComponent) {
-        return mutableComponent;
+        return mutableComponent.append(" " + mermaidEntity.getColor());
     }
 }
