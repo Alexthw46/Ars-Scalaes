@@ -1,5 +1,6 @@
 package alexthw.ars_scalaes.glyph;
 
+import com.hollingsworth.arsnouveau.api.entity.IDecoratable;
 import com.hollingsworth.arsnouveau.api.spell.*;
 import com.hollingsworth.arsnouveau.client.particle.ParticleUtil;
 import com.hollingsworth.arsnouveau.common.entity.familiar.FamiliarEntity;
@@ -41,7 +42,11 @@ public class EffectMorph extends AbstractEffect {
             if (!(living instanceof Player) && living.getMaxHealth() < GENERIC_INT.get()) {
                 IdentityType<?> type = IdentityType.from(living);
                 if (type != null) {
-                    if (PlayerIdentity.updateIdentity(player, type, type.create(world))) {
+                    LivingEntity morph = type.create(world);
+                    if (morph instanceof IDecoratable toDeco && living instanceof IDecoratable fromDeco) {
+                        toDeco.setCosmeticItem(fromDeco.getCosmeticItem());
+                    }
+                    if (PlayerIdentity.updateIdentity(player, type, morph)) {
                         ((ServerLevel) world).sendParticles(ParticleTypes.LARGE_SMOKE, shooter.getX(), shooter.getY() + 0.5, shooter.getZ(), 30,
                                 ParticleUtil.inRange(-0.1, 0.1), ParticleUtil.inRange(-0.1, 0.1), ParticleUtil.inRange(-0.1, 0.1), 0.3);
                     }
