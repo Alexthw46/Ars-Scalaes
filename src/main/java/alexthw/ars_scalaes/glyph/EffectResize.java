@@ -1,7 +1,6 @@
 package alexthw.ars_scalaes.glyph;
 
 import com.hollingsworth.arsnouveau.api.spell.*;
-import com.hollingsworth.arsnouveau.common.spell.augment.AugmentAmplify;
 import com.hollingsworth.arsnouveau.common.spell.augment.AugmentDampen;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
@@ -12,6 +11,7 @@ import virtuoel.pehkui.api.ScaleData;
 import virtuoel.pehkui.api.ScaleType;
 import virtuoel.pehkui.api.ScaleTypes;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class EffectResize extends PehkuiEffect {
@@ -35,6 +35,8 @@ public class EffectResize extends PehkuiEffect {
                             (spellStats.getAmpMultiplier() < 0 ? 2 * scalingFactor.get() : scalingFactor.get())
             ))));
 
+            super.onResolveEntity(rayTraceResult, world, shooter, spellStats, spellContext, resolver);
+
         }
 
     }
@@ -47,7 +49,9 @@ public class EffectResize extends PehkuiEffect {
     @NotNull
     @Override
     public Set<AbstractAugment> getCompatibleAugments() {
-        return augmentSetOf(AugmentAmplify.INSTANCE, AugmentDampen.INSTANCE);
+        Set<AbstractAugment> augments = new HashSet<>(super.getCompatibleAugments());
+        augments.add(AugmentDampen.INSTANCE);
+        return augments;
     }
 
     @Override

@@ -1,0 +1,24 @@
+package alexthw.ars_scalaes.pehkui;
+
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.AttributeMap;
+import virtuoel.pehkui.api.ScaleData;
+import virtuoel.pehkui.api.ScaleType;
+import virtuoel.pehkui.api.ScaleTypes;
+
+public class ResizeEffect extends MobEffect {
+    protected ResizeEffect() {
+        super(MobEffectCategory.NEUTRAL, 0);
+    }
+
+    @Override
+    public void removeAttributeModifiers(LivingEntity pLivingEntity, AttributeMap pAttributeMap, int pAmplifier) {
+        ScaleType type = ScaleTypes.BASE;
+        final ScaleData data = type.getScaleData(pLivingEntity);
+        data.resetScale();
+        super.removeAttributeModifiers(pLivingEntity, pAttributeMap, pAmplifier);
+    }
+
+}
