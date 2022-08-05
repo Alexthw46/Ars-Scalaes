@@ -10,17 +10,29 @@ import draylar.identity.ability.AbilityRegistry;
 import draylar.identity.api.IdentityTickHandlers;
 import draylar.identity.api.variant.IdentityType;
 import draylar.identity.api.variant.TypeProvider;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
+import net.minecraftforge.registries.RegistryObject;
 
 import java.util.Map;
+
+import static alexthw.ars_scalaes.registry.ModRegistry.EFFECTS;
 
 
 public class IdentityReg {
 
-    public static void init() {
+    public static RegistryObject<MobEffect> MORPH;
+
+    public static void preInit() {
+        MORPH = EFFECTS.register("morph", MorphEffect::new);
+    }
+
+    ;
+
+    public static void postInit() {
         Map<EntityType<? extends LivingEntity>, TypeProvider<?>> variants = ObfuscationReflectionHelper.getPrivateValue(IdentityType.class, new IdentityType<>(null), "VARIANT_BY_TYPE");
         initAbilities();
         if (variants != null) initVariants(variants);
@@ -67,6 +79,7 @@ public class IdentityReg {
         AbilityRegistry.register(ModEntities.ENTITY_FLOURISHING_WEALD.get(), new WealdWalkerAbility<>());
         AbilityRegistry.register(ModEntities.ENTITY_VEXING_WEALD.get(), new WealdWalkerAbility<>());
         AbilityRegistry.register(ModEntities.WILDEN_HUNTER.get(), new WildenHunterAbility());
+        AbilityRegistry.register(ModEntities.WILDEN_STALKER.get(), new WildenStalkerAbility());
 
         AbilityRegistry.register(ModEntities.STARBUNCLE_TYPE.get(), new StarbuncleAbility<>());
         AbilityRegistry.register(ModEntities.WHIRLISPRIG_TYPE.get(), new WhirlisprigAbility<>());

@@ -1,5 +1,6 @@
 package alexthw.ars_scalaes.glyph;
 
+import alexthw.ars_scalaes.identity.IdentityReg;
 import com.hollingsworth.arsnouveau.api.entity.IDecoratable;
 import com.hollingsworth.arsnouveau.api.spell.*;
 import com.hollingsworth.arsnouveau.client.particle.ParticleUtil;
@@ -23,9 +24,10 @@ import static alexthw.ars_scalaes.datagen.ArsProviders.prefix;
 public class EffectMorph extends AbstractEffect {
 
     public static final EffectMorph INSTANCE = new EffectMorph();
+    public ForgeConfigSpec.BooleanValue isTimeLimited;
 
     public EffectMorph() {
-        super(prefix("glyph_morph"), "Morphs into the entity hit. Use on self to break the morph. Enabled when Identity is loaded.");
+        super(prefix("glyph_morph"), "Morph Identity");
     }
 
     @Override
@@ -49,6 +51,7 @@ public class EffectMorph extends AbstractEffect {
                     if (PlayerIdentity.updateIdentity(player, type, morph)) {
                         ((ServerLevel) world).sendParticles(ParticleTypes.LARGE_SMOKE, shooter.getX(), shooter.getY() + 0.5, shooter.getZ(), 30,
                                 ParticleUtil.inRange(-0.1, 0.1), ParticleUtil.inRange(-0.1, 0.1), ParticleUtil.inRange(-0.1, 0.1), 0.3);
+                        if (isTimeLimited.get()) applyConfigPotion(living, IdentityReg.MORPH.get(), spellStats, false);
                     }
                 }
             }
@@ -59,6 +62,9 @@ public class EffectMorph extends AbstractEffect {
     @Override
     public void buildConfig(ForgeConfigSpec.Builder builder) {
         super.buildConfig(builder);
+        isTimeLimited = builder.comment("Enable a timer on the resize effects. Caster will return to original self when potion effect is removed.").define("limitedMorphTime", false);
+        addPotionConfig(builder, 120);
+        addExtendTimeConfig(builder, 60);
         GENERIC_INT = builder.comment("Morph will only allow you to transform is the target have less maximum hp than this value.").defineInRange("max_hp_morph", 100, 20, Integer.MAX_VALUE);
     }
 

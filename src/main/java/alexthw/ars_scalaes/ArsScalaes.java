@@ -1,6 +1,7 @@
 package alexthw.ars_scalaes;
 
 import alexthw.ars_scalaes.identity.IdentityReg;
+import alexthw.ars_scalaes.pehkui.PkCompatHandler;
 import alexthw.ars_scalaes.pmmo.PmmoCompatEventHandler;
 import alexthw.ars_scalaes.registry.ModRegistry;
 import net.minecraft.world.item.CreativeModeTab;
@@ -38,9 +39,11 @@ public class ArsScalaes
             MinecraftForge.EVENT_BUS.register(ScalingHealthCompatEventHandler.class);
         }
         if (ModList.get().isLoaded("pehkui")) {
+            PkCompatHandler.init();
             ArsNouveauRegistry.registerPehkuiGlyphs();
         }
         if (ModList.get().isLoaded("identity")) {
+            IdentityReg.preInit();
             ArsNouveauRegistry.registerIdentityGlyphs();
         }
         modbus.addListener(this::setup);
@@ -50,7 +53,7 @@ public class ArsScalaes
 
     private void setup(final FMLCommonSetupEvent event) {
         if (ModList.get().isLoaded("identity")) {
-            event.enqueueWork(IdentityReg::init);
+            event.enqueueWork(IdentityReg::postInit);
         }
     }
 
