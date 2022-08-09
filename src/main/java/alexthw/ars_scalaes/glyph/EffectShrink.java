@@ -22,9 +22,10 @@ public class EffectShrink extends PehkuiEffect {
     public void onResolveEntity(EntityHitResult rayTraceResult, Level world, LivingEntity shooter, SpellStats spellStats, SpellContext spellContext, SpellResolver resolver) {
 
         ScaleData data = ScaleTypes.BASE.getScaleData(rayTraceResult.getEntity());
-
-        data.setTargetScale((float) Math.max(minScaling.get(), data.getScale() / (1.2 + spellStats.getAmpMultiplier())));
+        float cScale = data.getScale();
         super.onResolveEntity(rayTraceResult, world, shooter, spellStats, spellContext, resolver);
+
+        data.setTargetScale((float) Math.max(minScaling.get(), cScale / (1.2 + spellStats.getAmpMultiplier())));
 
     }
 

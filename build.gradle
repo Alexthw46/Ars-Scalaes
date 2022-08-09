@@ -157,7 +157,7 @@ dependencies {
     runtimeOnly fg.deobf("mezz.jei:jei-${mc_dep_version}-forge:${jei_version}")
 
     implementation fg.deobf("top.theillusivec4.curios:curios-forge:${mc_version}-${curio_version}")
-    compileOnly/*implementation*/ fg.deobf("curse.maven:project_mmo-353935:3902639")
+    compileOnly/*implementation*/ fg.deobf("curse.maven:project_mmo-353935:3926256")
     compileOnly/*implementation*/ fg.deobf("curse.maven:scaling_health-248027:3788314")
     compileOnly/*implementation*/ fg.deobf("curse.maven:silent_chaos-242998:3708359")
     /*compileOnly*/ implementation fg.deobf("com.github.Virtuoel:Pehkui:3.3.3-${mc_dep_version}-forge")

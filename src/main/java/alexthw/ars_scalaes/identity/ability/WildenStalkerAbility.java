@@ -22,7 +22,7 @@ public class WildenStalkerAbility extends IdentityAbility<WildenStalker> {
     static final Spell summon = new Spell().add(MethodSelf.INSTANCE)
             .add(EffectLaunch.INSTANCE, 2)
             .add(EffectGlide.INSTANCE)
-            .add(AugmentDurationDown.INSTANCE, 2);
+            .add(AugmentDurationDown.INSTANCE, 1);
 
     @Override
     public void onUse(Player player, WildenStalker wildenHunter, Level level) {
@@ -43,7 +43,7 @@ public class WildenStalkerAbility extends IdentityAbility<WildenStalker> {
 
     @Override
     public int getCooldown(WildenStalker entity) {
-        return 800;
+        return 1300;
     }
 
 }

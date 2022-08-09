@@ -12,7 +12,6 @@ import harmonised.pmmo.api.APIUtils;
 import harmonised.pmmo.api.enums.PerkSide;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
@@ -34,8 +33,8 @@ public class PmmoCompatEventHandler {
 
     @SubscribeEvent
     public static void awardSpellCastXp(SpellCastEvent event) {
-        LivingEntity entity = event.getEntity();
-        if (entity instanceof ServerPlayer player) {
+
+        if (event.getEntity() instanceof ServerPlayer player) {
 
             Spell spell = event.spell;
             int manaCost = 0;
@@ -87,7 +86,7 @@ public class PmmoCompatEventHandler {
 
         double regenBoost = Math.min(maxRegenBoost, level * boostPerLevel);
 
-        if (manaAttribute != null && (manaAttribute.getModifier(manaRegenModifierID).getAmount() != regenBoost || manaAttribute.getModifier(manaRegenModifierID) == null)) {
+        if (manaAttribute != null && (manaAttribute.getModifier(manaRegenModifierID) == null || manaAttribute.getModifier(manaRegenModifierID).getAmount() != regenBoost)) {
             AttributeModifier speedModifier = new AttributeModifier(manaRegenModifierID, "Mana Regen bonus thanks to Magic Level", regenBoost, AttributeModifier.Operation.ADDITION);
             manaAttribute.removeModifier(manaRegenModifierID);
             manaAttribute.addPermanentModifier(speedModifier);
