@@ -25,3 +25,5 @@ classes
 
 # Files from Forge MDK
 forge*changelog.txt
+*.jar
+externalmods/identity-2.4.0_alexthw-1.19.1-forge.jar
