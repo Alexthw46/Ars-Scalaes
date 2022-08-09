@@ -32,7 +32,7 @@ public class Perk {
 
         double regenBoost = Math.min(maxRegenBoost, level * boostPerLevel);
 
-        if (manaAttribute != null && (manaAttribute.getModifier(manaRegenModifierID).getAmount() != regenBoost || manaAttribute.getModifier(manaRegenModifierID) == null)) {
+        if (manaAttribute != null && (manaAttribute.getModifier(manaRegenModifierID) == null || manaAttribute.getModifier(manaRegenModifierID).getAmount() != regenBoost)) {
             AttributeModifier speedModifier = new AttributeModifier(manaRegenModifierID, "Mana Regen bonus thanks to Magic Level", regenBoost, AttributeModifier.Operation.ADDITION);
             manaAttribute.removeModifier(manaRegenModifierID);
             manaAttribute.addPermanentModifier(speedModifier);
