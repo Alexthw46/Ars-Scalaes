@@ -1,5 +1,6 @@
 package alexthw.ars_scalaes.glyph;
 
+import alexthw.ars_scalaes.identity.IdentityReg;
 import com.hollingsworth.arsnouveau.api.spell.*;
 import com.hollingsworth.arsnouveau.client.particle.ParticleUtil;
 import com.hollingsworth.arsnouveau.common.entity.familiar.FamiliarEntity;

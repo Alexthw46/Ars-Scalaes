@@ -22,14 +22,14 @@ public class WildenStalkerAbility extends IdentityAbility<WildenStalker> {
     static final Spell summon = new Spell().add(MethodSelf.INSTANCE)
             .add(EffectLaunch.INSTANCE, 2)
             .add(EffectGlide.INSTANCE)
-            .add(AugmentDurationDown.INSTANCE, 2);
+            .add(AugmentDurationDown.INSTANCE, 1);
 
     @Override
     public void onUse(Player player, WildenStalker wildenHunter, Level level) {
 
         level.playSound(null, player.blockPosition(), SoundEvents.BAT_TAKEOFF, SoundSource.HOSTILE, 1.0f, 0.3f);
 
-        SpellResolver resolver = new SpellResolver(new SpellContext(level, summon, player));
+        SpellResolver resolver = new SpellResolver(new SpellContext(summon, player));
         if (!resolver.postEvent()) {
             resolver.onResolveEffect(level, new EntityHitResult(player));
         }

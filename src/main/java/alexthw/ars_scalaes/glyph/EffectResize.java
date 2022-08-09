@@ -26,6 +26,7 @@ public class EffectResize extends PehkuiEffect {
     public void onResolveEntity(EntityHitResult rayTraceResult, Level world, LivingEntity shooter, SpellStats spellStats, SpellContext spellContext, SpellResolver resolver) {
 
         if (rayTraceResult.getEntity() instanceof LivingEntity living) {
+            super.onResolveEntity(rayTraceResult, world, shooter, spellStats, spellContext, resolver);
 
             ScaleType type = ScaleTypes.BASE;
             final ScaleData data = type.getScaleData(living);
@@ -34,9 +35,6 @@ public class EffectResize extends PehkuiEffect {
                     1 + spellStats.getAmpMultiplier() /
                             (spellStats.getAmpMultiplier() < 0 ? 2 * scalingFactor.get() : scalingFactor.get())
             ))));
-
-            super.onResolveEntity(rayTraceResult, world, shooter, spellStats, spellContext, resolver);
-
         }
 
     }

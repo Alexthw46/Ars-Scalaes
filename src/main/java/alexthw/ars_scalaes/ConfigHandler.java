@@ -10,6 +10,8 @@ public class ConfigHandler {
         public static ForgeConfigSpec.ConfigValue<Boolean> ALL_MAGIC;
 
         //Pmmo x AN
+
+        public static ForgeConfigSpec.BooleanValue PERK_OR_LEGACY;
         public static ForgeConfigSpec.ConfigValue<Double> MANA_XP;
         public static ForgeConfigSpec.ConfigValue<Double> MAX_BONUS;
         public static ForgeConfigSpec.ConfigValue<Double> REGEN_BONUS;
@@ -26,6 +28,7 @@ public class ConfigHandler {
             builder.pop();
 
             builder.comment("Pmmo scaling").push("PMMO");
+            PERK_OR_LEGACY = builder.comment("Switch between legacy configs or pmmo perk system. (true) Legacy multiplies the regen/maxmana by the values below. (false) Perk adds flat regen/max mana defined in the serverconfigs following pmmo guide.").define("legacy",true);
             MANA_XP = builder.comment("XP gained per Mana spent").define("ars_mana", .05d);
             MAX_BONUS = builder.comment("% Bonus to Max Mana per level").define("ars_max_bonus", .01d);
             REGEN_BONUS = builder.comment("% Bonus to Mana Regen per level").define("ars_regen_bonus", .00666d);

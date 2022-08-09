@@ -1,11 +1,11 @@
 package alexthw.ars_scalaes.glyph;
 
+import alexthw.ars_scalaes.pehkui.PkCompatHandler;
 import com.hollingsworth.arsnouveau.api.spell.*;
-import com.hollingsworth.arsnouveau.common.spell.augment.AugmentAmplify;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
-
 import net.minecraftforge.common.ForgeConfigSpec;
 import org.jetbrains.annotations.NotNull;
 
@@ -34,7 +34,7 @@ public class PehkuiEffect extends AbstractEffect {
 
     @Override
     public void onResolveEntity(EntityHitResult rayTraceResult, Level world, @NotNull LivingEntity shooter, SpellStats spellStats, SpellContext spellContext, SpellResolver resolver) {
-        if (isTimeLimited.get() && rayTraceResult.getEntity() instanceof LivingEntity living && (living != shooter || spellStats.getDurationMultiplier() < 1)) {
+        if (isTimeLimited.get() && spellStats.getAmpMultiplier() != 0 && rayTraceResult.getEntity() instanceof LivingEntity living && (living != shooter || spellStats.getDurationMultiplier() < 1)) {
             applyConfigPotion(living, PkCompatHandler.RESIZE.get(), spellStats, false);
         }
     }

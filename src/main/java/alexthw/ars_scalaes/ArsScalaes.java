@@ -1,6 +1,11 @@
 package alexthw.ars_scalaes;
 
 
+import alexthw.ars_scalaes.identity.IdentityReg;
+import alexthw.ars_scalaes.pehkui.PkCompatHandler;
+import alexthw.ars_scalaes.pmmo.Common;
+import alexthw.ars_scalaes.pmmo.Legacy;
+import alexthw.ars_scalaes.pmmo.Perk;
 import alexthw.ars_scalaes.registry.ModRegistry;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
@@ -13,6 +18,8 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+
+import static alexthw.ars_scalaes.ConfigHandler.Common.PERK_OR_LEGACY;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(ArsScalaes.MODID)
@@ -31,7 +38,7 @@ public class ArsScalaes
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ConfigHandler.COMMON_SPEC);
         ModRegistry.registerRegistries(modbus);
         if (ModList.get().isLoaded("pmmo")) {
-            MinecraftForge.EVENT_BUS.register(PmmoCompatEventHandler.class);
+            MinecraftForge.EVENT_BUS.register(Common.class);
         }
         if (ModList.get().isLoaded("scaling_health")) {
             MinecraftForge.EVENT_BUS.register(ScalingHealthCompatEventHandler.class);
@@ -52,7 +59,12 @@ public class ArsScalaes
     private void setup(final FMLCommonSetupEvent event)
     {
         if (ModList.get().isLoaded("identity"))
-            event.enqueueWork(IdentityReg::init);
+            event.enqueueWork(IdentityReg::initAbilities);
+        if (ModList.get().isLoaded("pmmo")) {
+            if (PERK_OR_LEGACY.get()) {
+                MinecraftForge.EVENT_BUS.register(Legacy.class);
+            } else Perk.setupPerks();
+        }
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
