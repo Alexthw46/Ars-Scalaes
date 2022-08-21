@@ -10,6 +10,8 @@ public class ConfigHandler {
         public static ForgeConfigSpec.ConfigValue<Boolean> ALL_MAGIC;
 
         //Pmmo x AN
+
+        public static ForgeConfigSpec.BooleanValue PERK_OR_LEGACY;
         public static ForgeConfigSpec.ConfigValue<Double> MANA_XP;
         public static ForgeConfigSpec.ConfigValue<Double> MAX_BONUS;
         public static ForgeConfigSpec.ConfigValue<Double> REGEN_BONUS;
@@ -19,12 +21,6 @@ public class ConfigHandler {
 
         //Scaling Health x AN
         public static ForgeConfigSpec.ConfigValue<Double> SCALING_SPELL_DMG;
-
-        //Pehkui x AN
-        public static ForgeConfigSpec.ConfigValue<Double> MAX_EXPANDING;
-        public static ForgeConfigSpec.ConfigValue<Double> MAX_SHRINKING;
-
-
         public Common(ForgeConfigSpec.Builder builder) {
 
             builder.push("general configs");
@@ -42,11 +38,6 @@ public class ConfigHandler {
 
             builder.comment("Scaling Health scaling").push("SCALING HEALTH");
             SCALING_SPELL_DMG = builder.comment("Spell Damage bonus per crystal").define("scaling_ars_damage", .0d);
-            builder.pop();
-
-            builder.comment("Pehkui spells scaling limit").push("PEHKUI");
-            MAX_EXPANDING = builder.comment("Set a maximum size for expand glyph. Does not affect Resize cap of 10.").define("maximum_expand", 20D);
-            MAX_SHRINKING = builder.comment("Set a minimum size for shrink glyph. Does not affect Resize cap of 0.6.").define("maximum_shrink", 0.1);
             builder.pop();
 
         }

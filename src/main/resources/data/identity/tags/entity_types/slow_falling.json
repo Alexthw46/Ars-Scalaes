@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "ars_nouveau:whirlisprig",
+    "ars_nouveau:wilden_stalker",
+    {
+      "id": "ars_elemental:firenando_entity",
+      "required": false
+    }
+  ]
+}

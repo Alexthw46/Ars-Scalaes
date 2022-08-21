@@ -5,7 +5,6 @@ import com.hollingsworth.arsnouveau.api.spell.AbstractEffect;
 import com.hollingsworth.arsnouveau.api.spell.AbstractSpellPart;
 import com.hollingsworth.arsnouveau.api.spell.Spell;
 import harmonised.pmmo.api.APIUtils;
-import harmonised.pmmo.skills.Skill;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -50,7 +49,7 @@ public class PmmoCompatEventHandler {
 
         if (event.target instanceof Player player) {
             int magicLevel = APIUtils.getLevel("magic", player);
-            int enduranceLevel = APIUtils.getLevel(Skill.ENDURANCE.toString(), player);
+            int enduranceLevel = APIUtils.getLevel("endurance", player);
             event.damage = (float) (event.damage * (1 - (magicLevel + enduranceLevel) * ConfigHandler.Common.LEVEL_TO_SPELL_RES.get()));
         }
 

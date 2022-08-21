@@ -14,19 +14,19 @@ public class ModLangProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
-        add("itemGroup.ars_scalaes","Ars Scalaes - Scaling and Stairs");
+        add("itemGroup.ars_scalaes", "Ars Scalaes - Scaling and Stairs");
         decoBlockPackLang(ModRegistry.ARCANE_STONE, "Arcane Stone");
         decoBlockPackLang(ModRegistry.ARCANE_BRICK, "Arcane Bricks");
-        decoBlockPackLang(ModRegistry.ARCANE_STONE_CLOVER,"Arcane Brick: Clover");
-        decoBlockPackLang(ModRegistry.ARCANE_STONE_GOLD,"Gilded Arcane Stone");
-        decoBlockPackLang(ModRegistry.ARCANE_STONE_GOLD_ALT,"Gilded Brick: Alternative");
-        decoBlockPackLang(ModRegistry.ARCANE_STONE_GOLD_ASHLAR,"Gilded Brick: Ashlar");
-        decoBlockPackLang(ModRegistry.ARCANE_STONE_GOLD_BASKET,"Gilded Brick: Basketweave");
-        decoBlockPackLang(ModRegistry.ARCANE_STONE_GOLD_CLOVER,"Gilded Brick: Clover");
-        decoBlockPackLang(ModRegistry.ARCANE_STONE_GOLD_HERRING,"Gilded Brick: Herringbone");
-        decoBlockPackLang(ModRegistry.ARCANE_STONE_GOLD_MOSAIC,"Gilded Brick: Mosaic");
-        decoBlockPackLang(ModRegistry.ARCANE_STONE_GOLD_SLAB,"Gilded Slabs");
-        decoBlockPackLang(ModRegistry.ARCANE_BRICK_ALT,"Arcane Brick: Alternative");
+        decoBlockPackLang(ModRegistry.ARCANE_STONE_CLOVER, "Arcane Brick: Clover");
+        decoBlockPackLang(ModRegistry.ARCANE_STONE_GOLD, "Gilded Arcane Stone");
+        decoBlockPackLang(ModRegistry.ARCANE_STONE_GOLD_ALT, "Gilded Brick: Alternative");
+        decoBlockPackLang(ModRegistry.ARCANE_STONE_GOLD_ASHLAR, "Gilded Brick: Ashlar");
+        decoBlockPackLang(ModRegistry.ARCANE_STONE_GOLD_BASKET, "Gilded Brick: Basketweave");
+        decoBlockPackLang(ModRegistry.ARCANE_STONE_GOLD_CLOVER, "Gilded Brick: Clover");
+        decoBlockPackLang(ModRegistry.ARCANE_STONE_GOLD_HERRING, "Gilded Brick: Herringbone");
+        decoBlockPackLang(ModRegistry.ARCANE_STONE_GOLD_MOSAIC, "Gilded Brick: Mosaic");
+        decoBlockPackLang(ModRegistry.ARCANE_STONE_GOLD_SLAB, "Gilded Slabs");
+        decoBlockPackLang(ModRegistry.ARCANE_BRICK_ALT, "Arcane Brick: Alternative");
         decoBlockPackLang(ModRegistry.ARCANE_BRICK_BASKET, "Arcane Brick: Basketweave");
         decoBlockPackLang(ModRegistry.ARCANE_BRICK_HERRING, "Arcane Brick: Herringbone");
         decoBlockPackLang(ModRegistry.ARCANE_BRICK_MOSAIC, "Arcane Brick: Mosaic");
@@ -47,6 +47,12 @@ public class ModLangProvider extends LanguageProvider {
         add("item.ars_nouveau.glyph_expand", "Glyph of Expand");
         add("ars_nouveau.glyph_name.expand", "Expand");
         add("ars_nouveau.glyph_desc.expand", "Make an entity grow in size. Unlike Resize, expansion is cumulative with multiple casts.");
+        add("ars_nouveau.glyph_name.morph", "Morph");
+        add("ars_nouveau.glyph_desc.morph", "Morphs into the entity hit. Use on self to break the morph. Enabled when Identity is loaded.");
+
+        add("effect.ars_scalaes.morph", "Morphed");
+        add("effect.ars_scalaes.resize", "Resized");
+
     }
 
     private void decoBlockPackLang(DecoBlockPack decoBlockPack, String name) {
