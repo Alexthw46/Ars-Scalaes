@@ -43,7 +43,7 @@ minecraft {
     // Use non-default mappings at your own risk. they may not always work.
     // Simply re-run your setup task after changing the mappings to update your workspace.
 
-    mappings channel: 'parchment', version: '1.18.2-2022.07.17-1.19.1'
+    mappings channel: 'parchment', version: '2022.08.14-1.19.2'
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 
     // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
@@ -147,7 +147,7 @@ dependencies {
 
     minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
 
-    implementation fg.deobf("com.hollingsworth.ars_nouveau:ars_nouveau-${mc_version}:${ars_version}")
+    implementation fg.deobf("com.hollingsworth.ars_nouveau:ars_nouveau-${mc_dep_version}.1:${ars_version}")
     implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${mc_dep_version}:${gecko_version}")
 
     compileOnly fg.deobf("mezz.jei:jei-${mc_dep_version}-common-api:${jei_version}")
