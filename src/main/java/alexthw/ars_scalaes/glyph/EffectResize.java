@@ -1,5 +1,6 @@
 package alexthw.ars_scalaes.glyph;
 
+import alexthw.ars_scalaes.pehkui.PkCompatHandler;
 import com.hollingsworth.arsnouveau.api.spell.*;
 import com.hollingsworth.arsnouveau.common.spell.augment.AugmentDampen;
 import net.minecraft.world.entity.LivingEntity;
@@ -28,7 +29,7 @@ public class EffectResize extends PehkuiEffect {
         if (rayTraceResult.getEntity() instanceof LivingEntity living) {
             super.onResolveEntity(rayTraceResult, world, shooter, spellStats, spellContext, resolver);
 
-            ScaleType type = ScaleTypes.BASE;
+            ScaleType type = PkCompatHandler.magicScale;
             final ScaleData data = type.getScaleData(living);
 
             data.setTargetScale((float) Math.max(minScaling.get(), Math.min(maxScaling.get(), (
