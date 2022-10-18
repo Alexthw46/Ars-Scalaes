@@ -42,7 +42,7 @@ public class ModLootTables extends LootTableProvider {
     }
 
     public static class BlockLootTable extends BlockLoot {
-        public List<Block> list = new ArrayList<>();
+        public final List<Block> list = new ArrayList<>();
 
         public BlockLootTable() {
         }

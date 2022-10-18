@@ -12,8 +12,7 @@ import java.util.Set;
 
 import static alexthw.ars_scalaes.datagen.ArsProviders.prefix;
 
-public class PehkuiEffect extends AbstractEffect {
-
+public class PehkuiEffect extends AbstractEffect implements IPotionEffect {
     public ForgeConfigSpec.BooleanValue isTimeLimited;
     public ForgeConfigSpec.DoubleValue minScaling;
     public ForgeConfigSpec.DoubleValue maxScaling;
@@ -26,7 +25,7 @@ public class PehkuiEffect extends AbstractEffect {
     @Override
     public void onResolveEntity(EntityHitResult rayTraceResult, Level world, @NotNull LivingEntity shooter, SpellStats spellStats, SpellContext spellContext, SpellResolver resolver) {
         if (isTimeLimited.get() && rayTraceResult.getEntity() instanceof LivingEntity living && (living != shooter || spellStats.getDurationMultiplier() < 1)) {
-            applyConfigPotion(living, PkCompatHandler.RESIZE.get(), spellStats, false);
+            ((IPotionEffect) this).applyConfigPotion(living, PkCompatHandler.RESIZE.get(), spellStats, false);
         }
     }
 
@@ -54,4 +53,13 @@ public class PehkuiEffect extends AbstractEffect {
         return getPotionAugments();
     }
 
+    @Override
+    public int getBaseDuration() {
+        return POTION_TIME == null ? 30 : POTION_TIME.get();
+    }
+
+    @Override
+    public int getExtendTimeDuration() {
+        return EXTEND_TIME == null ? 8 : EXTEND_TIME.get();
+    }
 }

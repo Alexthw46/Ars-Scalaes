@@ -4,7 +4,7 @@ import alexthw.ars_scalaes.ConfigHandler;
 import com.hollingsworth.arsnouveau.api.event.SpellCastEvent;
 import com.hollingsworth.arsnouveau.api.event.SpellDamageEvent;
 import com.hollingsworth.arsnouveau.api.event.SpellModifierEvent;
-import com.hollingsworth.arsnouveau.api.mana.ManaAttributes;
+import com.hollingsworth.arsnouveau.api.perk.PerkAttributes;
 import com.hollingsworth.arsnouveau.api.spell.AbstractEffect;
 import com.hollingsworth.arsnouveau.api.spell.AbstractSpellPart;
 import com.hollingsworth.arsnouveau.api.spell.Spell;
@@ -82,7 +82,7 @@ public class PmmoCompatEventHandler {
     public static final TriFunction<Player, CompoundTag, Integer, CompoundTag> MANA_REGEN = (player, nbt, level) -> {
         double maxRegenBoost = nbt.contains(APIUtils.MAX_BOOST) ? nbt.getDouble(APIUtils.MAX_BOOST) : 100d;
         double boostPerLevel = nbt.contains(APIUtils.PER_LEVEL) ? nbt.getDouble(APIUtils.PER_LEVEL) : .06d;
-        AttributeInstance manaAttribute = player.getAttribute(ManaAttributes.MANA_REGEN.get());
+        AttributeInstance manaAttribute = player.getAttribute(PerkAttributes.MANA_REGEN_BONUS.get());
 
         double regenBoost = Math.min(maxRegenBoost, level * boostPerLevel);
 
@@ -96,7 +96,7 @@ public class PmmoCompatEventHandler {
     };
 
     public static final TriFunction<Player, CompoundTag, Integer, CompoundTag> MANA_REGEN_TERM = (p, nbt, l) -> {
-        AttributeInstance manaAttribute = p.getAttribute(ManaAttributes.MANA_REGEN.get());
+        AttributeInstance manaAttribute = p.getAttribute(PerkAttributes.MANA_REGEN_BONUS.get());
         if (manaAttribute != null)
             manaAttribute.removeModifier(manaRegenModifierID);
         return NONE;
@@ -105,7 +105,7 @@ public class PmmoCompatEventHandler {
     public static final TriFunction<Player, CompoundTag, Integer, CompoundTag> MANA_BOOST = (player, nbt, level) -> {
         double maxManaBoost = nbt.contains(APIUtils.MAX_BOOST) ? nbt.getDouble(APIUtils.MAX_BOOST) : 3000d;
         double boostPerLevel = nbt.contains(APIUtils.PER_LEVEL) ? nbt.getDouble(APIUtils.PER_LEVEL) : 3.0d;
-        AttributeInstance manaAttribute = player.getAttribute(ManaAttributes.MAX_MANA.get());
+        AttributeInstance manaAttribute = player.getAttribute(PerkAttributes.MAX_MANA_BONUS.get());
 
         int manaBoost = (int) Math.min(maxManaBoost, level * boostPerLevel);
 
@@ -119,7 +119,7 @@ public class PmmoCompatEventHandler {
     };
 
     public static final TriFunction<Player, CompoundTag, Integer, CompoundTag> MANA_BOOST_TERM = (p, nbt, l) -> {
-        AttributeInstance manaAttribute = p.getAttribute(ManaAttributes.MAX_MANA.get());
+        AttributeInstance manaAttribute = p.getAttribute(PerkAttributes.MAX_MANA_BONUS.get());
         if (manaAttribute != null)
             manaAttribute.removeModifier(manaMaxModifierID);
         return NONE;

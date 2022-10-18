@@ -22,13 +22,13 @@ import java.util.Set;
 
 public class WixieAbility extends IdentityAbility<EntityWixie> {
 
-    public static ArrayList<MobEffect> goodEffectTable = new ArrayList<>(Arrays.asList(
+    public static final ArrayList<MobEffect> goodEffectTable = new ArrayList<>(Arrays.asList(
             MobEffects.SATURATION, MobEffects.MOVEMENT_SPEED, MobEffects.DIG_SPEED, MobEffects.DAMAGE_BOOST,
             MobEffects.ABSORPTION, MobEffects.FIRE_RESISTANCE, MobEffects.REGENERATION, MobEffects.DOLPHINS_GRACE,
             ModPotions.MANA_REGEN_EFFECT.get(), ModPotions.DEFENCE_EFFECT.get()
     ));
 
-    public static ArrayList<MobEffect> badEffectTable = new ArrayList<>(Arrays.asList(
+    public static final ArrayList<MobEffect> badEffectTable = new ArrayList<>(Arrays.asList(
             MobEffects.MOVEMENT_SLOWDOWN, MobEffects.WEAKNESS, MobEffects.LEVITATION, MobEffects.POISON,
             MobEffects.CONFUSION, MobEffects.BLINDNESS, MobEffects.DARKNESS, MobEffects.DIG_SLOWDOWN, MobEffects.HARM,
             ModPotions.FREEZING_EFFECT.get(), ModPotions.BLAST_EFFECT.get(), ModPotions.HEX_EFFECT.get()

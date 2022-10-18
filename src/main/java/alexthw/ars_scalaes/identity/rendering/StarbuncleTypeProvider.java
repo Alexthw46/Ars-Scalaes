@@ -11,7 +11,7 @@ import java.util.List;
 
 public class StarbuncleTypeProvider extends TypeProvider<Starbuncle> {
 
-    static List<String> colorCache = List.of(Starbuncle.carbyColors);
+    static final List<String> colorCache = List.of(Starbuncle.carbyColors);
 
     @Override
     public int getVariantData(Starbuncle starbuncle) {

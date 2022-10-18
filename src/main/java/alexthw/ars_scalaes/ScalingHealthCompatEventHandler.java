@@ -3,7 +3,6 @@ package alexthw.ars_scalaes;
 import com.hollingsworth.arsnouveau.api.event.SpellModifierEvent;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.silentchaos512.scalinghealth.capability.IPlayerData;
 import net.silentchaos512.scalinghealth.utils.config.SHPlayers;
 
 public class ScalingHealthCompatEventHandler {

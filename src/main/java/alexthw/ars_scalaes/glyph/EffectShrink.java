@@ -1,5 +1,6 @@
 package alexthw.ars_scalaes.glyph;
 
+import alexthw.ars_scalaes.pehkui.PkCompatHandler;
 import com.hollingsworth.arsnouveau.api.spell.SpellContext;
 import com.hollingsworth.arsnouveau.api.spell.SpellResolver;
 import com.hollingsworth.arsnouveau.api.spell.SpellStats;
@@ -8,11 +9,10 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.common.ForgeConfigSpec;
 import virtuoel.pehkui.api.ScaleData;
-import virtuoel.pehkui.api.ScaleTypes;
 
 public class EffectShrink extends PehkuiEffect {
 
-    public static EffectShrink INSTANCE = new EffectShrink();
+    public static final EffectShrink INSTANCE = new EffectShrink();
 
     public EffectShrink() {
         super("shrink", "Shrink");
@@ -21,7 +21,7 @@ public class EffectShrink extends PehkuiEffect {
     @Override
     public void onResolveEntity(EntityHitResult rayTraceResult, Level world, LivingEntity shooter, SpellStats spellStats, SpellContext spellContext, SpellResolver resolver) {
 
-        ScaleData data = ScaleTypes.BASE.getScaleData(rayTraceResult.getEntity());
+        ScaleData data = PkCompatHandler.magicScale.getScaleData(rayTraceResult.getEntity());
         float cScale = data.getScale();
         super.onResolveEntity(rayTraceResult, world, shooter, spellStats, spellContext, resolver);
 

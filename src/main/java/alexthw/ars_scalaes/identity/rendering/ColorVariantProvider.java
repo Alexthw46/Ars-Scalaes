@@ -16,12 +16,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@SuppressWarnings("unchecked")
 public class ColorVariantProvider<CV extends LivingEntity & IVariantColorProvider> extends TypeProvider<CV> {
     @Override
     public int getVariantData(CV cv) {
         List<String> colors = validColors.getOrDefault(cv.getType(), null);
         if (colors != null) {
-            return colors.indexOf(cv.getColor().toLowerCase());
+            return colors.indexOf(cv.getColor(cv).toLowerCase());
         }
         return -1;
     }
@@ -33,7 +34,7 @@ public class ColorVariantProvider<CV extends LivingEntity & IVariantColorProvide
         if (i >= 0) {
             List<String> colors = validColors.getOrDefault(entityType, null);
             if (colors != null && i < colors.size())
-                summon.setColor(colors.get(i));
+                summon.setColor(colors.get(i), summon);
         }
         return summon;
     }
@@ -50,7 +51,7 @@ public class ColorVariantProvider<CV extends LivingEntity & IVariantColorProvide
 
     @Override
     public Component modifyText(CV entity, MutableComponent mutableComponent) {
-        return mutableComponent.append(" " + entity.getColor());
+        return mutableComponent.append(" " + entity.getColor(entity));
     }
 
     public static final Map<EntityType<?>, List<String>> validColors = new HashMap<>();

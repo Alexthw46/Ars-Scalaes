@@ -4,6 +4,7 @@ import com.hollingsworth.arsnouveau.ArsNouveau;
 import com.hollingsworth.arsnouveau.api.ArsNouveauAPI;
 import com.hollingsworth.arsnouveau.api.spell.EntitySpellResolver;
 import com.hollingsworth.arsnouveau.api.spell.SpellContext;
+import com.hollingsworth.arsnouveau.api.spell.wrapped_caster.LivingCaster;
 import com.hollingsworth.arsnouveau.common.entity.EntityProjectileSpell;
 import com.hollingsworth.arsnouveau.common.entity.WealdWalker;
 import com.hollingsworth.arsnouveau.common.items.RitualTablet;
@@ -20,7 +21,7 @@ public class WealdWalkerAbility<E extends WealdWalker> extends IdentityAbility<E
 
     @Override
     public void onUse(Player player, E e, Level level) {
-        EntitySpellResolver resolver = new EntitySpellResolver(new SpellContext(level, e.spell, player).withColors(e.color));
+        EntitySpellResolver resolver = new EntitySpellResolver(new SpellContext(level, e.spell, player, new LivingCaster(player)).withColors(e.color));
         if (resolver.postEvent()) {
             return;
         }

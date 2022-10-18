@@ -1,5 +1,6 @@
 package alexthw.ars_scalaes.glyph;
 
+import alexthw.ars_scalaes.pehkui.PkCompatHandler;
 import com.hollingsworth.arsnouveau.api.spell.*;
 import com.hollingsworth.arsnouveau.common.spell.augment.AugmentDampen;
 import net.minecraft.world.entity.LivingEntity;
@@ -9,14 +10,13 @@ import net.minecraftforge.common.ForgeConfigSpec;
 import org.jetbrains.annotations.NotNull;
 import virtuoel.pehkui.api.ScaleData;
 import virtuoel.pehkui.api.ScaleType;
-import virtuoel.pehkui.api.ScaleTypes;
 
 import java.util.HashSet;
 import java.util.Set;
 
 public class EffectResize extends PehkuiEffect {
 
-    public static EffectResize INSTANCE = new EffectResize();
+    public static final EffectResize INSTANCE = new EffectResize();
 
     public EffectResize() {
         super("resize", "Resize");
@@ -29,12 +29,12 @@ public class EffectResize extends PehkuiEffect {
 
             super.onResolveEntity(rayTraceResult, world, shooter, spellStats, spellContext, resolver);
 
-            ScaleType type = ScaleTypes.BASE;
+            ScaleType type = PkCompatHandler.magicScale;
             final ScaleData data = type.getScaleData(living);
 
             data.setTargetScale((float) Math.max(minScaling.get(), Math.min(maxScaling.get(), (
-                    1 + spellStats.getAmpMultiplier() /
-                            (spellStats.getAmpMultiplier() < 0 ? 2 * scalingFactor.get() : scalingFactor.get())
+                    data.getBaseScale() + spellStats.getAmpMultiplier() /
+                                          (spellStats.getAmpMultiplier() < 0 ? 2 * scalingFactor.get() : scalingFactor.get())
             ))));
 
         }

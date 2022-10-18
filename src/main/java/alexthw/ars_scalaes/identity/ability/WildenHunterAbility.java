@@ -3,6 +3,7 @@ package alexthw.ars_scalaes.identity.ability;
 import com.hollingsworth.arsnouveau.api.spell.Spell;
 import com.hollingsworth.arsnouveau.api.spell.SpellContext;
 import com.hollingsworth.arsnouveau.api.spell.SpellResolver;
+import com.hollingsworth.arsnouveau.api.spell.wrapped_caster.LivingCaster;
 import com.hollingsworth.arsnouveau.common.entity.WildenHunter;
 import com.hollingsworth.arsnouveau.common.potions.ModPotions;
 import com.hollingsworth.arsnouveau.common.spell.augment.AugmentExtendTime;
@@ -25,7 +26,7 @@ public class WildenHunterAbility extends IdentityAbility<WildenHunter> {
 
         level.playSound(null, player.blockPosition(), SoundEvents.WOLF_HOWL, SoundSource.HOSTILE, 1.0f, 0.3f);
 
-        SpellResolver resolver = new SpellResolver(new SpellContext(level, summon, player));
+        SpellResolver resolver = new SpellResolver(new SpellContext(level, summon, player, new LivingCaster(player)));
         if (!resolver.postEvent()) {
             resolver.onResolveEffect(level, new EntityHitResult(player));
             player.removeEffect(ModPotions.SUMMONING_SICKNESS_EFFECT.get());

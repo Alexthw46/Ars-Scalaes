@@ -40,12 +40,11 @@ public class ArsScalaes
         }
         if (ModList.get().isLoaded("pehkui")) {
             PkCompatHandler.init();
-            ArsNouveauRegistry.registerPehkuiGlyphs();
         }
         if (ModList.get().isLoaded("identity")) {
             IdentityReg.preInit();
-            ArsNouveauRegistry.registerIdentityGlyphs();
         }
+        ArsNouveauRegistry.registerCompatGlyphs();
         modbus.addListener(this::setup);
         modbus.addListener(this::doClientStuff);
         MinecraftForge.EVENT_BUS.register(this);

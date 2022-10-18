@@ -4,7 +4,6 @@ import alexthw.ars_scalaes.ArsScalaes;
 import alexthw.ars_scalaes.block.DecoBlock;
 import alexthw.ars_scalaes.registry.ModRegistry;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;

@@ -18,7 +18,6 @@ buildscript {
     }
 
 }
-apply from: 'https://raw.githubusercontent.com/SizableShrimp/ForgeUpdatesRemapper/main/remapper.gradle'
 
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.spongepowered.mixin'
@@ -147,7 +146,7 @@ dependencies {
 
     minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
 
-    implementation fg.deobf("com.hollingsworth.ars_nouveau:ars_nouveau-${mc_dep_version}.1:${ars_version}")
+    implementation fg.deobf("com.hollingsworth.ars_nouveau:ars_nouveau-${mc_version}:${ars_version}")
     implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${mc_dep_version}:${gecko_version}")
 
     compileOnly fg.deobf("mezz.jei:jei-${mc_dep_version}-common-api:${jei_version}")
@@ -157,18 +156,17 @@ dependencies {
     runtimeOnly fg.deobf("mezz.jei:jei-${mc_dep_version}-forge:${jei_version}")
 
     implementation fg.deobf("top.theillusivec4.curios:curios-forge:${mc_version}-${curio_version}")
-    compileOnly/*implementation*/ fg.deobf("curse.maven:project_mmo-353935:3926256")
-    compileOnly/*implementation*/ fg.deobf("curse.maven:scaling_health-248027:3788314")
-    compileOnly/*implementation*/ fg.deobf("curse.maven:silent_chaos-242998:3708359")
-    /*compileOnly*/ implementation fg.deobf("com.github.Virtuoel:Pehkui:3.3.3-${mc_dep_version}-forge")
-    implementation fg.deobf("vazkii.patchouli:Patchouli:${mc_dep_version}-75")
+    /*compileOnly*/ implementation fg.deobf("curse.maven:project_mmo-353935:4019274")
+    /*compileOnly*/ implementation fg.deobf("curse.maven:scaling_health-248027:3943340")
+    /*compileOnly*/ implementation fg.deobf("curse.maven:silent_chaos-242998:3968715")
+    /*compileOnly*/ implementation fg.deobf("com.github.Virtuoel:Pehkui:3.5.0-${mc_version}-forge")
+    implementation fg.deobf("vazkii.patchouli:Patchouli:${mc_version}-76")
 
-    /*compileOnly*/ implementation fg.deobf("curse.maven:elemental-561470:3910044")
-    runtimeOnly fg.deobf("curse.maven:arch-419699:3909773")
+    /*compileOnly*/ implementation fg.deobf("curse.maven:elemental-561470:4032426")
+    runtimeOnly fg.deobf("curse.maven:arch-419699:3984018")
     runtimeOnly fg.deobf("curse.maven:tpw-435044:3834422")
 
-    compileOnly /*implementation*/ fg.deobf("curse.maven:identity-391390:3876253")
-    runtimeOnly fg.deobf("draylar:identity:2.4.0_alexthw-1.19.1-forge")
+    /*compileOnly */ implementation fg.deobf("curse.maven:identity-391390:3956107")
 
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
 

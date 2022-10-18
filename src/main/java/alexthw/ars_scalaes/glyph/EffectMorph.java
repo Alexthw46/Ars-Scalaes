@@ -51,7 +51,8 @@ public class EffectMorph extends AbstractEffect {
                     if (PlayerIdentity.updateIdentity(player, type, morph)) {
                         ((ServerLevel) world).sendParticles(ParticleTypes.LARGE_SMOKE, shooter.getX(), shooter.getY() + 0.5, shooter.getZ(), 30,
                                 ParticleUtil.inRange(-0.1, 0.1), ParticleUtil.inRange(-0.1, 0.1), ParticleUtil.inRange(-0.1, 0.1), 0.3);
-                        if (isTimeLimited.get()) applyConfigPotion(living, IdentityReg.MORPH.get(), spellStats, false);
+                        if (isTimeLimited.get())
+                            ((IPotionEffect) this).applyConfigPotion(living, IdentityReg.MORPH.get(), spellStats, false);
                     }
                 }
             }

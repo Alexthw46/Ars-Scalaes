@@ -6,7 +6,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeMap;
 import virtuoel.pehkui.api.ScaleData;
 import virtuoel.pehkui.api.ScaleType;
-import virtuoel.pehkui.api.ScaleTypes;
 
 public class ResizeEffect extends MobEffect {
     protected ResizeEffect() {
@@ -15,7 +14,7 @@ public class ResizeEffect extends MobEffect {
 
     @Override
     public void removeAttributeModifiers(LivingEntity pLivingEntity, AttributeMap pAttributeMap, int pAmplifier) {
-        ScaleType type = ScaleTypes.BASE;
+        ScaleType type = PkCompatHandler.magicScale;
         final ScaleData data = type.getScaleData(pLivingEntity);
         data.resetScale();
         super.removeAttributeModifiers(pLivingEntity, pAttributeMap, pAmplifier);

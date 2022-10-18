@@ -1,0 +1,16 @@
+{
+  "category": "ars_nouveau:glyphs_3",
+  "icon": "ars_scalaes:glyph_shrink",
+  "name": "ars_scalaes.glyph_name.glyph_shrink",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "ars_scalaes.glyph_desc.glyph_shrink"
+    },
+    {
+      "type": "ars_nouveau:glyph_recipe",
+      "recipe": "ars_scalaes:glyph_shrink"
+    }
+  ],
+  "sortnum": 2
+}

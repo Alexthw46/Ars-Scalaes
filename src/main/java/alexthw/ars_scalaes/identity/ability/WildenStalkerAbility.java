@@ -3,6 +3,7 @@ package alexthw.ars_scalaes.identity.ability;
 import com.hollingsworth.arsnouveau.api.spell.Spell;
 import com.hollingsworth.arsnouveau.api.spell.SpellContext;
 import com.hollingsworth.arsnouveau.api.spell.SpellResolver;
+import com.hollingsworth.arsnouveau.api.spell.wrapped_caster.LivingCaster;
 import com.hollingsworth.arsnouveau.common.entity.WildenStalker;
 import com.hollingsworth.arsnouveau.common.spell.augment.AugmentDurationDown;
 import com.hollingsworth.arsnouveau.common.spell.effect.EffectGlide;
@@ -29,7 +30,7 @@ public class WildenStalkerAbility extends IdentityAbility<WildenStalker> {
 
         level.playSound(null, player.blockPosition(), SoundEvents.BAT_TAKEOFF, SoundSource.HOSTILE, 1.0f, 0.3f);
 
-        SpellResolver resolver = new SpellResolver(new SpellContext(level, summon, player));
+        SpellResolver resolver = new SpellResolver(new SpellContext(level, summon, player, new LivingCaster(player)));
         if (!resolver.postEvent()) {
             resolver.onResolveEffect(level, new EntityHitResult(player));
         }

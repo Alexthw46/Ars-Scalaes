@@ -30,10 +30,8 @@ public class IdentityReg {
         MORPH = EFFECTS.register("morph", MorphEffect::new);
     }
 
-    ;
-
     public static void postInit() {
-        Map<EntityType<? extends LivingEntity>, TypeProvider<?>> variants = ObfuscationReflectionHelper.getPrivateValue(IdentityType.class, new IdentityType<>(null), "VARIANT_BY_TYPE");
+        Map<EntityType<? extends LivingEntity>, TypeProvider<?>> variants = ObfuscationReflectionHelper.getPrivateValue(IdentityType.class, new IdentityType<>(null, 0), "VARIANT_BY_TYPE");
         initAbilities();
         if (variants != null) initVariants(variants);
     }

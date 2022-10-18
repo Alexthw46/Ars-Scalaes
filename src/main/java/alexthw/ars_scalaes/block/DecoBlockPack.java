@@ -13,12 +13,12 @@ import java.util.function.Supplier;
 import static alexthw.ars_scalaes.registry.ModRegistry.addBlock;
 
 public class DecoBlockPack {
-    DeferredRegister<Block> registry;
-    public String basename;
-    net.minecraft.world.level.block.state.BlockBehaviour.Properties props;
-    Supplier<Block> full;
-    RegistryObject<Block> slab;
-    RegistryObject<Block> stair;
+    final DeferredRegister<Block> registry;
+    public final String basename;
+    final net.minecraft.world.level.block.state.BlockBehaviour.Properties props;
+    final Supplier<Block> full;
+    final RegistryObject<Block> slab;
+    final RegistryObject<Block> stair;
     RegistryObject<Block> wall = null;
     RegistryObject<Block> fence = null;
     RegistryObject<Block> fence_gate = null;
