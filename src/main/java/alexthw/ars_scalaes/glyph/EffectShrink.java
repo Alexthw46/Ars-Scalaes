@@ -1,5 +1,6 @@
 package alexthw.ars_scalaes.glyph;
 
+import alexthw.ars_scalaes.pehkui.PkCompatHandler;
 import com.hollingsworth.arsnouveau.api.spell.SpellContext;
 import com.hollingsworth.arsnouveau.api.spell.SpellResolver;
 import com.hollingsworth.arsnouveau.api.spell.SpellStats;
@@ -21,7 +22,7 @@ public class EffectShrink extends PehkuiEffect {
     @Override
     public void onResolveEntity(EntityHitResult rayTraceResult, Level world, LivingEntity shooter, SpellStats spellStats, SpellContext spellContext, SpellResolver resolver) {
 
-        ScaleData data = ScaleTypes.BASE.getScaleData(rayTraceResult.getEntity());
+        ScaleData data = PkCompatHandler.magicScale.getScaleData(rayTraceResult.getEntity());
         float currentScale = data.getScale();
 
         super.onResolveEntity(rayTraceResult, world, shooter, spellStats, spellContext, resolver);
