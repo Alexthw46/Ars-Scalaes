@@ -4,21 +4,21 @@
 # Note that there are a couple of TOML lists in this file.
 # Find more information on toml format here:  https://github.com/toml-lang/toml
 # The name of the mod loader type to load - for regular FML @Mod mods it should be javafml
-modLoader="javafml" #mandatory
+modLoader = "javafml" #mandatory
 # A version range to match for said mod loader - for regular FML @Mod it will be the forge version
-loaderVersion="[35,)" #mandatory (28 is current forge version)
+loaderVersion = "[35,)" #mandatory (28 is current forge version)
 # A URL to refer people to when problems occur with this mod
-issueTrackerURL="http://my.issue.tracker/" #optional
+issueTrackerURL = "https://github.com/Alexthw46/Ars-Scalaes/issues" #optional
 
-license="GNU Lesser General Public License v3.0"
+license = "GNU Lesser General Public License v3.0"
 # A list of mods - how many allowed here is determined by the individual mod loader
 [[mods]] #mandatory
 # The modid of the mod
-modId="ars_scalaes" #mandatory
+modId = "ars_scalaes" #mandatory
 # The version number of the mod - there's a few well known ${} variables useable here or just hardcode it
-version="${file.jarVersion}" #mandatory
- # A display name for the mod
-displayName="Ars Nouveau Scaling Compats" #mandatory
+version = "${file.jarVersion}" #mandatory
+# A display name for the mod
+displayName = "Ars Nouveau Scaling Compats" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification <here>
 #updateJSONURL="http://myurl.me/" #optional
 # A URL for the "homepage" for this mod, displayed in the mod UI
@@ -26,12 +26,12 @@ displayName="Ars Nouveau Scaling Compats" #mandatory
 # A file name (in the root of the mod JAR) containing a logo for display
 #logoFile="examplemod.png" #optional
 # A text field displayed in the mod UI
-credits="" #optional
+credits = "ToxicMintTea for original pmmo integration" #optional
 # A text field displayed in the mod UI
-authors="Alexthw, ToxicMintTea" #optional
+authors = "Alexthw" #optional
 # The description text for the mod (multi line!) (#mandatory)
-description='''
-Starbuncles will conquer the world
+description = '''
+Stairbuncles will conquer the world
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.ars_scalaes]] #optional
@@ -46,33 +46,11 @@ Starbuncles will conquer the world
     # Side this dependency is applied on - BOTH, CLIENT or SERVER
     side="BOTH"
 
-# Here's another dependency
-[[dependencies.ars_scalaes]]
-    modId="patchouli"
-    mandatory=true
-    versionRange="[1.18.1-61,)"
-    ordering="AFTER"
-    side="BOTH"
-
-[[dependencies.ars_scalaes]]
-    modId="curios"
-    mandatory=true
-    versionRange="[1.18.1-5.0.3.0,)"
-    ordering="AFTER"
-    side="BOTH"
-
-[[dependencies.ars_scalaes]]
-    modId="geckolib3"
-    mandatory=true
-    versionRange="[3.0.1,)"
-    ordering="AFTER"
-    side="BOTH"
-
 [[dependencies.ars_scalaes]]
     modId="ars_nouveau"
-    mandatory=true
-    versionRange="[2.5.0,)"
-    ordering="AFTER"
+    mandatory = true
+versionRange = "[2.8.0,)"
+ordering = "AFTER"
     side="BOTH"
 
 [[dependencies.ars_scalaes]]
