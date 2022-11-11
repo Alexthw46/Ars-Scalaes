@@ -21,7 +21,7 @@ import java.util.Set;
 
 import static alexthw.ars_scalaes.datagen.ArsProviders.prefix;
 
-public class EffectMorph extends AbstractEffect {
+public class EffectMorph extends AbstractEffect implements IPotionEffect {
 
     public static final EffectMorph INSTANCE = new EffectMorph();
     public ForgeConfigSpec.BooleanValue isTimeLimited;
@@ -83,5 +83,13 @@ public class EffectMorph extends AbstractEffect {
     @Override
     public SpellTier getTier() {
         return SpellTier.TWO;
+    }
+
+    public int getBaseDuration() {
+        return this.POTION_TIME == null ? 30 : this.POTION_TIME.get();
+    }
+
+    public int getExtendTimeDuration() {
+        return this.EXTEND_TIME == null ? 8 : this.EXTEND_TIME.get();
     }
 }

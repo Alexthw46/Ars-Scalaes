@@ -147,22 +147,21 @@ dependencies {
     minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
 
     implementation fg.deobf("com.hollingsworth.ars_nouveau:ars_nouveau-${mc_version}:${ars_version}")
-    implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${mc_dep_version}:${gecko_version}")
 
-    compileOnly fg.deobf("mezz.jei:jei-${mc_dep_version}-common-api:${jei_version}")
-    compileOnly fg.deobf("mezz.jei:jei-${mc_dep_version}-forge-api:${jei_version}")
+    //compileOnly fg.deobf("mezz.jei:jei-1.19-common-api:${jei_version}")
+    //compileOnly fg.deobf("mezz.jei:jei-1.19-forge-api:${jei_version}")
     // at runtime, use the full JEI
-    runtimeOnly fg.deobf("mezz.jei:jei-${mc_dep_version}-common:${jei_version}")
-    runtimeOnly fg.deobf("mezz.jei:jei-${mc_dep_version}-forge:${jei_version}")
+    runtimeOnly fg.deobf("mezz.jei:jei-1.19-common:${jei_version}")
+    runtimeOnly fg.deobf("mezz.jei:jei-1.19-forge:${jei_version}")
 
     implementation fg.deobf("top.theillusivec4.curios:curios-forge:${mc_version}-${curio_version}")
     /*compileOnly*/ implementation fg.deobf("curse.maven:project_mmo-353935:4019274")
     /*compileOnly*/ implementation fg.deobf("curse.maven:scaling_health-248027:3943340")
     /*compileOnly*/ implementation fg.deobf("curse.maven:silent_chaos-242998:3968715")
     /*compileOnly*/ implementation fg.deobf("com.github.Virtuoel:Pehkui:3.5.0-${mc_version}-forge")
-    implementation fg.deobf("vazkii.patchouli:Patchouli:${mc_version}-76")
+    implementation fg.deobf("vazkii.patchouli:Patchouli:${mc_version}-77")
 
-    /*compileOnly*/ implementation fg.deobf("curse.maven:elemental-561470:4032426")
+    /*compileOnly*/ implementation fg.deobf("curse.maven:elemental-561470:4081351")
     runtimeOnly fg.deobf("curse.maven:arch-419699:3984018")
     runtimeOnly fg.deobf("curse.maven:tpw-435044:3834422")
 

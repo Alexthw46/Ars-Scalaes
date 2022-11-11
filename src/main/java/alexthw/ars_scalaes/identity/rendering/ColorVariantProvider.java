@@ -12,11 +12,11 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-@SuppressWarnings("unchecked")
+@SuppressWarnings("ALL")
 public class ColorVariantProvider<CV extends LivingEntity & IVariantColorProvider> extends TypeProvider<CV> {
     @Override
     public int getVariantData(CV cv) {
@@ -54,7 +54,7 @@ public class ColorVariantProvider<CV extends LivingEntity & IVariantColorProvide
         return mutableComponent.append(" " + entity.getColor(entity));
     }
 
-    public static final Map<EntityType<?>, List<String>> validColors = new HashMap<>();
+    public static final Map<EntityType<?>, List<String>> validColors = new ConcurrentHashMap<>();
 
     static {
         validColors.put(ModEntities.ENTITY_WIXIE_TYPE.get(), List.of(EntityWixie.COLORS));

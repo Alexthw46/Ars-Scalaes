@@ -9,8 +9,8 @@ import net.minecraftforge.fml.common.Mod;
 public class CommonEvents {
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
-    public static void makeMagic(SpellDamageEvent event){
-        if (ConfigHandler.Common.ALL_MAGIC.get()){
+    public static void makeMagic(SpellDamageEvent.Pre event) {
+        if (ConfigHandler.Common.ALL_MAGIC.get()) {
             event.damageSource.setMagic();
         }
     }
