@@ -15,4 +15,12 @@ public class CommonEvents {
         }
     }
 
+    @Deprecated(forRemoval = true)
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
+    public static void makeMagicOld(SpellDamageEvent event) {
+        if (ConfigHandler.Common.ALL_MAGIC.get()) {
+            event.damageSource.setMagic();
+        }
+    }
+
 }
