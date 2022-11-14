@@ -16,8 +16,15 @@ import static alexthw.ars_scalaes.datagen.ArsProviders.prefix;
 public class Perk {
 
     public static void setupPerks() {
-        APIUtils.registerPerk(prefix("mana_regen"), MANA_REGEN, MANA_REGEN_TERM, PerkSide.BOTH);
-        APIUtils.registerPerk(prefix("mana_boost"), MANA_BOOST, MANA_BOOST_TERM, PerkSide.BOTH);
+        CompoundTag regenDefaults = new CompoundTag();
+        regenDefaults.putDouble(APIUtils.MAX_BOOST, 100d);
+        regenDefaults.putDouble(APIUtils.PER_LEVEL, .06d);
+        APIUtils.registerPerk(prefix("mana_regen"), regenDefaults, (player, tag, integer) -> true, MANA_REGEN, MANA_REGEN_TERM, PerkSide.BOTH);
+
+        CompoundTag manaDefaults = new CompoundTag();
+        manaDefaults.putDouble(APIUtils.MAX_BOOST, 3000d);
+        manaDefaults.putDouble(APIUtils.PER_LEVEL, 3.0d);
+        APIUtils.registerPerk(prefix("mana_boost"), manaDefaults, (player, tag, integer) -> true, MANA_BOOST, MANA_BOOST_TERM, PerkSide.BOTH);
     }
 
     private static final CompoundTag NONE = new CompoundTag();
