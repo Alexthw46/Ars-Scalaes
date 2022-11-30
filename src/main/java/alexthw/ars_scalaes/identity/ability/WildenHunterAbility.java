@@ -1,5 +1,6 @@
 package alexthw.ars_scalaes.identity.ability;
 
+import alexthw.ars_scalaes.ConfigHandler;
 import com.hollingsworth.arsnouveau.api.spell.Spell;
 import com.hollingsworth.arsnouveau.api.spell.SpellContext;
 import com.hollingsworth.arsnouveau.api.spell.SpellResolver;
@@ -40,6 +41,6 @@ public class WildenHunterAbility extends IdentityAbility<WildenHunter> {
 
     @Override
     public int getCooldown(WildenHunter entity) {
-        return 800;
+        return ConfigHandler.Common.WIL_HUNTER_COOLDOWN.get();
     }
 }

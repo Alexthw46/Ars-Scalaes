@@ -1,5 +1,6 @@
 package alexthw.ars_scalaes.identity.ability;
 
+import alexthw.ars_scalaes.ConfigHandler;
 import com.hollingsworth.arsnouveau.common.entity.EntityWixie;
 import com.hollingsworth.arsnouveau.common.potions.ModPotions;
 import com.hollingsworth.arsnouveau.setup.ItemsRegistry;
@@ -55,7 +56,7 @@ public class WixieAbility extends IdentityAbility<EntityWixie> {
 
     @Override
     public int getCooldown(EntityWixie entity) {
-        return 100;
+        return ConfigHandler.Common.WIXIE_COOLDOWN.get();
     }
 
     @Override

@@ -16,7 +16,7 @@ public class StarbuncleTypeProvider extends TypeProvider<Starbuncle> {
     @Override
     public int getVariantData(Starbuncle starbuncle) {
         int isTamed = starbuncle.isTamed() ? 1 : -1;
-        return isTamed * colorCache.indexOf(starbuncle.getColor().toLowerCase());
+        return isTamed * colorCache.indexOf(starbuncle.getColor(starbuncle).toLowerCase());
     }
 
     @Override
@@ -25,10 +25,10 @@ public class StarbuncleTypeProvider extends TypeProvider<Starbuncle> {
         if (i < colorCache.size()) {
             String color = colorCache.get(Math.abs(i)).toLowerCase();
             if (i < 0) {
-                starbuncle.setColor(color);
+                starbuncle.setColor(color,starbuncle);
             } else {
                 starbuncle.setTamed(true);
-                starbuncle.setColor(color);
+                starbuncle.setColor(color,starbuncle);
             }
         }
         return starbuncle;
@@ -46,6 +46,7 @@ public class StarbuncleTypeProvider extends TypeProvider<Starbuncle> {
 
     @Override
     public Component modifyText(Starbuncle starbuncle, MutableComponent mutableComponent) {
-        return mutableComponent.append(" " + starbuncle.getColor());
+        return mutableComponent.append(" " + starbuncle.getColor(starbuncle));
     }
+
 }

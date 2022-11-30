@@ -4,6 +4,7 @@ import alexthw.ars_elemental.common.entity.FirenandoEntity;
 import alexthw.ars_elemental.common.entity.spells.EntityHomingProjectile;
 import alexthw.ars_elemental.common.glyphs.MethodHomingProjectile;
 import alexthw.ars_elemental.registry.ModItems;
+import alexthw.ars_scalaes.ConfigHandler;
 import com.hollingsworth.arsnouveau.api.spell.EntitySpellResolver;
 import com.hollingsworth.arsnouveau.api.spell.SpellContext;
 import com.hollingsworth.arsnouveau.api.spell.wrapped_caster.LivingCaster;
@@ -25,7 +26,7 @@ public class FirenandoAbility extends IdentityAbility<FirenandoEntity> {
 
     @Override
     public void onUse(Player player, FirenandoEntity firenandoEntity, Level level) {
-        ParticleColor spellColor = firenandoEntity.getColor().equals(FirenandoEntity.Variants.MAGMA.toString()) ? this.color : this.colorAlt;
+        ParticleColor spellColor = firenandoEntity.getColor(firenandoEntity).equals(FirenandoEntity.Variants.MAGMA.toString()) ? this.color : this.colorAlt;
         EntitySpellResolver resolver = new EntitySpellResolver((new SpellContext(level, firenandoEntity.spell, player, new LivingCaster(player))).withColors(spellColor));
         if (resolver.postEvent()) {
             return;
@@ -42,7 +43,7 @@ public class FirenandoAbility extends IdentityAbility<FirenandoEntity> {
 
     @Override
     public int getCooldown(FirenandoEntity entity) {
-        return 120;
+        return ConfigHandler.Common.FLARE_COOLDOWN.get();
     }
 
     @Override

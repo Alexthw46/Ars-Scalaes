@@ -1,5 +1,6 @@
 package alexthw.ars_scalaes.identity.ability;
 
+import alexthw.ars_scalaes.ConfigHandler;
 import com.hollingsworth.arsnouveau.api.spell.EntitySpellResolver;
 import com.hollingsworth.arsnouveau.api.spell.Spell;
 import com.hollingsworth.arsnouveau.api.spell.SpellContext;
@@ -32,7 +33,7 @@ public class WhirlisprigAbility<W extends Whirlisprig> extends IdentityAbility<W
 
     @Override
     public int getCooldown(W entity) {
-        return 400;
+        return ConfigHandler.Common.WHIRLI_COOLDOWN.get();
     }
 
     @Override

@@ -158,8 +158,11 @@ dependencies {
     /*compileOnly*/ implementation fg.deobf("curse.maven:project_mmo-353935:4083371")
     /*compileOnly*/ implementation fg.deobf("curse.maven:scaling_health-248027:3943340")
     /*compileOnly*/ implementation fg.deobf("curse.maven:silent_chaos-242998:3968715")
-    /*compileOnly*/ implementation fg.deobf("com.github.Virtuoel:Pehkui:3.5.0-${mc_version}-forge")
+    /*compileOnly*/ implementation fg.deobf("com.github.Virtuoel:Pehkui:3.6.0-${mc_version}-forge")
     implementation fg.deobf("vazkii.patchouli:Patchouli:${mc_version}-77")
+
+    /*compileOnly*/ implementation fg.deobf("joefoxe:hexerei:0.2.5")
+
 
     /*compileOnly*/ implementation fg.deobf("curse.maven:elemental-561470:4081351")
     runtimeOnly fg.deobf("curse.maven:arch-419699:3984018")

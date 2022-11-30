@@ -1,5 +1,6 @@
 package alexthw.ars_scalaes.identity.ability;
 
+import alexthw.ars_scalaes.ConfigHandler;
 import com.hollingsworth.arsnouveau.ArsNouveau;
 import com.hollingsworth.arsnouveau.api.ArsNouveauAPI;
 import com.hollingsworth.arsnouveau.api.spell.EntitySpellResolver;
@@ -42,6 +43,6 @@ public class WealdWalkerAbility<E extends WealdWalker> extends IdentityAbility<E
 
     @Override
     public int getCooldown(E entity) {
-        return 100;
+        return ConfigHandler.Common.WW_COOLDOWN.get();
     }
 }

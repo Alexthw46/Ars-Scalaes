@@ -5,20 +5,29 @@ import org.apache.commons.lang3.tuple.Pair;
 
 public class ConfigHandler {
 
-    public static class Common{
+    public static class Common {
 
         public static ForgeConfigSpec.ConfigValue<Boolean> ALL_MAGIC;
 
         //Pmmo x AN
         public static ForgeConfigSpec.ConfigValue<Double> MANA_XP;
-        public static ForgeConfigSpec.ConfigValue<Double> MAX_BONUS;
-        public static ForgeConfigSpec.ConfigValue<Double> REGEN_BONUS;
         public static ForgeConfigSpec.ConfigValue<Double> LEVEL_TO_SPELL_DMG;
         public static ForgeConfigSpec.ConfigValue<Double> LEVEL_TO_SPELL_RES;
 
 
         //Scaling Health x AN
         public static ForgeConfigSpec.ConfigValue<Double> SCALING_SPELL_DMG;
+
+        //
+        public static ForgeConfigSpec.ConfigValue<Integer> FLARE_COOLDOWN;
+        public static ForgeConfigSpec.ConfigValue<Integer> STARBY_COOLDOWN;
+        public static ForgeConfigSpec.ConfigValue<Integer> WW_COOLDOWN;
+        public static ForgeConfigSpec.ConfigValue<Integer> WHIRLI_COOLDOWN;
+        public static ForgeConfigSpec.ConfigValue<Integer> WIL_HUNTER_COOLDOWN;
+        public static ForgeConfigSpec.ConfigValue<Integer> WIL_STALKER_COOLDOWN;
+        public static ForgeConfigSpec.ConfigValue<Integer> WIXIE_COOLDOWN;
+        public static ForgeConfigSpec.ConfigValue<Integer> COOLDOWN;
+
 
         public Common(ForgeConfigSpec.Builder builder) {
 
@@ -37,12 +46,23 @@ public class ConfigHandler {
             SCALING_SPELL_DMG = builder.comment("Spell Damage bonus per crystal").define("scaling_ars_damage", .0d);
             builder.pop();
 
+            builder.comment("Identity Abilities").push("IDENTITY MORPHS");
+
+            FLARE_COOLDOWN = builder.comment("cooldown for the active ability of flarecannon").define("flarecannon_cooldown", 120);
+            STARBY_COOLDOWN = builder.comment("cooldown for the active ability of starbuncle").define("starby_cooldown", 3600);
+            WW_COOLDOWN = builder.comment("cooldown for the active ability of weald walker").define("ww_cooldown", 100);
+            WHIRLI_COOLDOWN = builder.comment("cooldown for the active ability of whirlisprig").define("whirli_cooldown", 400);
+            WIL_HUNTER_COOLDOWN = builder.comment("cooldown for the active ability of wilden hunter").define("wil_hunter_cooldown", 800);
+            WIL_STALKER_COOLDOWN = builder.comment("cooldown for the active ability of wilden stalker").define("wil_stalker_cooldown", 1300);
+            WIXIE_COOLDOWN = builder.comment("cooldown for the active ability of wixie").define("wixie_cooldown", 100);
+
+            builder.pop();
         }
 
     }
 
-    public static class Client{
-        public Client(ForgeConfigSpec.Builder builder){
+    public static class Client {
+        public Client(ForgeConfigSpec.Builder builder) {
         }
 
     }
@@ -58,7 +78,7 @@ public class ConfigHandler {
         COMMON_SPEC = specPair.getRight();
         COMMON = specPair.getLeft();
 
-        final Pair<Client,ForgeConfigSpec> specClientPair = new ForgeConfigSpec.Builder().configure(Client::new);
+        final Pair<Client, ForgeConfigSpec> specClientPair = new ForgeConfigSpec.Builder().configure(Client::new);
         CLIENT_SPEC = specClientPair.getRight();
         CLIENT = specClientPair.getLeft();
 

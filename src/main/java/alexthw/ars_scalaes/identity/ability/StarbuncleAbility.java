@@ -1,5 +1,6 @@
 package alexthw.ars_scalaes.identity.ability;
 
+import alexthw.ars_scalaes.ConfigHandler;
 import com.hollingsworth.arsnouveau.common.entity.Starbuncle;
 import com.hollingsworth.arsnouveau.setup.ItemsRegistry;
 import draylar.identity.ability.IdentityAbility;
@@ -17,7 +18,7 @@ public class StarbuncleAbility<S extends Starbuncle> extends IdentityAbility<S> 
 
     @Override
     public int getCooldown(S entity) {
-        return 3600;
+        return ConfigHandler.Common.STARBY_COOLDOWN.get();
     }
 
     @Override
