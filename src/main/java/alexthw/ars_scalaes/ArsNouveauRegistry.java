@@ -39,4 +39,5 @@ public class ArsNouveauRegistry {
             register(new DummyGlyph("expand"));
         }
     }
+
 }

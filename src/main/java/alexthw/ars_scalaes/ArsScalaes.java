@@ -1,6 +1,7 @@
 package alexthw.ars_scalaes;
 
 import alexthw.ars_scalaes.identity.IdentityReg;
+import alexthw.ars_scalaes.malum.MalumCompat;
 import alexthw.ars_scalaes.pehkui.PkCompatHandler;
 import alexthw.ars_scalaes.pmmo.PmmoCompatEventHandler;
 import alexthw.ars_scalaes.registry.ModRegistry;
@@ -54,6 +55,10 @@ public class ArsScalaes
         if (ModList.get().isLoaded("identity")) {
             event.enqueueWork(IdentityReg::postInit);
         }
+        if (ModList.get().isLoaded("malum")){
+            event.enqueueWork(MalumCompat::init);
+        }
+
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
