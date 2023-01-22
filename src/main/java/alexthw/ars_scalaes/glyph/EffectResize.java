@@ -10,7 +10,6 @@ import net.minecraftforge.common.ForgeConfigSpec;
 import org.jetbrains.annotations.NotNull;
 import virtuoel.pehkui.api.ScaleData;
 import virtuoel.pehkui.api.ScaleType;
-import virtuoel.pehkui.api.ScaleTypes;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -32,10 +31,14 @@ public class EffectResize extends PehkuiEffect {
             ScaleType type = PkCompatHandler.magicScale;
             final ScaleData data = type.getScaleData(living);
 
-            data.setTargetScale((float) Math.max(minScaling.get(), Math.min(maxScaling.get(), (
-                    1 + spellStats.getAmpMultiplier() /
+            if (spellStats.getAmpMultiplier() == 0 && living.getEffect(PkCompatHandler.RESIZE.get()) != null) {
+                living.removeEffect(PkCompatHandler.RESIZE.get());
+            } else {
+                data.setTargetScale((float) Math.max(minScaling.get(), Math.min(maxScaling.get(), (
+                        1 + spellStats.getAmpMultiplier() /
                             (spellStats.getAmpMultiplier() < 0 ? 2 * scalingFactor.get() : scalingFactor.get())
-            ))));
+                ))));
+            }
         }
 
     }

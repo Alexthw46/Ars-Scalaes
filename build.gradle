@@ -121,11 +121,6 @@ repositories {
         url = "https://dvs1.progwml6.com/files/maven/"
     }
     maven {
-        // location of a maven mirror for JEI files, as a fallback
-        name = "ModMaven"
-        url = "https://modmaven.k-4u.nl"
-    }
-    maven {
         url = "https://jitpack.io"
     }
     maven {
@@ -151,7 +146,7 @@ dependencies {
     /*compileOnly*/ implementation fg.deobf("curse.maven:project_mmo-353935:4083398")
     compileOnly/*implementation*/ fg.deobf("curse.maven:scaling_health-248027:3788314")
     compileOnly/*implementation*/ fg.deobf("curse.maven:silent_chaos-242998:3708359")
-    /*compileOnly*/ implementation fg.deobf("com.github.Virtuoel:Pehkui:3.3.2-1.18.2-forge")
+    /*compileOnly*/ implementation fg.deobf("com.github.Virtuoel:Pehkui:3.6.2-1.18.2-forge")
     implementation fg.deobf("vazkii.patchouli:Patchouli:${mc_version}-67")
     //runtimeOnly fg.deobf("curse.maven:instrumentum-580179:3838469")
     implementation fg.deobf("curse.maven:elemental-561470:4053791")
