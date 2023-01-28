@@ -2,6 +2,7 @@
   "category": "ars_nouveau:glyphs_2",
   "icon": "ars_scalaes:glyph_resize",
   "name": "ars_scalaes.glyph_name.glyph_resize",
+  "flag": "mod:pehkui",
   "pages": [
     {
       "type": "patchouli:text",

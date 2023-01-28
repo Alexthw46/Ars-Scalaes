@@ -1,6 +1,5 @@
 package alexthw.ars_scalaes.datagen;
 
-import alexthw.ars_scalaes.ArsNouveauRegistry;
 import alexthw.ars_scalaes.ArsScalaes;
 import com.hollingsworth.arsnouveau.api.enchanting_apparatus.EnchantingApparatusRecipe;
 import com.hollingsworth.arsnouveau.api.familiar.AbstractFamiliarHolder;
@@ -13,6 +12,7 @@ import com.hollingsworth.arsnouveau.common.crafting.recipes.ImbuementRecipe;
 import com.hollingsworth.arsnouveau.common.datagen.ApparatusRecipeProvider;
 import com.hollingsworth.arsnouveau.common.datagen.GlyphRecipeProvider;
 import com.hollingsworth.arsnouveau.common.datagen.ImbuementRecipeProvider;
+import com.hollingsworth.arsnouveau.common.datagen.PatchouliProvider;
 import com.hollingsworth.arsnouveau.common.datagen.patchouli.*;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
@@ -122,20 +122,21 @@ public class ArsProviders {
 
     }
 
-    public static class PatchouliProvider extends com.hollingsworth.arsnouveau.common.datagen.PatchouliProvider {
+    public static class ScalaesPatchouliProvider extends PatchouliProvider {
 
-        public PatchouliProvider(DataGenerator generatorIn) {
+        public ScalaesPatchouliProvider(DataGenerator generatorIn) {
             super(generatorIn);
         }
 
         @Override
         public void run(CachedOutput cache) throws IOException {
 
-            for (AbstractSpellPart spell : ArsNouveauRegistry.registeredSpells) {
-                //addGlyphPage(spell);
-            }
-
-            //check the superclass for examples
+            /*
+            addGlyphPage(EffectResize.INSTANCE);
+            addGlyphPage(EffectExpand.INSTANCE);
+            addGlyphPage(EffectShrink.INSTANCE);
+            addGlyphPage(EffectMorph.INSTANCE);
+             */
 
             for (PatchouliPage patchouliPage : pages) {
                 DataProvider.saveStable(cache, patchouliPage.build(), patchouliPage.path());
@@ -161,10 +162,10 @@ public class ArsProviders {
         }
 
         public void addRitualPage(AbstractRitual ritual) {
-            PatchouliBuilder builder = new PatchouliBuilder(RITUALS, "item.ars_elemental." + ritual.getRegistryName().getPath())
+            PatchouliBuilder builder = new PatchouliBuilder(RITUALS, "item." + root + '.' + ritual.getRegistryName().getPath())
                     .withIcon(ritual.getRegistryName().toString())
                     .withTextPage(ritual.getDescriptionKey())
-                    .withPage(new CraftingPage("ars_elemental:tablet_" + ritual.getRegistryName().getPath()));
+                    .withPage(new CraftingPage(root + ":tablet_" + ritual.getRegistryName().getPath()));
 
             this.pages.add(new PatchouliPage(builder, getPath(RITUALS, ritual.getRegistryName().getPath())));
         }

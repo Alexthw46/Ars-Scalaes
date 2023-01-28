@@ -47,6 +47,11 @@ public class PehkuiEffect extends AbstractEffect implements IPotionEffect {
         return SpellTier.THREE;
     }
 
+    @Override
+    protected @NotNull Set<SpellSchool> getSchools() {
+        return setOf(SpellSchools.MANIPULATION);
+    }
+
     @NotNull
     @Override
     public Set<AbstractAugment> getCompatibleAugments() {

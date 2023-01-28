@@ -55,7 +55,7 @@ side = "BOTH"
 [[dependencies.ars_scalaes]]
 modId = "ars_nouveau"
 mandatory = true
-versionRange = "[1.19.2-3.4.0,)"
+versionRange = "[1.19.2-3.8.4,)"
 ordering = "AFTER"
 side = "BOTH"
 

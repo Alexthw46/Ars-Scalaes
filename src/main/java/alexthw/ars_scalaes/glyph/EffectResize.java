@@ -32,10 +32,15 @@ public class EffectResize extends PehkuiEffect {
             ScaleType type = PkCompatHandler.magicScale;
             final ScaleData data = type.getScaleData(living);
 
-            data.setTargetScale((float) Math.max(minScaling.get(), Math.min(maxScaling.get(), (
-                    data.getBaseScale() + spellStats.getAmpMultiplier() /
-                                          (spellStats.getAmpMultiplier() < 0 ? 2 * scalingFactor.get() : scalingFactor.get())
-            ))));
+            if (spellStats.getAmpMultiplier() == 0 && living.getEffect(PkCompatHandler.RESIZE.get()) != null) {
+                living.removeEffect(PkCompatHandler.RESIZE.get());
+            } else {
+
+                data.setTargetScale((float) Math.max(minScaling.get(), Math.min(maxScaling.get(), (
+                        data.getBaseScale() + spellStats.getAmpMultiplier() /
+                                              (spellStats.getAmpMultiplier() < 0 ? 2 * scalingFactor.get() : scalingFactor.get())
+                ))));
+            }
 
         }
 

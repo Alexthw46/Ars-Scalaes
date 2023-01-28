@@ -2,6 +2,7 @@
   "category": "ars_nouveau:glyphs_2",
   "icon": "ars_scalaes:glyph_morph",
   "name": "ars_scalaes.glyph_name.glyph_morph",
+  "flag": "mod:identity",
   "pages": [
     {
       "type": "patchouli:text",
