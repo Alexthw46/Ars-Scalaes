@@ -47,7 +47,7 @@ public class EffectResize extends PehkuiEffect {
     }
 
     @Override
-    public SpellTier getTier() {
+    public SpellTier defaultTier() {
         return SpellTier.TWO;
     }
 
