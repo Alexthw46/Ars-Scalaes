@@ -6,6 +6,7 @@ import alexthw.ars_scalaes.malum.MalumCompat;
 import alexthw.ars_scalaes.pehkui.PkCompatHandler;
 import alexthw.ars_scalaes.pmmo.PmmoCompatEventHandler;
 import alexthw.ars_scalaes.registry.ModRegistry;
+import alexthw.ars_scalaes.sh.ScalingHealthCompatEventHandler;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
