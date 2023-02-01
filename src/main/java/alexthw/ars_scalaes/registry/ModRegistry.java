@@ -28,6 +28,7 @@ public class ModRegistry {
         BLOCKS.register(bus);
         ITEMS.register(bus);
         EFFECTS.register(bus);
+
     }
 
     //simple sourcestone
@@ -104,7 +105,7 @@ public class ModRegistry {
         return (new DecoBlockPack(BLOCKS, name, stoneBlockProps())).addWall();
     }
 
-    static Item.Properties addTabProp() {
+    static public Item.Properties addTabProp() {
         return new Item.Properties().tab(ArsScalaes.TAB);
     }
 

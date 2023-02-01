@@ -113,6 +113,10 @@ repositories {
         dirs 'externalmods'
     }
     maven {
+        name = 'Kotlin for Forge'
+        url = 'https://thedarkcolour.github.io/KotlinForForge/'
+    }
+    maven {
         url = "https://maven.theillusivec4.top/"
     }
     maven { url "https://dvs1.progwml6.com/files/maven/" }
@@ -173,6 +177,11 @@ dependencies {
     implementation fg.deobf("team.lodestar.lodestone:lodestone:${mc_version}-2.0.0.82")
     implementation fg.deobf("com.sammy.malum:malum:${mc_version}-1.4.3.1-9")
 
+    runtimeOnly fg.deobf("at.petra-k.paucal:paucal-forge-${mc_version}:0.5.0")
+    //implementation fg.deobf("at.petra-k.hexcasting:hexcasting-forge-${mc_version}:0.10.3")
+    implementation fg.deobf("curse.maven:hexcast-569849:4166956")
+    implementation 'thedarkcolour:kotlinforforge:3.9.1'
+
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
 
 }
@@ -217,7 +226,7 @@ publishing {
 // Copied from Botania
 if (System.getProperty("idea.sync.active") == "true") {
     afterEvaluate {
-        tasks.withType(JavaCompile).all {
+        tasks.withType(JavaCompile).configureEach {
             it.options.annotationProcessorPath = files()
         }
     }

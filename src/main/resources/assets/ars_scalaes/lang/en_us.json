@@ -75,5 +75,7 @@
   "ars_scalaes.glyph_desc.glyph_morph": "Morphs into the entity hit. Use on self to break the morph. Requires Identity.",
   "effect.ars_scalaes.resize": "Resized",
   "effect.ars_scalaes.morph": "Morphed",
+  "item.ars_scalaes.archwood_staff": "Archwood Staff",
+
   "itemGroup.ars_scalaes": "Ars Scalaes - Scaling and Stairs"
 }

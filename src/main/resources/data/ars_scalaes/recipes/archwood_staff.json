@@ -1,0 +1,28 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "hexcasting"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": {
+      "item": "hexcasting:charged_amethyst"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "W": {
+      "item": "ars_nouveau:archwood_planks"
+    }
+  },
+  "pattern": [
+    " SA",
+    " WS",
+    "S  "
+  ],
+  "result": {
+    "item": "ars_scalaes:archwood_staff"
+  }
+}
