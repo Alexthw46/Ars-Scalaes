@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "hexcasting:charged_amethyst",
+      "required": false
+    },
+    {
+      "id": "hexcasting:amethyst_dust",
+      "required": false
+    }
+  ]
+}

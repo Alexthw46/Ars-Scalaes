@@ -178,8 +178,8 @@ dependencies {
     implementation fg.deobf("com.sammy.malum:malum:${mc_version}-1.4.3.1-9")
 
     runtimeOnly fg.deobf("at.petra-k.paucal:paucal-forge-${mc_version}:0.5.0")
-    //implementation fg.deobf("at.petra-k.hexcasting:hexcasting-forge-${mc_version}:0.10.3")
-    implementation fg.deobf("curse.maven:hexcast-569849:4166956")
+    compileOnly fg.deobf("at.petra-k.hexcasting:hexcasting-common-${mc_version}:0.10.3")
+    runtimeOnly fg.deobf("at.petra-k.hexcasting:hexcasting-forge-${mc_version}:0.10.3") { transitive = false }
     implementation 'thedarkcolour:kotlinforforge:3.9.1'
 
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
