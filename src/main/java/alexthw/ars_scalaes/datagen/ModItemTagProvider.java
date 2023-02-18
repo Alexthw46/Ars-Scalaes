@@ -25,7 +25,12 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .addOptional(hexLoc("focus"))
                 .addOptional(hexLoc("abacus"))
                 .addOptional(hexLoc("lens"));
-
+        tag(ModRegistry.CASTER_BAGGABLE)
+                .addOptional(hexLoc("artifact"))
+                .addOptional(hexLoc("trinket"))
+                .addOptional(hexLoc("battery"))
+                .addOptional(hexLoc("spellbook"))
+                .addOptional(hexLoc("cypher"));
     }
 
     public static ResourceLocation hexLoc(String path) {

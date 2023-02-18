@@ -1,0 +1,24 @@
+{
+  "values": [
+    {
+      "id": "hexcasting:artifact",
+      "required": false
+    },
+    {
+      "id": "hexcasting:trinket",
+      "required": false
+    },
+    {
+      "id": "hexcasting:battery",
+      "required": false
+    },
+    {
+      "id": "hexcasting:spellbook",
+      "required": false
+    },
+    {
+      "id": "hexcasting:cypher",
+      "required": false
+    }
+  ]
+}

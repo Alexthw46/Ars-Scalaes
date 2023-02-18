@@ -171,7 +171,7 @@ dependencies {
     /*implementation*/compileOnly  fg.deobf("joefoxe:hexerei:0.2.5")
 
 
-    /*compileOnly*/ implementation fg.deobf("curse.maven:elemental-561470:4398235")
+    /*compileOnly*/ implementation fg.deobf("curse.maven:elemental-561470:4401516")
     runtimeOnly fg.deobf("curse.maven:arch-419699:3984018")
     runtimeOnly fg.deobf("curse.maven:tpw-435044:3834422")
 

@@ -6,7 +6,7 @@ import at.petrak.hexcasting.api.addldata.ADMediaHolder;
 import at.petrak.hexcasting.common.items.ItemStaff;
 import at.petrak.hexcasting.forge.cap.HexCapabilities;
 import at.petrak.hexcasting.forge.cap.adimpl.CapStaticMediaHolder;
-import com.hollingsworth.arsnouveau.setup.ItemsRegistry;
+import com.hollingsworth.arsnouveau.common.datagen.ItemTagProvider;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -37,9 +37,13 @@ public class HexCompat {
     public static void attachItemCaps(AttachCapabilitiesEvent<ItemStack> evt) {
         ItemStack stack = evt.getObject();
 
-        if (stack.getItem() == ItemsRegistry.SOURCE_GEM.asItem()) {
+        if (stack.is(ItemTagProvider.SOURCE_GEM_TAG)) {
             evt.addCapability(MEDIA_STATIC_CAP, provide(stack, HexCapabilities.MEDIA, () ->
                     new CapStaticMediaHolder(Common.SOURCE_GEM_MEDIA, ADMediaHolder.AMETHYST_SHARD_PRIORITY,
+                            stack)));
+        }if (stack.is(ItemTagProvider.SOURCE_GEM_BLOCK_TAG)) {
+            evt.addCapability(MEDIA_STATIC_CAP, provide(stack, HexCapabilities.MEDIA, () ->
+                    new CapStaticMediaHolder(() -> (Common.SOURCE_GEM_MEDIA.get() * 4), ADMediaHolder.CHARGED_AMETHYST_PRIORITY,
                             stack)));
         }
     }
