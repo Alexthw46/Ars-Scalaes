@@ -18,7 +18,7 @@ public class ConfigHandler {
         //Scaling Health x AN
         public static ForgeConfigSpec.ConfigValue<Double> SCALING_SPELL_DMG;
 
-        //
+        //Identity
         public static ForgeConfigSpec.ConfigValue<Integer> FLARE_COOLDOWN;
         public static ForgeConfigSpec.ConfigValue<Integer> STARBY_COOLDOWN;
         public static ForgeConfigSpec.ConfigValue<Integer> WW_COOLDOWN;
@@ -26,7 +26,9 @@ public class ConfigHandler {
         public static ForgeConfigSpec.ConfigValue<Integer> WIL_HUNTER_COOLDOWN;
         public static ForgeConfigSpec.ConfigValue<Integer> WIL_STALKER_COOLDOWN;
         public static ForgeConfigSpec.ConfigValue<Integer> WIXIE_COOLDOWN;
-        public static ForgeConfigSpec.ConfigValue<Integer> COOLDOWN;
+
+        //Hexcasting
+        public static ForgeConfigSpec.ConfigValue<Integer> SOURCE_GEM_MEDIA;
 
 
         public Common(ForgeConfigSpec.Builder builder) {
@@ -55,6 +57,12 @@ public class ConfigHandler {
             WIL_HUNTER_COOLDOWN = builder.comment("cooldown for the active ability of wilden hunter").define("wil_hunter_cooldown", 800);
             WIL_STALKER_COOLDOWN = builder.comment("cooldown for the active ability of wilden stalker").define("wil_stalker_cooldown", 1300);
             WIXIE_COOLDOWN = builder.comment("cooldown for the active ability of wixie").define("wixie_cooldown", 100);
+
+            builder.pop();
+
+            builder.comment("Hexcasting Compat").push("HEX CASTING");
+
+            SOURCE_GEM_MEDIA = builder.comment("media value of a source gem").define("source_media", 50000);
 
             builder.pop();
         }

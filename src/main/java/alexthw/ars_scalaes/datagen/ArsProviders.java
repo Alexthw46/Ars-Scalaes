@@ -1,6 +1,10 @@
 package alexthw.ars_scalaes.datagen;
 
 import alexthw.ars_scalaes.ArsScalaes;
+import alexthw.ars_scalaes.glyph.EffectExpand;
+import alexthw.ars_scalaes.glyph.EffectMorph;
+import alexthw.ars_scalaes.glyph.EffectResize;
+import alexthw.ars_scalaes.glyph.EffectShrink;
 import com.hollingsworth.arsnouveau.api.enchanting_apparatus.EnchantingApparatusRecipe;
 import com.hollingsworth.arsnouveau.api.familiar.AbstractFamiliarHolder;
 import com.hollingsworth.arsnouveau.api.ritual.AbstractRitual;
@@ -22,6 +26,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.ItemLike;
+import virtuoel.pehkui.Pehkui;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -131,12 +136,11 @@ public class ArsProviders {
         @Override
         public void run(CachedOutput cache) throws IOException {
 
-            /*
-            addGlyphPage(EffectResize.INSTANCE);
-            addGlyphPage(EffectExpand.INSTANCE);
-            addGlyphPage(EffectShrink.INSTANCE);
-            addGlyphPage(EffectMorph.INSTANCE);
-             */
+
+            addGlyphPage(EffectResize.INSTANCE, Pehkui.MOD_ID);
+            addGlyphPage(EffectExpand.INSTANCE, Pehkui.MOD_ID);
+            addGlyphPage(EffectShrink.INSTANCE, Pehkui.MOD_ID);
+            addGlyphPage(EffectMorph.INSTANCE, "identity");
 
             for (PatchouliPage patchouliPage : pages) {
                 DataProvider.saveStable(cache, patchouliPage.build(), patchouliPage.path());
@@ -145,12 +149,14 @@ public class ArsProviders {
         }
 
         @Override
-        public void addBasicItem(ItemLike item, ResourceLocation category, IPatchouliPage recipePage){
+        public PatchouliPage addBasicItem(ItemLike item, ResourceLocation category, IPatchouliPage recipePage) {
             PatchouliBuilder builder = new PatchouliBuilder(category, item.asItem().getDescriptionId())
                     .withIcon(item.asItem())
                     .withPage(new TextPage(root + ".page." + getRegistryName(item.asItem()).getPath()))
                     .withPage(recipePage);
-            this.pages.add(new PatchouliPage(builder, getPath(category, getRegistryName(item.asItem()).getPath())));
+            var page = new PatchouliPage(builder, getPath(category, getRegistryName(item.asItem()).getPath()));
+            this.pages.add(page);
+            return page;
         }
 
         public void addFamiliarPage(AbstractFamiliarHolder familiarHolder) {
@@ -181,7 +187,7 @@ public class ArsProviders {
             this.pages.add(new PatchouliPage(builder, getPath(ENCHANTMENTS, getRegistryName(enchantment).getPath())));
         }
 
-        public void addGlyphPage(AbstractSpellPart spellPart) {
+        public void addGlyphPage(AbstractSpellPart spellPart, String modid) {
             ResourceLocation category = switch (spellPart.defaultTier().value) {
                 case 1 -> GLYPHS_1;
                 case 2 -> GLYPHS_2;
@@ -192,7 +198,8 @@ public class ArsProviders {
                     .withIcon(spellPart.getRegistryName().toString())
                     .withSortNum(spellPart instanceof AbstractCastMethod ? 1 : spellPart instanceof AbstractEffect ? 2 : 3)
                     .withPage(new TextPage(root + ".glyph_desc." + spellPart.getRegistryName().getPath()))
-                    .withPage(new GlyphScribePage(spellPart));
+                    .withPage(new GlyphScribePage(spellPart))
+                    .withProperty("flag", "mod:" + modid);
             this.pages.add(new PatchouliPage(builder, getPath(category, spellPart.getRegistryName().getPath())));
         }
 

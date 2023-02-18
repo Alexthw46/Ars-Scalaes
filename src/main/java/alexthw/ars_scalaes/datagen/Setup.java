@@ -20,7 +20,9 @@ public class Setup {
 
         gen.addProvider(event.includeClient(), new ModBlockStateProvider(gen, existingFileHelper));
         gen.addProvider(event.includeClient(), new ModItemModelProvider(gen, existingFileHelper));
-        gen.addProvider(event.includeServer(), new ModBlockTagsProvider(gen, existingFileHelper));
+        var blocktag = new ModBlockTagsProvider(gen, existingFileHelper);
+        gen.addProvider(event.includeServer(), blocktag);
+        gen.addProvider(event.includeServer(), new ModItemTagProvider(gen, blocktag, existingFileHelper));
         //gen.addProvider(event.includeServer(),new ArsProviders.ImbuementProvider(gen));
         //gen.addProvider(event.includeServer(),new ArsProviders.GlyphProvider(gen));
         //gen.addProvider(event.includeServer(),new ArsProviders.EnchantingAppProvider(gen));

@@ -1,9 +1,6 @@
 package alexthw.ars_scalaes;
 
-import alexthw.ars_scalaes.glyph.EffectExpand;
-import alexthw.ars_scalaes.glyph.EffectMorph;
-import alexthw.ars_scalaes.glyph.EffectResize;
-import alexthw.ars_scalaes.glyph.EffectShrink;
+import alexthw.ars_scalaes.glyph.*;
 import com.hollingsworth.arsnouveau.api.ArsNouveauAPI;
 import com.hollingsworth.arsnouveau.api.spell.AbstractSpellPart;
 import net.minecraftforge.fml.ModList;
@@ -21,9 +18,8 @@ public class ArsNouveauRegistry {
         register(EffectShrink.INSTANCE);
     }
 
-    public static void register(AbstractSpellPart spellPart) {
-        ArsNouveauAPI.getInstance().registerSpell(spellPart);
-        registeredSpells.add(spellPart);
+    private static void registerMalumGlyphs() {
+        register(EffectSoulShatter.INSTANCE);
     }
 
     public static void registerIdentityGlyphs() {
@@ -31,12 +27,20 @@ public class ArsNouveauRegistry {
     }
 
     public static void registerCompatGlyphs() {
+        if (ModList.get().isLoaded("malum")) {
+            registerMalumGlyphs();
+        }
         if (ModList.get().isLoaded("identity")) {
             registerIdentityGlyphs();
         }
         if (ModList.get().isLoaded("pehkui")) {
             registerPehkuiGlyphs();
         }
+    }
+
+    public static void register(AbstractSpellPart spellPart) {
+        ArsNouveauAPI.getInstance().registerSpell(spellPart);
+        registeredSpells.add(spellPart);
     }
 
 }

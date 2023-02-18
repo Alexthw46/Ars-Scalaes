@@ -8,7 +8,7 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "A": {
-      "item": "hexcasting:charged_amethyst"
+      "tag": "forge:gems/source"
     },
     "S": {
       "item": "minecraft:stick"

@@ -1,16 +1,16 @@
 {
   "category": "ars_nouveau:glyphs_3",
-  "icon": "ars_scalaes:glyph_shrink",
-  "name": "ars_scalaes.glyph_name.glyph_shrink",
   "flag": "mod:pehkui",
+  "icon": "ars_scalaes:glyph_expand",
+  "name": "ars_scalaes.glyph_name.glyph_expand",
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "ars_scalaes.glyph_desc.glyph_shrink"
+      "text": "ars_scalaes.glyph_desc.glyph_expand"
     },
     {
       "type": "ars_nouveau:glyph_recipe",
-      "recipe": "ars_scalaes:glyph_shrink"
+      "recipe": "ars_scalaes:glyph_expand"
     }
   ],
   "sortnum": 2

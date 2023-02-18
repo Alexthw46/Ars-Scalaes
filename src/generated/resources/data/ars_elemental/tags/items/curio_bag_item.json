@@ -1,0 +1,24 @@
+{
+  "values": [
+    {
+      "id": "#hexcasting:staves",
+      "required": false
+    },
+    {
+      "id": "hexcasting:abacus",
+      "required": false
+    },
+    {
+      "id": "hexcasting:focus",
+      "required": false
+    },
+    {
+      "id": "hexcasting:abacus",
+      "required": false
+    },
+    {
+      "id": "hexcasting:lens",
+      "required": false
+    }
+  ]
+}

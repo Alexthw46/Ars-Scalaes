@@ -158,6 +158,9 @@ dependencies {
     runtimeOnly fg.deobf("mezz.jei:jei-1.19-common:${jei_version}")
     runtimeOnly fg.deobf("mezz.jei:jei-1.19-forge:${jei_version}")
 
+    runtimeOnly fg.deobf("com.github.glitchfiend:TerraBlender-forge:1.19-2.0.0.120")
+
+
     implementation fg.deobf("top.theillusivec4.curios:curios-forge:${mc_version}-${curio_version}")
     /*implementation*/ compileOnly fg.deobf("curse.maven:project_mmo-353935:4083371")
     /*implementation*/ compileOnly fg.deobf("curse.maven:scaling_health-248027:3943340")
@@ -165,22 +168,22 @@ dependencies {
     /*compileOnly*/ implementation fg.deobf("com.github.Virtuoel:Pehkui:3.6.0-${mc_version}-forge")
     implementation fg.deobf("vazkii.patchouli:Patchouli:${mc_version}-77")
 
-    /*compileOnly*/ implementation fg.deobf("joefoxe:hexerei:0.2.5")
+    /*implementation*/compileOnly  fg.deobf("joefoxe:hexerei:0.2.5")
 
 
-    /*compileOnly*/ implementation fg.deobf("curse.maven:elemental-561470:4128706")
+    /*compileOnly*/ implementation fg.deobf("curse.maven:elemental-561470:4398235")
     runtimeOnly fg.deobf("curse.maven:arch-419699:3984018")
     runtimeOnly fg.deobf("curse.maven:tpw-435044:3834422")
 
     /*compileOnly */ implementation fg.deobf("curse.maven:identity-391390:3956107")
 
     implementation fg.deobf("team.lodestar.lodestone:lodestone:${mc_version}-2.0.0.82")
-    implementation fg.deobf("com.sammy.malum:malum:${mc_version}-1.4.3.1-9")
+    compileOnly fg.deobf("com.sammy.malum:malum:${mc_version}-1.4.3.1-9")
 
     runtimeOnly fg.deobf("at.petra-k.paucal:paucal-forge-${mc_version}:0.5.0")
-    compileOnly fg.deobf("at.petra-k.hexcasting:hexcasting-common-${mc_version}:0.10.3")
-    runtimeOnly fg.deobf("at.petra-k.hexcasting:hexcasting-forge-${mc_version}:0.10.3") { transitive = false }
-    implementation 'thedarkcolour:kotlinforforge:3.9.1'
+    compileOnly fg.deobf("at.petra-k.hexcasting:hexcasting-common-${mc_version}:0.11.0-pre-557")
+    implementation fg.deobf("at.petra-k.hexcasting:hexcasting-forge-${mc_version}:0.11.0-pre-557") { transitive = false }
+    runtimeOnly 'thedarkcolour:kotlinforforge:3.9.1'
 
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
 
