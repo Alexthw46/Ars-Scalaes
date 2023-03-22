@@ -8,6 +8,7 @@ import com.sammy.malum.core.setup.content.entity.EntityRegistry;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Tiers;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.RegistryObject;
@@ -27,6 +28,8 @@ public class MalumCompat {
     }
 
     public static void init() {
+        MinecraftForge.EVENT_BUS.register(MalumCompat.class);
+
         ENCHANTER_SCYTHE = ITEMS.register("enchanter_scythe", () -> new EnchanterScythe(Tiers.NETHERITE, -4F, 0F, 3.0F, addTabProp()));
 
     }

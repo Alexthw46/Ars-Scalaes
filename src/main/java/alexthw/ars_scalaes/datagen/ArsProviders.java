@@ -1,10 +1,7 @@
 package alexthw.ars_scalaes.datagen;
 
 import alexthw.ars_scalaes.ArsScalaes;
-import alexthw.ars_scalaes.glyph.EffectExpand;
-import alexthw.ars_scalaes.glyph.EffectMorph;
-import alexthw.ars_scalaes.glyph.EffectResize;
-import alexthw.ars_scalaes.glyph.EffectShrink;
+import alexthw.ars_scalaes.glyph.*;
 import com.hollingsworth.arsnouveau.api.enchanting_apparatus.EnchantingApparatusRecipe;
 import com.hollingsworth.arsnouveau.api.familiar.AbstractFamiliarHolder;
 import com.hollingsworth.arsnouveau.api.ritual.AbstractRitual;
@@ -51,6 +48,8 @@ public class ArsProviders {
             //add(get(EffectShrink.INSTANCE).withItem(ItemsRegistry.MANIPULATION_ESSENCE).withItem(ItemsRegistry.ABJURATION_ESSENCE).withItem(Items.TURTLE_EGG));
             //add(get(EffectExpand.INSTANCE).withItem(ItemsRegistry.MANIPULATION_ESSENCE).withItem(ItemsRegistry.ABJURATION_ESSENCE).withItem(Items.PUFFERFISH));
             //add(get(EffectMorph.INSTANCE).withItem(ItemsRegistry.MANIPULATION_ESSENCE).withItem(ItemsRegistry.ABJURATION_ESSENCE).withItem(ItemsRegistry.WILDEN_HORN).withItem(ItemsRegistry.WILDEN_WING));
+            //add(get(EffectSoulShatter.INSTANCE).withItem(ItemsRegistry.MANIPULATION_ESSENCE).withItem(ItemRegistry.WICKED_SPIRIT).withItem(ItemRegistry.SOUL_STAINED_STEEL_SWORD));
+
             for (GlyphRecipe recipe : recipes) {
                 Path path = getScribeGlyphPath(output, recipe.output.getItem());
                 DataProvider.saveStable(cache, recipe.asRecipe(), path);
@@ -141,6 +140,7 @@ public class ArsProviders {
             addGlyphPage(EffectExpand.INSTANCE, Pehkui.MOD_ID);
             addGlyphPage(EffectShrink.INSTANCE, Pehkui.MOD_ID);
             addGlyphPage(EffectMorph.INSTANCE, "identity");
+            addGlyphPage(EffectSoulShatter.INSTANCE, "malum");
 
             for (PatchouliPage patchouliPage : pages) {
                 DataProvider.saveStable(cache, patchouliPage.build(), patchouliPage.path());

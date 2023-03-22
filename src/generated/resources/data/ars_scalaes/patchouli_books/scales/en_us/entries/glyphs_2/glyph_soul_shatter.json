@@ -1,0 +1,17 @@
+{
+  "category": "ars_nouveau:glyphs_2",
+  "flag": "mod:malum",
+  "icon": "ars_scalaes:glyph_soul_shatter",
+  "name": "ars_scalaes.glyph_name.glyph_soul_shatter",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "ars_scalaes.glyph_desc.glyph_soul_shatter"
+    },
+    {
+      "type": "ars_nouveau:glyph_recipe",
+      "recipe": "ars_scalaes:glyph_soul_shatter"
+    }
+  ],
+  "sortnum": 2
+}

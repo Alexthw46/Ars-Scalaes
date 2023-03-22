@@ -49,11 +49,9 @@ public class ArsScalaes
         }
         if (ModList.get().isLoaded("hexcasting")) {
             HexCompat.init();
-            MinecraftForge.EVENT_BUS.register(HexCompat.class);
         }
         if (ModList.get().isLoaded("malum")) {
             MalumCompat.init();
-            MinecraftForge.EVENT_BUS.register(MalumCompat.class);
         }
         ArsNouveauRegistry.registerCompatGlyphs();
         modbus.addListener(this::setup);
@@ -65,7 +63,10 @@ public class ArsScalaes
         if (ModList.get().isLoaded("identity")) {
             event.enqueueWork(IdentityReg::postInit);
         }
-        if (ModList.get().isLoaded("malum")){
+        if (ModList.get().isLoaded("pmmo")) {
+            event.enqueueWork(PmmoCompatEventHandler::setupPerks);
+        }
+        if (ModList.get().isLoaded("malum")) {
             event.enqueueWork(MalumCompat::postInit);
         }
 

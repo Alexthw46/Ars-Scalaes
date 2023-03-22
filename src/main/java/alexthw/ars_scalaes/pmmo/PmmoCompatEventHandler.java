@@ -5,6 +5,7 @@ import com.hollingsworth.arsnouveau.api.event.SpellCastEvent;
 import com.hollingsworth.arsnouveau.api.event.SpellDamageEvent;
 import com.hollingsworth.arsnouveau.api.event.SpellModifierEvent;
 import com.hollingsworth.arsnouveau.api.perk.PerkAttributes;
+import com.hollingsworth.arsnouveau.api.spell.AbstractAugment;
 import com.hollingsworth.arsnouveau.api.spell.AbstractEffect;
 import com.hollingsworth.arsnouveau.api.spell.AbstractSpellPart;
 import com.hollingsworth.arsnouveau.api.spell.Spell;
@@ -16,7 +17,6 @@ import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import org.apache.commons.lang3.function.TriFunction;
 
 import java.util.UUID;
@@ -24,17 +24,15 @@ import java.util.UUID;
 import static alexthw.ars_scalaes.datagen.ArsProviders.prefix;
 
 public class PmmoCompatEventHandler {
-
-    @SubscribeEvent
-    public static void setupPerks(FMLCommonSetupEvent event) {
+    public static void setupPerks() {
         CompoundTag regenDefaults = new CompoundTag();
         regenDefaults.putDouble(APIUtils.MAX_BOOST, 100d);
-        regenDefaults.putDouble(APIUtils.PER_LEVEL, .06d);
+        regenDefaults.putDouble(APIUtils.PER_LEVEL, .5d);
         APIUtils.registerPerk(prefix("mana_regen"), regenDefaults, (player, tag, integer) -> true, MANA_REGEN, MANA_REGEN_TERM, PerkSide.BOTH);
 
         CompoundTag manaDefaults = new CompoundTag();
         manaDefaults.putDouble(APIUtils.MAX_BOOST, 3000d);
-        manaDefaults.putDouble(APIUtils.PER_LEVEL, 3.0d);
+        manaDefaults.putDouble(APIUtils.PER_LEVEL, 5.0d);
         APIUtils.registerPerk(prefix("mana_boost"), manaDefaults, (player, tag, integer) -> true, MANA_BOOST, MANA_BOOST_TERM, PerkSide.BOTH);
     }
 
@@ -47,8 +45,8 @@ public class PmmoCompatEventHandler {
             int manaCost = 0;
             boolean hasEffect = false;
             for (AbstractSpellPart spellpart : spell.recipe) {
-                if (spellpart instanceof AbstractEffect) {
-                    hasEffect = true;
+                if (!(spellpart instanceof AbstractAugment)) {
+                    if (spellpart instanceof AbstractEffect) hasEffect = true;
                     manaCost += spellpart.getDefaultManaCost();
                 }
             }
@@ -88,7 +86,7 @@ public class PmmoCompatEventHandler {
 
     public static final TriFunction<Player, CompoundTag, Integer, CompoundTag> MANA_REGEN = (player, nbt, level) -> {
         double maxRegenBoost = nbt.contains(APIUtils.MAX_BOOST) ? nbt.getDouble(APIUtils.MAX_BOOST) : 100d;
-        double boostPerLevel = nbt.contains(APIUtils.PER_LEVEL) ? nbt.getDouble(APIUtils.PER_LEVEL) : .06d;
+        double boostPerLevel = nbt.contains(APIUtils.PER_LEVEL) ? nbt.getDouble(APIUtils.PER_LEVEL) : .50d;
         AttributeInstance manaAttribute = player.getAttribute(PerkAttributes.MANA_REGEN_BONUS.get());
 
         double regenBoost = Math.min(maxRegenBoost, level * boostPerLevel);
@@ -112,7 +110,7 @@ public class PmmoCompatEventHandler {
     public static final TriFunction<Player, CompoundTag, Integer, CompoundTag> MANA_BOOST = (player, nbt, level) -> {
         double maxManaBoost = nbt.contains(APIUtils.MAX_BOOST) ? nbt.getDouble(APIUtils.MAX_BOOST) : 3000d;
         double boostPerLevel = nbt.contains(APIUtils.PER_LEVEL) ? nbt.getDouble(APIUtils.PER_LEVEL) : 3.0d;
-        AttributeInstance manaAttribute = player.getAttribute(PerkAttributes.MAX_MANA_BONUS.get());
+        AttributeInstance manaAttribute = player.getAttribute(PerkAttributes.FLAT_MANA_BONUS.get());
 
         int manaBoost = (int) Math.min(maxManaBoost, level * boostPerLevel);
 
@@ -126,7 +124,7 @@ public class PmmoCompatEventHandler {
     };
 
     public static final TriFunction<Player, CompoundTag, Integer, CompoundTag> MANA_BOOST_TERM = (p, nbt, l) -> {
-        AttributeInstance manaAttribute = p.getAttribute(PerkAttributes.MAX_MANA_BONUS.get());
+        AttributeInstance manaAttribute = p.getAttribute(PerkAttributes.FLAT_MANA_BONUS.get());
         if (manaAttribute != null)
             manaAttribute.removeModifier(manaMaxModifierID);
         return NONE;

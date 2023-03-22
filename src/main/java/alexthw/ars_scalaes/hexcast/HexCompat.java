@@ -10,6 +10,7 @@ import com.hollingsworth.arsnouveau.common.datagen.ItemTagProvider;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.LazyOptional;
@@ -28,6 +29,8 @@ import static at.petrak.hexcasting.forge.cap.ForgeCapabilityHandler.MEDIA_STATIC
 public class HexCompat {
 
     public static void init() {
+        MinecraftForge.EVENT_BUS.register(HexCompat.class);
+
         ARCH_WAND = ITEMS.register("archwood_staff", () -> new ItemStaff(ModRegistry.addTabProp()));
     }
 
