@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "B": {
+      "item": "ars_nouveau:gilded_sourcestone_alternating"
+    }
+  },
+  "pattern": [
+    "BBB",
+    "BBB"
+  ],
+  "result": {
+    "count": 6,
+    "item": "ars_scalaes:gilded_sourcestone_alternating_wall"
+  }
+}

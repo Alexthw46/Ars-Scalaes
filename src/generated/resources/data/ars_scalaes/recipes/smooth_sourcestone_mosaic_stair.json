@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "B": {
+      "item": "ars_nouveau:smooth_sourcestone_mosaic"
+    }
+  },
+  "pattern": [
+    "B  ",
+    "BB ",
+    "BBB"
+  ],
+  "result": {
+    "count": 5,
+    "item": "ars_scalaes:smooth_sourcestone_mosaic_stairs"
+  }
+}

@@ -5,11 +5,11 @@ import alexthw.ars_scalaes.block.DecoBlockPack;
 import alexthw.ars_scalaes.registry.ModRegistry;
 import com.hollingsworth.arsnouveau.ArsNouveau;
 import com.hollingsworth.arsnouveau.common.lib.LibBlockNames;
-import com.hollingsworth.arsnouveau.setup.ItemsRegistry;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.SingleItemRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -57,19 +57,39 @@ public class ModRecipeProvider extends RecipeProvider {
     private void buildDecoPack(Consumer<FinishedRecipe> consumer, String blockKey, DecoBlockPack decoBlockPack) {
         Block block = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(ArsNouveau.MODID, blockKey));
         if (block == null) return;
-        makeStonecutter(consumer, block, decoBlockPack.getSlab(), decoBlockPack.basename);
+        makeSlab(consumer, block, decoBlockPack.getSlab(), decoBlockPack.basename);
+        makeWall(consumer, block, decoBlockPack.getWall(), decoBlockPack.basename);
+        makeStairs(consumer, block, decoBlockPack.getStairs(), decoBlockPack.basename);
+
+        makeStonecutter(consumer, block, decoBlockPack.getSlab(), 2, decoBlockPack.basename);
         makeStonecutter(consumer, block, decoBlockPack.getWall(), decoBlockPack.basename);
         makeStonecutter(consumer, block, decoBlockPack.getStairs(), decoBlockPack.basename);
         STONECUTTER_COUNTER = 0;
     }
 
+    private void makeSlab(Consumer<FinishedRecipe> consumer, Block block, Block slab, String basename) {
+        ShapedRecipeBuilder.shaped(slab, 6).pattern("BBB").define('B', block).unlockedBy("has_journal", InventoryChangeTrigger.TriggerInstance.hasItems(block)).save(consumer, new ResourceLocation(ArsScalaes.MODID, basename + "_slab"));
+    }
+
+    private void makeWall(Consumer<FinishedRecipe> consumer, Block block, Block wall, String basename) {
+        ShapedRecipeBuilder.shaped(wall, 6).pattern("BBB").pattern("BBB").define('B', block).unlockedBy("has_journal", InventoryChangeTrigger.TriggerInstance.hasItems(block)).save(consumer, new ResourceLocation(ArsScalaes.MODID, basename + "_wall"));
+    }
+
+    private void makeStairs(Consumer<FinishedRecipe> consumer, Block block, Block stairs, String basename) {
+        ShapedRecipeBuilder.shaped(stairs, 5).pattern("B  ").pattern("BB ").pattern("BBB").define('B', block).unlockedBy("has_journal", InventoryChangeTrigger.TriggerInstance.hasItems(block)).save(consumer, new ResourceLocation(ArsScalaes.MODID, basename + "_stair"));
+    }
 
     private static int STONECUTTER_COUNTER = 0;
 
     public static void makeStonecutter(Consumer<FinishedRecipe> consumer, ItemLike input, ItemLike output, String reg) {
-        SingleItemRecipeBuilder.stonecutting(Ingredient.of(input), output).unlockedBy("has_journal", InventoryChangeTrigger.TriggerInstance.hasItems(ItemsRegistry.WORN_NOTEBOOK)).save(consumer, new ResourceLocation(ArsScalaes.MODID, reg + "_" + STONECUTTER_COUNTER));
+        makeStonecutter(consumer, input, output, 1, reg);
+    }
+
+    public static void makeStonecutter(Consumer<FinishedRecipe> consumer, ItemLike input, ItemLike output, int quantity, String reg) {
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(input), output, quantity).unlockedBy("has_journal", InventoryChangeTrigger.TriggerInstance.hasItems(input)).save(consumer, new ResourceLocation(ArsScalaes.MODID, reg + "_" + STONECUTTER_COUNTER));
         STONECUTTER_COUNTER++;
     }
+
 
     @Override
     public String getName() {

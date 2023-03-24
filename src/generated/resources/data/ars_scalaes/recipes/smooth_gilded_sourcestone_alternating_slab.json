@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "B": {
+      "item": "ars_nouveau:smooth_gilded_sourcestone_alternating"
+    }
+  },
+  "pattern": [
+    "BBB"
+  ],
+  "result": {
+    "count": 6,
+    "item": "ars_scalaes:smooth_gilded_sourcestone_alternating_slab"
+  }
+}
