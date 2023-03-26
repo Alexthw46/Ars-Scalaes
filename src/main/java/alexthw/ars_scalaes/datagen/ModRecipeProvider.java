@@ -76,7 +76,7 @@ public class ModRecipeProvider extends RecipeProvider {
     }
 
     private void makeStairs(Consumer<FinishedRecipe> consumer, Block block, Block stairs, String basename) {
-        ShapedRecipeBuilder.shaped(stairs, 5).pattern("B  ").pattern("BB ").pattern("BBB").define('B', block).unlockedBy("has_journal", InventoryChangeTrigger.TriggerInstance.hasItems(block)).save(consumer, new ResourceLocation(ArsScalaes.MODID, basename + "_stair"));
+        ShapedRecipeBuilder.shaped(stairs, 4).pattern("B  ").pattern("BB ").pattern("BBB").define('B', block).unlockedBy("has_journal", InventoryChangeTrigger.TriggerInstance.hasItems(block)).save(consumer, new ResourceLocation(ArsScalaes.MODID, basename + "_stair"));
     }
 
     private static int STONECUTTER_COUNTER = 0;
