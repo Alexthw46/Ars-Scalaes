@@ -15,6 +15,7 @@ import com.hollingsworth.arsnouveau.common.datagen.GlyphRecipeProvider;
 import com.hollingsworth.arsnouveau.common.datagen.ImbuementRecipeProvider;
 import com.hollingsworth.arsnouveau.common.datagen.PatchouliProvider;
 import com.hollingsworth.arsnouveau.common.datagen.patchouli.*;
+import com.sammy.malum.MalumMod;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
@@ -140,7 +141,7 @@ public class ArsProviders {
             addGlyphPage(EffectExpand.INSTANCE, Pehkui.MOD_ID);
             addGlyphPage(EffectShrink.INSTANCE, Pehkui.MOD_ID);
             addGlyphPage(EffectMorph.INSTANCE, "identity");
-            addGlyphPage(EffectSoulShatter.INSTANCE, "malum");
+            addGlyphPage(EffectSoulShatter.INSTANCE, MalumMod.MALUM);
 
             for (PatchouliPage patchouliPage : pages) {
                 DataProvider.saveStable(cache, patchouliPage.build(), patchouliPage.path());
@@ -213,7 +214,7 @@ public class ArsProviders {
 
         @Override
         public Path getPath(ResourceLocation category, String fileName) {
-            return this.generator.getOutputFolder().resolve("data/" + root + "/patchouli_books/scales/en_us/entries/" + category.getPath() + "/" + fileName + ".json");
+            return this.generator.getOutputFolder().resolve("data/" + root + "/patchouli_books/scalaes/en_us/entries/" + category.getPath() + "/" + fileName + ".json");
         }
 
         ImbuementPage ImbuementPage(ItemLike item) {

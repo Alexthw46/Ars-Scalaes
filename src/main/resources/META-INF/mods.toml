@@ -74,6 +74,13 @@ ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.ars_scalaes]]
+modId = "malum"
+mandatory = false
+versionRange = "[1.4,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.ars_scalaes]]
 modId = "ars_elemental"
 mandatory = false
 versionRange = "[1.19-0.5.0.16,)"
