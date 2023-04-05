@@ -2,7 +2,9 @@ package alexthw.ars_scalaes.datagen;
 
 import alexthw.ars_elemental.registry.ModRegistry;
 import alexthw.ars_scalaes.ArsScalaes;
+import alexthw.ars_scalaes.hexerei.HexereiCompat;
 import at.petrak.hexcasting.api.HexAPI;
+import net.joefoxe.hexerei.util.HexereiTags;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -31,6 +33,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .addOptional(hexLoc("battery"))
                 .addOptional(hexLoc("spellbook"))
                 .addOptional(hexLoc("cypher"));
+        tag(HexereiTags.Items.BROOM_BRUSH).addOptional(HexereiCompat.MAGEBLOOM_BRUSH.getId());
+
     }
 
     public static ResourceLocation hexLoc(String path) {

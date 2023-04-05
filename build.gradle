@@ -160,15 +160,15 @@ dependencies {
 
     runtimeOnly fg.deobf("com.github.glitchfiend:TerraBlender-forge:1.19-2.0.0.120")
 
-
+    implementation fg.deobf("vazkii.patchouli:Patchouli:${mc_version}-77")
     implementation fg.deobf("top.theillusivec4.curios:curios-forge:${mc_version}-${curio_version}")
-    /*compileOnly*/ implementation fg.deobf("curse.maven:project_mmo-353935:4450518")
+
+    /*implementation*/ compileOnly fg.deobf("curse.maven:project_mmo-353935:4450518")
     /*implementation*/ compileOnly fg.deobf("curse.maven:scaling_health-248027:3943340")
     /*implementation*/ compileOnly fg.deobf("curse.maven:silent_chaos-242998:3968715")
     /*compileOnly*/ implementation fg.deobf("com.github.Virtuoel:Pehkui:3.6.0-${mc_version}-forge")
-    implementation fg.deobf("vazkii.patchouli:Patchouli:${mc_version}-77")
 
-    /*implementation*/ compileOnly fg.deobf("joefoxe:hexerei:0.2.5")
+    /*implementation*/ implementation fg.deobf("joefoxe:hexerei:0.3.1")
 
 
     /*compileOnly*/ implementation fg.deobf("curse.maven:elemental-561470:4401516")
@@ -180,7 +180,7 @@ dependencies {
     /*compileOnly */ implementation fg.deobf("curse.maven:identity-391390:3956107")
 
     implementation fg.deobf("team.lodestar.lodestone:lodestone:${mc_version}-2.0.0.82")
-    /*compileOnly*/ implementation fg.deobf("com.sammy.malum:malum:${mc_version}-1.4.3.1-9")
+    /*implementation*/ compileOnly fg.deobf("com.sammy.malum:malum:${mc_version}-1.4.3.1-9")
 
     runtimeOnly fg.deobf("at.petra-k.paucal:paucal-forge-${mc_version}:0.5.0")
     compileOnly fg.deobf("at.petra-k.hexcasting:hexcasting-common-${mc_version}:0.11.0-pre-557")

@@ -3,7 +3,6 @@ package alexthw.ars_scalaes.pmmo;
 import alexthw.ars_scalaes.ConfigHandler;
 import com.hollingsworth.arsnouveau.api.event.SpellCastEvent;
 import com.hollingsworth.arsnouveau.api.event.SpellDamageEvent;
-import com.hollingsworth.arsnouveau.api.event.SpellModifierEvent;
 import com.hollingsworth.arsnouveau.api.perk.PerkAttributes;
 import com.hollingsworth.arsnouveau.api.spell.AbstractAugment;
 import com.hollingsworth.arsnouveau.api.spell.AbstractEffect;
@@ -34,6 +33,12 @@ public class PmmoCompatEventHandler {
         manaDefaults.putDouble(APIUtils.MAX_BOOST, 3000d);
         manaDefaults.putDouble(APIUtils.PER_LEVEL, 5.0d);
         APIUtils.registerPerk(prefix("mana_boost"), manaDefaults, (player, tag, integer) -> true, MANA_BOOST, MANA_BOOST_TERM, PerkSide.BOTH);
+
+        CompoundTag damageDefaults = new CompoundTag();
+        damageDefaults.putDouble(APIUtils.MAX_BOOST, 0d);
+        damageDefaults.putDouble(APIUtils.PER_LEVEL, 0.2d);
+        APIUtils.registerPerk(prefix("spell_damage_boost"), damageDefaults, (player, tag, integer) -> true, DAMAGE_BOOST, DAMAGE_BOOST_TERM, PerkSide.BOTH);
+
     }
 
     @SubscribeEvent
@@ -44,10 +49,10 @@ public class PmmoCompatEventHandler {
             Spell spell = event.spell;
             int manaCost = 0;
             boolean hasEffect = false;
-            for (AbstractSpellPart spellpart : spell.recipe) {
-                if (!(spellpart instanceof AbstractAugment)) {
-                    if (spellpart instanceof AbstractEffect) hasEffect = true;
-                    manaCost += spellpart.getDefaultManaCost();
+            for (AbstractSpellPart spellPart : spell.recipe) {
+                if (!(spellPart instanceof AbstractAugment)) {
+                    if (spellPart instanceof AbstractEffect) hasEffect = true;
+                    manaCost += spellPart.getDefaultManaCost();
                 }
             }
             if (hasEffect) {
@@ -57,31 +62,26 @@ public class PmmoCompatEventHandler {
         }
     }
 
-
     @SubscribeEvent
-    public static void dmgMultiplierByLevel(SpellModifierEvent event) {
+    public static void dmgAdjustByLevel(SpellDamageEvent.Pre event) {
         if (event.caster instanceof Player player) {
             int magicLevel = APIUtils.getLevel("magic", player);
-            double magicProficiency = magicLevel * ConfigHandler.Common.LEVEL_TO_SPELL_DMG.get();
-            event.builder.addDamageModifier(magicProficiency);
+            float magicProficiency = (float) (magicLevel * ConfigHandler.Common.LEVEL_TO_SPELL_DMG.get());
+            event.damage = event.damage * (1 + magicProficiency);
         }
-    }
-
-    @SubscribeEvent
-    public static void dmgReductionByLevel(SpellDamageEvent event) {
-
         if (event.target instanceof Player player) {
             int magicLevel = APIUtils.getLevel("magic", player);
             int enduranceLevel = APIUtils.getLevel("endurance", player);
-            event.damage = (float) (event.damage * (1 - (magicLevel + enduranceLevel) * ConfigHandler.Common.LEVEL_TO_SPELL_RES.get()));
+            double mitigation = 1 - (magicLevel + enduranceLevel) * ConfigHandler.Common.LEVEL_TO_SPELL_RES.get();
+            event.damage = (float) Math.max(0, event.damage * mitigation);
         }
-
     }
 
     private static final CompoundTag NONE = new CompoundTag();
 
     private static final UUID manaRegenModifierID = UUID.fromString("57552ec6-c5d4-4df1-987e-bd99acb41fa9");
     private static final UUID manaMaxModifierID = UUID.fromString("654dec09-e05e-4eb1-a255-7a76447322be");
+    private static final UUID damageModifierID = UUID.fromString("3c9f428c-d3dd-11ed-afa1-0242ac120002");
 
 
     public static final TriFunction<Player, CompoundTag, Integer, CompoundTag> MANA_REGEN = (player, nbt, level) -> {
@@ -91,12 +91,14 @@ public class PmmoCompatEventHandler {
 
         double regenBoost = Math.min(maxRegenBoost, level * boostPerLevel);
 
-        if (manaAttribute != null && (manaAttribute.getModifier(manaRegenModifierID) == null || manaAttribute.getModifier(manaRegenModifierID).getAmount() != regenBoost)) {
-            AttributeModifier speedModifier = new AttributeModifier(manaRegenModifierID, "Mana Regen bonus thanks to Magic Level", regenBoost, AttributeModifier.Operation.ADDITION);
-            manaAttribute.removeModifier(manaRegenModifierID);
-            manaAttribute.addPermanentModifier(speedModifier);
+        if (manaAttribute != null) {
+            var modifier = manaAttribute.getModifier(manaRegenModifierID);
+            if (modifier == null || modifier.getAmount() != regenBoost) {
+                AttributeModifier speedModifier = new AttributeModifier(manaRegenModifierID, "Mana Regen bonus thanks to Magic Level", regenBoost, AttributeModifier.Operation.ADDITION);
+                manaAttribute.removeModifier(manaRegenModifierID);
+                manaAttribute.addPermanentModifier(speedModifier);
+            }
         }
-
         return NONE;
     };
 
@@ -114,10 +116,13 @@ public class PmmoCompatEventHandler {
 
         int manaBoost = (int) Math.min(maxManaBoost, level * boostPerLevel);
 
-        if (manaAttribute != null && (manaAttribute.getModifier(manaMaxModifierID) == null || manaAttribute.getModifier(manaMaxModifierID).getAmount() != manaBoost)) {
-            AttributeModifier manaModifier = new AttributeModifier(manaMaxModifierID, "Max Mana bonus thanks to Magic Level", manaBoost, AttributeModifier.Operation.ADDITION);
-            manaAttribute.removeModifier(manaMaxModifierID);
-            manaAttribute.addPermanentModifier(manaModifier);
+        if (manaAttribute != null) {
+            var modifier = manaAttribute.getModifier(manaMaxModifierID);
+            if (modifier == null || modifier.getAmount() != manaBoost) {
+                AttributeModifier manaModifier = new AttributeModifier(manaMaxModifierID, "Max Mana bonus thanks to Magic Level", manaBoost, AttributeModifier.Operation.ADDITION);
+                manaAttribute.removeModifier(manaMaxModifierID);
+                manaAttribute.addPermanentModifier(manaModifier);
+            }
         }
 
         return NONE;
@@ -125,6 +130,32 @@ public class PmmoCompatEventHandler {
 
     public static final TriFunction<Player, CompoundTag, Integer, CompoundTag> MANA_BOOST_TERM = (p, nbt, l) -> {
         AttributeInstance manaAttribute = p.getAttribute(PerkAttributes.FLAT_MANA_BONUS.get());
+        if (manaAttribute != null)
+            manaAttribute.removeModifier(manaMaxModifierID);
+        return NONE;
+    };
+
+    public static final TriFunction<Player, CompoundTag, Integer, CompoundTag> DAMAGE_BOOST = (player, nbt, level) -> {
+        double maxDamageBoost = nbt.contains(APIUtils.MAX_BOOST) ? nbt.getDouble(APIUtils.MAX_BOOST) : 0d;
+        double boostPerLevel = nbt.contains(APIUtils.PER_LEVEL) ? nbt.getDouble(APIUtils.PER_LEVEL) : 0.2d;
+        AttributeInstance manaAttribute = player.getAttribute(PerkAttributes.SPELL_DAMAGE_BONUS.get());
+
+        int damageBoost = (int) Math.min(maxDamageBoost, level * boostPerLevel);
+
+        if (manaAttribute != null) {
+            var modifier = manaAttribute.getModifier(damageModifierID);
+            if (modifier == null || modifier.getAmount() != damageBoost) {
+                AttributeModifier manaModifier = new AttributeModifier(damageModifierID, "Spell Damage bonus thanks to Magic Level", damageBoost, AttributeModifier.Operation.ADDITION);
+                manaAttribute.removeModifier(manaMaxModifierID);
+                manaAttribute.addPermanentModifier(manaModifier);
+            }
+        }
+
+        return NONE;
+    };
+
+    public static final TriFunction<Player, CompoundTag, Integer, CompoundTag> DAMAGE_BOOST_TERM = (p, nbt, l) -> {
+        AttributeInstance manaAttribute = p.getAttribute(PerkAttributes.SPELL_DAMAGE_BONUS.get());
         if (manaAttribute != null)
             manaAttribute.removeModifier(manaMaxModifierID);
         return NONE;
