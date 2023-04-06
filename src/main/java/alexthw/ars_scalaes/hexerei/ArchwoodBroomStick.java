@@ -19,8 +19,8 @@ public class ArchwoodBroomStick extends BroomItem {
         EntityModelSet context = Minecraft.getInstance().getEntityModels();
         this.model = new HexereiModels.ArchwoodStick(context.bakeLayer(HexereiModels.ArchwoodStick.LAYER_LOCATION));
         this.outter_model = new BroomStickBaseModel(context.bakeLayer(BroomStickBaseModel.POWER_LAYER_LOCATION));
-        this.texture = prefix("textures/entity/archwood_broom.png");
-        this.dye_texture = prefix("textures/entity/archwood_broom.png");
+        this.texture = prefix("textures/entity/archwood_broom_stick.png");
+        this.dye_texture = prefix("textures/entity/archwood_broom_stick.png");
     }
 
 }

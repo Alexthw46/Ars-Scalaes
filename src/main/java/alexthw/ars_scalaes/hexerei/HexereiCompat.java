@@ -34,7 +34,7 @@ public class HexereiCompat {
 
     @OnlyIn(Dist.CLIENT)
     public static void layerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
-        //event.registerLayerDefinition(BroomBrushBaseModel.LAYER_LOCATION, BroomBrushBaseModel::createBodyLayerNone);
+        event.registerLayerDefinition(HexereiModels.MagebloomBrush.LAYER_LOCATION, HexereiModels.MagebloomBrush::createBodyLayerNone);
         event.registerLayerDefinition(HexereiModels.ArchwoodStick.LAYER_LOCATION, HexereiModels.ArchwoodStick::createBodyLayerNone);
     }
 

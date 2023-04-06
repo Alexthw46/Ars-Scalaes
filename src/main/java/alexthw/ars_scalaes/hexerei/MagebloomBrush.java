@@ -2,7 +2,8 @@ package alexthw.ars_scalaes.hexerei;
 
 import com.hollingsworth.arsnouveau.client.particle.GlowParticleData;
 import com.hollingsworth.arsnouveau.client.particle.ParticleColor;
-import net.joefoxe.hexerei.client.renderer.entity.model.BroomBrushBaseModel;
+import com.hollingsworth.arsnouveau.common.capability.CapabilityRegistry;
+import net.joefoxe.hexerei.client.renderer.entity.custom.BroomEntity;
 import net.joefoxe.hexerei.item.custom.BroomBrushItem;
 import net.joefoxe.hexerei.particle.ModParticleTypes;
 import net.minecraft.client.Minecraft;
@@ -10,7 +11,9 @@ import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextColor;
+import net.minecraft.util.RandomSource;
 import net.minecraft.util.Tuple;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
@@ -28,10 +31,23 @@ public class MagebloomBrush extends BroomBrushItem {
         super(properties);
     }
 
+    @Override
+    public void onBrushDamage(BroomEntity broom, RandomSource random) {
+        ItemStack brush = broom.getModule(BroomEntity.BroomSlot.BRUSH);
+        if (broom.getFirstPassenger() instanceof Player player && !brush.isEmpty() && brush.getDamageValue() >= 2) {
+            CapabilityRegistry.getMana(player).ifPresent((mana) -> {
+                if (mana.getCurrentMana() >= 250) {
+                    mana.removeMana(200);
+                    brush.setDamageValue(brush.getDamageValue() - 2);
+                }
+            });
+        }
+    }
+
     @OnlyIn(Dist.CLIENT)
     public void bakeModels() {
         EntityModelSet context = Minecraft.getInstance().getEntityModels();
-        this.model = new BroomBrushBaseModel(context.bakeLayer(BroomBrushBaseModel.LAYER_LOCATION));
+        this.model = new HexereiModels.MagebloomBrush(context.bakeLayer(HexereiModels.MagebloomBrush.LAYER_LOCATION));
         this.texture = prefix("textures/entity/archwood_broom.png");
         this.dye_texture = null;
         this.list = new ArrayList<>();
@@ -50,6 +66,6 @@ public class MagebloomBrush extends BroomBrushItem {
 
     @Override
     public boolean shouldGlow(@Nullable Level level, ItemStack brushStack) {
-        return brushStack.getDamageValue() < 5;
+        return brushStack.getDamageValue() < 10;
     }
 }

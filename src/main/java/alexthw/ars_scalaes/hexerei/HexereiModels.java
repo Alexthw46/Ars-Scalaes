@@ -1,5 +1,6 @@
 package alexthw.ars_scalaes.hexerei;
 
+import net.joefoxe.hexerei.client.renderer.entity.model.BroomBrushBaseModel;
 import net.joefoxe.hexerei.client.renderer.entity.model.BroomStickBaseModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
@@ -31,11 +32,31 @@ public class HexereiModels {
         public static LayerDefinition createBodyLayer(CubeDeformation cube) {
             MeshDefinition meshdefinition = new MeshDefinition();
             PartDefinition partdefinition = meshdefinition.getRoot();
-            PartDefinition Broom = partdefinition.addOrReplaceChild("Broom", CubeListBuilder.create().texOffs(0, 0).addBox(-11.2131F, -3.9639F, -0.8505F, 25.0F, 2.0F, 2.0F, cube).texOffs(28, 30).addBox(-21.6631F, -3.9739F, -1.2505F, 4.0F, 2.0F, 2.0F, cube), PartPose.offset(0.2131F, 24.9639F, -0.1495F));
-            Broom.addOrReplaceChild("stick_r1", CubeListBuilder.create().texOffs(0, 22).addBox(-15.548F, -4.01F, -1.6294F, 5.0F, 2.0F, 2.0F, cube), PartPose.offsetAndRotation(-1.5056F, 0.0361F, 5.2711F, 0.0F, -0.4363F, 0.0F));
-            Broom.addOrReplaceChild("stick_r2", CubeListBuilder.create().texOffs(30, 9).addBox(-17.398F, -4.0F, -2.4706F, 4.0F, 2.0F, 2.0F, cube), PartPose.offsetAndRotation(-1.7303F, 0.0361F, -6.1858F, 0.0F, 0.4363F, 0.0F));
+            PartDefinition Broom = partdefinition.addOrReplaceChild("Broom", CubeListBuilder.create().texOffs(0, 0).addBox(-11.2131F, -3.9639F, -0.8505F, 15.0F, 2.0F, 2.0F, new CubeDeformation(0.0F))
+                    .texOffs(10, 10).addBox(-21.6631F, -3.9739F, -1.2505F, 4.0F, 2.0F, 2.0F, new CubeDeformation(0.0F))
+                    .texOffs(10, 10).mirror().addBox(10.2369F, -3.9739F, -0.4505F, 4.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(0.2131F, 24.9639F, -0.1495F));
+
+            Broom.addOrReplaceChild("stick_r1", CubeListBuilder.create().texOffs(0, 4).addBox(-0.9889F, -1.005F, -1.5952F, 5.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-14.6863F, -2.9689F, -0.9124F, 0.0F, -0.4363F, 0.0F));
+            Broom.addOrReplaceChild("stick_r2", CubeListBuilder.create().texOffs(0, 8).addBox(-3.4273F, -0.995F, -1.7749F, 4.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-14.6863F, -2.9689F, -0.9124F, 0.0F, 0.4363F, 0.0F));
+            Broom.addOrReplaceChild("stick_r3", CubeListBuilder.create().texOffs(0, 8).mirror().addBox(-0.5727F, -0.995F, -0.2251F, 4.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(7.26F, -2.9689F, 1.2115F, 0.0F, 0.4363F, 0.0F));
+            Broom.addOrReplaceChild("stick_r4", CubeListBuilder.create().texOffs(0, 4).mirror().addBox(-4.0111F, -1.005F, -0.4048F, 5.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(7.26F, -2.9689F, 1.2115F, 0.0F, -0.4363F, 0.0F));
+
             return LayerDefinition.create(meshdefinition, 64, 64);
         }
+    }
+
+    static class MagebloomBrush extends BroomBrushBaseModel {
+        public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(prefix("archwood_broom_brush"), "main");
+
+        public MagebloomBrush(ModelPart root) {
+            super(root);
+        }
+
+        public static LayerDefinition createBodyLayer(CubeDeformation cube) {
+            return BroomBrushBaseModel.createBodyLayer(cube);
+        }
+
+
     }
 
 }
