@@ -4,6 +4,7 @@ import alexthw.ars_scalaes.hexcast.HexCompat;
 import alexthw.ars_scalaes.hexerei.HexereiCompat;
 import alexthw.ars_scalaes.identity.IdentityReg;
 import alexthw.ars_scalaes.malum.MalumCompat;
+import alexthw.ars_scalaes.origins.OriginCompat;
 import alexthw.ars_scalaes.pehkui.PkCompatHandler;
 import alexthw.ars_scalaes.pmmo.PmmoCompatEventHandler;
 import alexthw.ars_scalaes.registry.ModRegistry;
@@ -55,6 +56,9 @@ public class ArsScalaes {
         }
         if (ModList.get().isLoaded("malum")) {
             MalumCompat.init();
+        }
+        if (ModList.get().isLoaded("origins")) {
+            OriginCompat.init();
         }
         ArsNouveauRegistry.registerCompatGlyphs();
         modbus.addListener(this::setup);

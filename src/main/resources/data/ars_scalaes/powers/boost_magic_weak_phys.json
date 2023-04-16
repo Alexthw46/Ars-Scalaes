@@ -1,0 +1,21 @@
+{
+  "type": "origins:multiple",
+  "boost": {
+    "type": "origins:attribute",
+    "modifier": {
+      "name": "Spell Damage increase",
+      "attribute": "ars_nouveau:ars_nouveau.perk.spell_damage",
+      "value": 2,
+      "operation": "addition"
+    }
+  },
+  "reduce": {
+    "type": "origins:attribute",
+    "modifier": {
+      "name": "Physical Damage nerf",
+      "attribute": "minecraft:generic.attack_damage",
+      "value": 0.8,
+      "operation": "multiply_total"
+    }
+  }
+}

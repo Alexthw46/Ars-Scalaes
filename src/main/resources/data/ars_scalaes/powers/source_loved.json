@@ -1,0 +1,15 @@
+{
+  "type": "origins:conditioned_attribute",
+  "modifier": {
+    "attribute": "ars_nouveau:ars_nouveau.perk.mana_regen",
+    "operation": "multiply_total",
+    "value": 4,
+    "name": "Increased mana regen in critical conditions"
+  },
+  "tick_rate": 20,
+  "condition": {
+    "type": "origins:health",
+    "comparison": "<",
+    "compare_to": 5
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "origins:modify_food",
+  "item_condition": {
+    "type": "origins:ingredient",
+    "inverted": true,
+    "ingredient": {
+      "tag": "ars_nouveau:magic_food"
+    }
+  },
+  "saturation_modifier": {
+    "name": "Caps saturation points",
+    "operation": "multiply_base",
+    "value": 0.25
+  }
+}

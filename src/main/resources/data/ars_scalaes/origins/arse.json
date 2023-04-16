@@ -1,0 +1,12 @@
+{
+  "powers": [
+    "ars_scalaes:source_addict",
+    "ars_scalaes:source_addict_2",
+    "ars_scalaes:mana_absorber"
+  ],
+  "icon": "ars_nouveau:source_berry",
+  "order": 4,
+  "impact": 2,
+  "name": "Arsnach",
+  "description": "You're built different, a great magical capacity but extremely dependant on external sources of magic to sustain yourself."
+}

@@ -1,0 +1,21 @@
+{
+  "order": 2,
+  "origins": [
+    {
+      "condition": {
+        "type": "origins:origin",
+        "origin": "ars_scalaes:sourcerer"
+      },
+      "origins": [
+        "origins:blazeborn",
+        "ars_scalaes:air_affinity",
+        "ars_scalaes:earth_affinity",
+        "ars_scalaes:fire_affinity",
+        "ars_scalaes:water_affinity"
+      ]
+    }
+  ],
+  "name": "Magic Affinity",
+  "missing_name": "None",
+  "missing_description": "You currently don't have a magic origin selected."
+}

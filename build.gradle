@@ -152,11 +152,11 @@ dependencies {
 
     implementation fg.deobf("com.hollingsworth.ars_nouveau:ars_nouveau-${mc_version}:${ars_version}")
 
-    //compileOnly fg.deobf("mezz.jei:jei-1.19-common-api:${jei_version}")
-    //compileOnly fg.deobf("mezz.jei:jei-1.19-forge-api:${jei_version}")
+    //compileOnly fg.deobf("mezz.jei:jei-${mc_version}-common-api:${jei_version}")
+    //compileOnly fg.deobf("mezz.jei:jei-${mc_version}-forge-api:${jei_version}")
     // at runtime, use the full JEI
-    runtimeOnly fg.deobf("mezz.jei:jei-1.19-common:${jei_version}")
-    runtimeOnly fg.deobf("mezz.jei:jei-1.19-forge:${jei_version}")
+    runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}-common:${jei_version}")
+    runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}")
 
     runtimeOnly fg.deobf("com.github.glitchfiend:TerraBlender-forge:1.19-2.0.0.120")
 
@@ -186,6 +186,11 @@ dependencies {
     compileOnly fg.deobf("at.petra-k.hexcasting:hexcasting-common-${mc_version}:0.11.0-pre-557")
     compileOnly fg.deobf("at.petra-k.hexcasting:hexcasting-forge-${mc_version}:0.11.0-pre-557") { transitive = false }
     runtimeOnly 'thedarkcolour:kotlinforforge:3.9.1'
+
+    /*compileOnly*/ implementation fg.deobf("curse.maven:origin-474438:4461237")
+    compileOnly fg.deobf("io.github.edwinmindcraft:apoli-forge:${mc_version}-2.3.4.4")
+
+    runtimeOnly fg.deobf("top.theillusivec4.caelus:caelus-forge:1.19-3.0.0.3")
 
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
 

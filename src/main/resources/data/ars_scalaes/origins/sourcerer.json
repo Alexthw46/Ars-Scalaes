@@ -1,0 +1,12 @@
+{
+  "powers": [
+    "ars_scalaes:source_loved",
+    "ars_scalaes:boost_magic_weak_phys",
+    "ars_scalaes:magic_boost"
+  ],
+  "icon": "ars_nouveau:abjuration_essence",
+  "order": 4,
+  "impact": 1,
+  "name": "Sourcerer",
+  "description": "You were born weak but with a special affinity with the Source of Mana, which empower your magical abilities and surges when in danger."
+}
