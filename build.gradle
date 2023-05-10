@@ -143,10 +143,10 @@ dependencies {
     implementation fg.deobf("com.hollingsworth.ars_nouveau:ars_nouveau-${mc_version}:${ars_version}")
     implementation fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}") // Adds the full JEI mod as a full dependency
     implementation fg.deobf("top.theillusivec4.curios:curios-forge:${mc_version}-${curio_version}")
-    /*compileOnly*/ implementation fg.deobf("curse.maven:project_mmo-353935:4083398")
+    /*compileOnly*/ implementation fg.deobf("curse.maven:project_mmo-353935:4525533")
     compileOnly/*implementation*/ fg.deobf("curse.maven:scaling_health-248027:3788314")
     compileOnly/*implementation*/ fg.deobf("curse.maven:silent_chaos-242998:3708359")
-    /*compileOnly*/ implementation fg.deobf("com.github.Virtuoel:Pehkui:3.6.2-1.18.2-forge")
+    /*compileOnly*/ implementation fg.deobf("com.github.Virtuoel:Pehkui:3.7.2-1.18.2-forge")
     implementation fg.deobf("vazkii.patchouli:Patchouli:${mc_version}-67")
     //runtimeOnly fg.deobf("curse.maven:instrumentum-580179:3838469")
     implementation fg.deobf("curse.maven:elemental-561470:4053791")
@@ -197,7 +197,7 @@ publishing {
 // Copied from Botania
 if (System.getProperty("idea.sync.active") == "true") {
     afterEvaluate {
-        tasks.withType(JavaCompile).all {
+        tasks.withType(JavaCompile).configureEach {
             it.options.annotationProcessorPath = files()
         }
     }

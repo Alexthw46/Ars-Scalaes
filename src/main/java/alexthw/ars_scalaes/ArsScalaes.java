@@ -40,7 +40,7 @@ public class ArsScalaes
         if (ModList.get().isLoaded("pmmo")) {
             MinecraftForge.EVENT_BUS.register(Common.class);
         }
-        if (ModList.get().isLoaded("scaling_health")) {
+        if (ModList.get().isLoaded("scalinghealth")) {
             MinecraftForge.EVENT_BUS.register(ScalingHealthCompatEventHandler.class);
         }
         if (ModList.get().isLoaded("pehkui")) {
