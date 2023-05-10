@@ -1,0 +1,11 @@
+{
+  "powers": [
+    "ars_scalaes:flyphase",
+    "ars_scalaes:toggle_phase"
+  ],
+  "icon": "ars_nouveau:earth_essence",
+  "order": 4,
+  "impact": 1,
+  "name": "Earth",
+  "description": "One with the earth, you can move through it at will."
+}

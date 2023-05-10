@@ -1,0 +1,10 @@
+{
+  "powers": [
+    "ars_scalaes:book_inept"
+  ],
+  "icon": "ars_nouveau:dominion_wand",
+  "order": 4,
+  "impact": 2,
+  "name": "Arsificier",
+  "description": "Unable to use Spellbooks for spellcasting, the Arsificier specialized in using other magical apparatus."
+}

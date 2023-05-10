@@ -90,6 +90,6 @@
   "power.ars_scalaes.source_addict.name": "Source Addict",
   "power.ars_scalaes.source_addict.description": "Saturation gained by non magical food is heavily reduced. Mana capacity is greatly increased but mana regeneration is lowered.",
   "power.ars_scalaes.book_inept.name": "Book Inept",
-  "power.ars_scalaes.book_inept.description": "You can't cast spells from spellbooks, but can use them to inscribe them on turrets and tools.",
+  "power.ars_scalaes.book_inept.description": "You can't cast spells from spellbooks, but can use them to inscribe turrets and caster tools.",
   "itemGroup.ars_scalaes": "Ars Scalaes - Scaling and Stairs"
 }

@@ -164,8 +164,8 @@ dependencies {
     implementation fg.deobf("top.theillusivec4.curios:curios-forge:${mc_version}-${curio_version}")
 
     /*implementation*/ compileOnly fg.deobf("curse.maven:project_mmo-353935:4450518")
-    /*implementation*/ compileOnly fg.deobf("curse.maven:scaling_health-248027:3943340")
-    /*implementation*/ compileOnly fg.deobf("curse.maven:silent_chaos-242998:3968715")
+    implementation /*compileOnly*/ fg.deobf("curse.maven:scaling_health-248027:3943340")
+    runtimeOnly fg.deobf("curse.maven:silent_chaos-242998:3968715")
     /*compileOnly*/ implementation fg.deobf("com.github.Virtuoel:Pehkui:3.6.0-${mc_version}-forge")
 
     /*implementation*/ implementation fg.deobf("joefoxe:hexerei:0.3.1")
@@ -188,7 +188,9 @@ dependencies {
     runtimeOnly 'thedarkcolour:kotlinforforge:3.9.1'
 
     /*compileOnly*/ implementation fg.deobf("curse.maven:origin-474438:4461237")
+    runtimeOnly fg.deobf("curse.maven:origin_classes-610127:3942224")
     compileOnly fg.deobf("io.github.edwinmindcraft:apoli-forge:${mc_version}-2.3.4.4")
+    compileOnly fg.deobf("io.github.edwinmindcraft:calio-forge:${mc_version}-1.6.0.3")
 
     runtimeOnly fg.deobf("top.theillusivec4.caelus:caelus-forge:1.19-3.0.0.3")
 

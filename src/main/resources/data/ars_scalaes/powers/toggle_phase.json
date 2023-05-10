@@ -1,0 +1,49 @@
+{
+  "type": "origins:multiple",
+  "togglephase": {
+    "type": "origins:toggle",
+    "active_by_default": true,
+    "retain_state": true
+  },
+  "phase": {
+    "condition": {
+      "type": "origins:power_active",
+      "power": "*:*_togglephase"
+    },
+    "type": "origins:phasing",
+    "render_type": "blindness",
+    "view_distance": 30,
+    "block_condition": {
+      "type": "origins:and",
+      "conditions": [
+        {
+          "type": "origins:material",
+          "material": "stone",
+          "materials": [
+            "soil",
+            "leaves",
+            "solid_organic",
+            "moss_block",
+            "aggregate"
+          ]
+        },
+        {
+          "inverted": true,
+          "type": "origins:in_tag",
+          "tag": "origins:unphasable"
+        }
+      ]
+    },
+    "phase_down_condition": {
+      "type": "origins:and",
+      "conditions": [
+        {
+          "type": "origins:sneaking"
+        },
+        {
+          "type": "origins:on_block"
+        }
+      ]
+    }
+  }
+}

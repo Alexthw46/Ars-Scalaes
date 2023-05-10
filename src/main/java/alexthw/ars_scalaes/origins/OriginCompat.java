@@ -57,8 +57,9 @@ public class OriginCompat {
 
             //nerf regen from non-potion and enchantment sources, 2x boost from potions
             regen *= 0.75;
-            if (entity.hasEffect(ModPotions.MANA_REGEN_EFFECT.get()))
-                regen -= ServerConfig.MANA_REGEN_POTION.get() * (1 + entity.getEffect(ModPotions.MANA_REGEN_EFFECT.get()).getAmplifier());
+            var effect = entity.getEffect(ModPotions.MANA_REGEN_EFFECT.get());
+            if (effect != null)
+                regen -= ServerConfig.MANA_REGEN_POTION.get() * (1 + effect.getAmplifier());
 
             event.setRegen(event.getRegen() - regen);
         }

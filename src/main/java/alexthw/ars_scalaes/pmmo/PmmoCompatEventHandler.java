@@ -1,8 +1,8 @@
 package alexthw.ars_scalaes.pmmo;
 
 import alexthw.ars_scalaes.ConfigHandler;
-import com.hollingsworth.arsnouveau.api.event.SpellCastEvent;
 import com.hollingsworth.arsnouveau.api.event.SpellDamageEvent;
+import com.hollingsworth.arsnouveau.api.event.SpellResolveEvent;
 import com.hollingsworth.arsnouveau.api.perk.PerkAttributes;
 import com.hollingsworth.arsnouveau.api.spell.AbstractAugment;
 import com.hollingsworth.arsnouveau.api.spell.AbstractEffect;
@@ -42,9 +42,9 @@ public class PmmoCompatEventHandler {
     }
 
     @SubscribeEvent
-    public static void awardSpellCastXp(SpellCastEvent event) {
+    public static void awardSpellCastXp(SpellResolveEvent.Post event) {
 
-        if (event.getEntity() instanceof ServerPlayer player) {
+        if (event.shooter instanceof ServerPlayer player && !event.isCanceled()) {
 
             Spell spell = event.spell;
             int manaCost = 0;

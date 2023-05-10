@@ -2,7 +2,6 @@
   "replace": false,
   "origins": [
     "ars_scalaes:sourcerer",
-    "ars_scalaes:arsificer",
     "ars_scalaes:arse"
   ]
 }

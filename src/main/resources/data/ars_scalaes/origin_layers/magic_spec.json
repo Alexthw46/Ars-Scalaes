@@ -7,11 +7,12 @@
         "origin": "ars_scalaes:sourcerer"
       },
       "origins": [
-        "origins:blazeborn",
-        "ars_scalaes:air_affinity",
-        "ars_scalaes:earth_affinity",
-        "ars_scalaes:fire_affinity",
-        "ars_scalaes:water_affinity"
+        "ars_scalaes:affinity/air_affinity",
+        "ars_scalaes:affinity/earth_affinity",
+        "ars_scalaes:affinity/fire_affinity",
+        "ars_scalaes:affinity/water_affinity",
+        "ars_scalaes:affinity/abjuration",
+        "ars_scalaes:affinity/conjuration"
       ]
     }
   ],
