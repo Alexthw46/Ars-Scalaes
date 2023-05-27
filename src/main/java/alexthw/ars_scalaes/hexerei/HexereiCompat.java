@@ -9,14 +9,22 @@ import net.joefoxe.hexerei.item.custom.BroomBrushItem;
 import net.joefoxe.hexerei.item.custom.KeychainItem;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
+import net.minecraft.network.chat.TextColor;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.registries.RegistryObject;
+
+import javax.annotation.Nullable;
+import java.util.List;
 
 import static alexthw.ars_scalaes.registry.ModRegistry.ITEMS;
 import static alexthw.ars_scalaes.registry.ModRegistry.addTabProp;
@@ -29,6 +37,12 @@ public class HexereiCompat {
 
         ARCHWOOD_BROOM = ITEMS.register("archwood_broom", () -> new ArchwoodBroomStick("archwood", addTabProp().stacksTo(1)));
         MAGEBLOOM_BRUSH = ITEMS.register("magebloom_brush", () -> new MagebloomBrush(addTabProp().durability(100)));
+        WET_MAGEBLOOM_BRUSH = ITEMS.register("wet_magebloom_brush", () -> new Item(addTabProp()) {
+            public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag flagIn) {
+                tooltip.add(Component.translatable("tooltip.hexerei.wet_broom_brush").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(10066329))));
+                super.appendHoverText(stack, world, tooltip, flagIn);
+            }
+        });
 
     }
 
@@ -60,7 +74,6 @@ public class HexereiCompat {
         }));
     }
 
-    public static RegistryObject<Item> ARCHWOOD_BROOM;
-    public static RegistryObject<Item> MAGEBLOOM_BRUSH;
+    public static RegistryObject<Item> ARCHWOOD_BROOM, MAGEBLOOM_BRUSH, WET_MAGEBLOOM_BRUSH;
 
 }

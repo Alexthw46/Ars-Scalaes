@@ -36,7 +36,7 @@ public class MagebloomBrush extends BroomBrushItem {
         ItemStack brush = broom.getModule(BroomEntity.BroomSlot.BRUSH);
         if (broom.getFirstPassenger() instanceof Player player && !brush.isEmpty() && brush.getDamageValue() >= 2) {
             CapabilityRegistry.getMana(player).ifPresent((mana) -> {
-                if (mana.getCurrentMana() >= 250) {
+                if (mana.getCurrentMana() >= 200) {
                     mana.removeMana(200);
                     brush.setDamageValue(brush.getDamageValue() - 2);
                 }
@@ -61,6 +61,7 @@ public class MagebloomBrush extends BroomBrushItem {
 
     public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag flagIn) {
         tooltip.add(Component.translatable("tooltip.hexerei.broom_attachments").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(10066329))));
+        tooltip.add(Component.translatable("tooltip.ars_scalaes.magebloom_brush").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(10066329))));
         super.appendHoverText(stack, world, tooltip, flagIn);
     }
 

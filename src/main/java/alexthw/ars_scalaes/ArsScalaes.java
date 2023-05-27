@@ -33,6 +33,7 @@ public class ArsScalaes {
     };
 
     public ArsScalaes() {
+        //ArsNouveauAPI.ENABLE_DEBUG_NUMBERS = true;
         IEventBus modbus = FMLJavaModLoadingContext.get().getModEventBus();
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ConfigHandler.COMMON_SPEC);
         ModRegistry.registerRegistries(modbus);

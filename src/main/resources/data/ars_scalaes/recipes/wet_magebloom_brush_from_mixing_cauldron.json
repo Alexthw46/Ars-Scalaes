@@ -1,0 +1,45 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "hexerei"
+    }
+  ],
+  "type": "hexerei:mixingcauldron",
+  "liquid": {
+    "fluid": "minecraft:water"
+  },
+  "ingredients": [
+    {
+      "item": "hexerei:herb_enhanced_broom_brush"
+    },
+    {
+      "item": "ars_nouveau:magebloom"
+    },
+    {
+      "item": "ars_nouveau:magebloom"
+    },
+    {
+      "item": "hexerei:mandrake_root"
+    },
+    {
+      "item": "hexerei:mandrake_flowers"
+    },
+    {
+      "item": "hexerei:mandrake_root"
+    },
+    {
+      "item": "ars_nouveau:magebloom"
+    },
+    {
+      "item": "ars_nouveau:magebloom"
+    }
+  ],
+  "output": {
+    "item": "ars_scalaes:wet_magebloom_brush"
+  },
+  "liquidOutput": {
+    "fluid": "minecraft:water"
+  },
+  "fluidLevelsConsumed": 1000
+}

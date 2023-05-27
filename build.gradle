@@ -142,7 +142,6 @@ repositories {
             includeGroup "curse.maven"
         }
     }
-    maven { url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }
     mavenCentral()
     mavenLocal()
 }
@@ -163,7 +162,7 @@ dependencies {
     implementation fg.deobf("vazkii.patchouli:Patchouli:${mc_version}-77")
     implementation fg.deobf("top.theillusivec4.curios:curios-forge:${mc_version}-${curio_version}")
 
-    /*implementation*/ compileOnly fg.deobf("curse.maven:project_mmo-353935:4450518")
+    /*compileOnly*/ implementation fg.deobf("curse.maven:project_mmo-353935:4450518")
     implementation /*compileOnly*/ fg.deobf("curse.maven:scaling_health-248027:3943340")
     runtimeOnly fg.deobf("curse.maven:silent_chaos-242998:3968715")
     /*compileOnly*/ implementation fg.deobf("com.github.Virtuoel:Pehkui:3.6.0-${mc_version}-forge")
@@ -171,8 +170,8 @@ dependencies {
     /*implementation*/ implementation fg.deobf("joefoxe:hexerei:0.3.1")
 
 
-    /*compileOnly*/ implementation fg.deobf("curse.maven:elemental-561470:4401516")
-    runtimeOnly fg.deobf("curse.maven:instrumentum-580179:4378515")
+    implementation fg.deobf("curse.maven:ars-elemental-561470:4546199")
+    //runtimeOnly fg.deobf("curse.maven:instrumentum-580179:4378515")
 
     runtimeOnly fg.deobf("curse.maven:arch-419699:3984018")
     runtimeOnly fg.deobf("curse.maven:tpw-435044:3834422")
