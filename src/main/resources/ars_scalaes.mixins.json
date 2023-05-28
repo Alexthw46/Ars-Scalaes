@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "alexthw.ars_scalaes.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "ars_scalaes.refmap.json",
+  "mixins": [
+    "SpellCastSuccessMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "minVersion": "0.8"
+}

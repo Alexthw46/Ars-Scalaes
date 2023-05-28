@@ -2,14 +2,11 @@ package alexthw.ars_scalaes.pmmo;
 
 import alexthw.ars_scalaes.ConfigHandler;
 import com.hollingsworth.arsnouveau.api.event.SpellDamageEvent;
-import com.hollingsworth.arsnouveau.api.event.SpellResolveEvent;
 import com.hollingsworth.arsnouveau.api.perk.PerkAttributes;
 import com.hollingsworth.arsnouveau.api.spell.AbstractAugment;
 import com.hollingsworth.arsnouveau.api.spell.AbstractEffect;
 import com.hollingsworth.arsnouveau.api.spell.AbstractSpellPart;
 import com.hollingsworth.arsnouveau.api.spell.Spell;
-import com.hollingsworth.arsnouveau.common.spell.effect.EffectLinger;
-import com.hollingsworth.arsnouveau.common.spell.effect.EffectWall;
 import harmonised.pmmo.api.APIUtils;
 import harmonised.pmmo.api.enums.PerkSide;
 import net.minecraft.nbt.CompoundTag;
@@ -44,16 +41,15 @@ public class PmmoCompatEventHandler {
     }
 
     @SubscribeEvent
-    public static void awardSpellCastXp(SpellResolveEvent.Post event) {
+    public static void awardSpellCastXp(SpellSuccessEvent event) {
 
-        if (event.shooter instanceof ServerPlayer player && !event.isCanceled()) {
+        if (event.context.getUnwrappedCaster() instanceof ServerPlayer player && !event.isCanceled()) {
             Spell spell = event.spell;
             int manaCost = 0;
             boolean hasEffect = false;
             for (AbstractSpellPart spellPart : spell.recipe) {
                 if (!(spellPart instanceof AbstractAugment)) {
                     if (spellPart instanceof AbstractEffect) hasEffect = true;
-                    if (spellPart == EffectLinger.INSTANCE || spellPart == EffectWall.INSTANCE) break;
                     manaCost += spellPart.getCastingCost();
                 }
             }

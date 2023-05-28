@@ -57,6 +57,7 @@ minecraft {
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'mixin.env.remapRefMap', 'true'
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+            arg "-mixin.config=ars_scalaes.mixins.json"
 
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
@@ -75,6 +76,7 @@ minecraft {
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'mixin.env.remapRefMap', 'true'
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+            arg "-mixin.config=ars_scalaes.mixins.json"
 
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
@@ -97,6 +99,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
             args '--mod', 'ars_scalaes', '--all', '--output', file('src/generated/resources/'), "--existing", file('src/main/resources/')
+            arg "-mixin.config=ars_scalaes.mixins.json"
 
             mods {
                 ars_scalaes {
@@ -209,6 +212,7 @@ jar {
                 "Implementation-Version": "${version}",
                 "Implementation-Vendor" :"alexthw",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                "MixinConfigs": "ars_scalaes.mixins.json"
         ])
     }
 }
@@ -232,6 +236,11 @@ publishing {
     }
 }
 
+apply plugin: 'org.spongepowered.mixin'
+
+mixin {
+    add sourceSets.main, "ars_scalaes.refmap.json"
+}
 
 // Prevent Mixin annotation processor from getting into IDEA's annotation processor settings
 // Copied from Botania
