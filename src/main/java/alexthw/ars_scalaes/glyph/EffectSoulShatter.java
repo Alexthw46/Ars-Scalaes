@@ -1,16 +1,13 @@
 package alexthw.ars_scalaes.glyph;
 
-import com.hollingsworth.arsnouveau.api.ANFakePlayer;
 import com.hollingsworth.arsnouveau.api.spell.*;
 import com.hollingsworth.arsnouveau.common.spell.augment.AugmentAmplify;
 import com.hollingsworth.arsnouveau.common.spell.augment.AugmentDampen;
-import com.sammy.malum.core.setup.content.DamageSourceRegistry;
+import com.sammy.malum.registry.common.DamageSourceRegistry;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.common.ForgeConfigSpec;
@@ -38,8 +35,7 @@ public class EffectSoulShatter extends AbstractEffect implements IDamageEffect {
     }
 
     public DamageSource buildDamageSource(Level world, LivingEntity shooter) {
-        if (!(shooter instanceof Player)) shooter = ANFakePlayer.getPlayer((ServerLevel) world);
-        return DamageSourceRegistry.causeSoulStrikeDamage(shooter);
+        return DamageSourceRegistry.VOODOO;
     }
 
     public void buildConfig(ForgeConfigSpec.Builder builder) {

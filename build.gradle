@@ -170,7 +170,7 @@ dependencies {
     runtimeOnly fg.deobf("curse.maven:silent_chaos-242998:3968715")
     /*compileOnly*/ implementation fg.deobf("com.github.Virtuoel:Pehkui:3.6.0-${mc_version}-forge")
 
-    /*implementation*/ implementation fg.deobf("joefoxe:hexerei:0.3.1")
+    /*implementation*/ implementation fg.deobf("joefoxe:hexerei:0.3.2.2")
 
 
     implementation fg.deobf("curse.maven:ars-elemental-561470:4546199")
@@ -181,12 +181,12 @@ dependencies {
 
     /*compileOnly */ implementation fg.deobf("curse.maven:identity-391390:3956107")
 
-    implementation fg.deobf("team.lodestar.lodestone:lodestone:${mc_version}-2.0.0.82")
-    /*implementation*/ compileOnly fg.deobf("com.sammy.malum:malum:${mc_version}-1.4.3.1-9")
+    implementation fg.deobf("team.lodestar.lodestone:lodestone:${mc_version}-1.4.1.82")
+    implementation fg.deobf("com.sammy.malum:malum:${mc_version}-1.5.1-19")
 
     runtimeOnly fg.deobf("at.petra-k.paucal:paucal-forge-${mc_version}:0.5.0")
-    compileOnly fg.deobf("at.petra-k.hexcasting:hexcasting-common-${mc_version}:0.11.0-pre-557")
-    compileOnly fg.deobf("at.petra-k.hexcasting:hexcasting-forge-${mc_version}:0.11.0-pre-557") { transitive = false }
+    compileOnly fg.deobf("at.petra-k.hexcasting:hexcasting-common-${mc_version}:0.11.0-pre-603")
+    compileOnly fg.deobf("at.petra-k.hexcasting:hexcasting-forge-${mc_version}:0.11.0-pre-603") { transitive = false }
     runtimeOnly 'thedarkcolour:kotlinforforge:3.9.1'
 
     /*compileOnly*/ implementation fg.deobf("curse.maven:origin-474438:4461237")
