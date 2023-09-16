@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "ars_scalaes:block/sourcestone_basketweave",
-    "side": "ars_scalaes:block/sourcestone_basketweave",
-    "top": "ars_scalaes:block/sourcestone_basketweave"
-  }
-}

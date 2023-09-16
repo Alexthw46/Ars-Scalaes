@@ -36,7 +36,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .addOptional(hexLoc("battery"))
                 .addOptional(hexLoc("spellbook"))
                 .addOptional(hexLoc("cypher"));
-        tag(HexereiTags.Items.BROOM_BRUSH).addOptional(HexereiCompat.MAGEBLOOM_BRUSH.getId());
+        //tag(HexereiTags.Items.BROOM_BRUSH).addOptional(HexereiCompat.MAGEBLOOM_BRUSH.getId());
 
     }
 

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "bottom": "ars_scalaes:block/sourcestone_large_bricks",
-    "side": "ars_scalaes:block/sourcestone_large_bricks",
-    "top": "ars_scalaes:block/sourcestone_large_bricks"
-  }
-}

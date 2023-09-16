@@ -1,26 +1,3 @@
 {
-  "values": [
-    "ars_scalaes:sourcestone_stairs",
-    "ars_scalaes:sourcestone_mosaic_stairs",
-    "ars_scalaes:sourcestone_basketweave_stairs",
-    "ars_scalaes:sourcestone_alternating_stairs",
-    "ars_scalaes:sourcestone_large_bricks_stairs",
-    "ars_scalaes:sourcestone_small_bricks_stairs",
-    "ars_scalaes:gilded_sourcestone_mosaic_stairs",
-    "ars_scalaes:gilded_sourcestone_basketweave_stairs",
-    "ars_scalaes:gilded_sourcestone_alternating_stairs",
-    "ars_scalaes:gilded_sourcestone_large_bricks_stairs",
-    "ars_scalaes:gilded_sourcestone_small_bricks_stairs",
-    "ars_scalaes:smooth_sourcestone_stairs",
-    "ars_scalaes:smooth_sourcestone_mosaic_stairs",
-    "ars_scalaes:smooth_sourcestone_basketweave_stairs",
-    "ars_scalaes:smooth_sourcestone_alternating_stairs",
-    "ars_scalaes:smooth_sourcestone_large_bricks_stairs",
-    "ars_scalaes:smooth_sourcestone_small_bricks_stairs",
-    "ars_scalaes:smooth_gilded_sourcestone_mosaic_stairs",
-    "ars_scalaes:smooth_gilded_sourcestone_basketweave_stairs",
-    "ars_scalaes:smooth_gilded_sourcestone_alternating_stairs",
-    "ars_scalaes:smooth_gilded_sourcestone_large_bricks_stairs",
-    "ars_scalaes:smooth_gilded_sourcestone_small_bricks_stairs"
-  ]
+  "values": []
 }

@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/wall_inventory",
-  "textures": {
-    "wall": "ars_scalaes:block/gilded_sourcestone_large_bricks"
-  }
-}

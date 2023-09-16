@@ -172,7 +172,7 @@ dependencies {
     /*implementation*/ compileOnly fg.deobf("joefoxe:hexerei:0.3.2.2")
 
 
-    compileOnly fg.deobf("alexthw:ars_elemental:${mc_version}-0.6.0-beta4")
+    implementation fg.deobf("alexthw:ars_elemental:${mc_version}-0.6.0-beta4")
 
     runtimeOnly fg.deobf("curse.maven:architectury-api-419699:4663010")
     //runtimeOnly fg.deobf("curse.maven:tpw-435044:3834422")

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "bottom": "ars_scalaes:block/gilded_sourcestone_large_bricks_bot",
-    "side": "ars_scalaes:block/gilded_sourcestone_large_bricks",
-    "top": "ars_scalaes:block/gilded_sourcestone_large_bricks_top_out"
-  }
-}
