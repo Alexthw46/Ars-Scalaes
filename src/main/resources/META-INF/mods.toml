@@ -40,7 +40,7 @@ modId = "forge" #mandatory
 # Does this dependency have to exist - if not, ordering below must be specified
 mandatory = true #mandatory
 # The version range of the dependency
-versionRange = "[41.0.98,]" #mandatory
+versionRange = "[47.1.0,]" #mandatory
 # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
 ordering = "NONE"
 # Side this dependency is applied on - BOTH, CLIENT or SERVER
@@ -48,28 +48,28 @@ side = "BOTH"
 [[dependencies.ars_scalaes]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.19,)"
+versionRange = "[1.20.1,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.ars_scalaes]]
 modId = "ars_nouveau"
 mandatory = true
-versionRange = "[1.19.2-3.13.4,)"
+versionRange = "[1.20.1-4.2,)"
 ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.ars_scalaes]]
 modId = "pmmo"
 mandatory = false
-versionRange = "[1.19-1.0,)"
+versionRange = "[1.0,)"
 ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.ars_scalaes]]
 modId = "pehkui"
 mandatory = false
-versionRange = "[1.19-3.3.3,)"
+versionRange = "[1.20-3.3.3,)"
 ordering = "AFTER"
 side = "BOTH"
 
@@ -83,7 +83,7 @@ side = "BOTH"
 [[dependencies.ars_scalaes]]
 modId = "ars_elemental"
 mandatory = false
-versionRange = "[1.19-0.5.0.16,)"
+versionRange = "[1.20-0.5,)"
 ordering = "AFTER"
 side = "BOTH"
 

@@ -9,7 +9,7 @@ import net.minecraft.world.entity.player.Player;
 public class WhirlSprigTickHandler implements IdentityTickHandler<Whirlisprig> {
     @Override
     public void tick(Player player, Whirlisprig whirlisprig) {
-        if (!player.level.isClientSide()) {
+        if (!player.level().isClientSide()) {
             player.addEffect(new MobEffectInstance(MobEffects.JUMP, 40, 2, true, false));
         }
     }

@@ -1,7 +1,6 @@
 package alexthw.ars_scalaes.hexcast;
 
 import alexthw.ars_scalaes.ConfigHandler.Common;
-import alexthw.ars_scalaes.registry.ModRegistry;
 import at.petrak.hexcasting.api.addldata.ADMediaHolder;
 import at.petrak.hexcasting.common.items.ItemStaff;
 import at.petrak.hexcasting.forge.cap.HexCapabilities;
@@ -31,7 +30,7 @@ public class HexCompat {
     public static void init() {
         MinecraftForge.EVENT_BUS.register(HexCompat.class);
 
-        ARCH_WAND = ITEMS.register("archwood_staff", () -> new ItemStaff(ModRegistry.addTabProp()));
+        ARCH_WAND = ITEMS.register("archwood_staff", () -> new ItemStaff(new Item.Properties()));
     }
 
     static RegistryObject<Item> ARCH_WAND;

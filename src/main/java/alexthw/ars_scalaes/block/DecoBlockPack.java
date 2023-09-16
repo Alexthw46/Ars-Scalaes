@@ -4,6 +4,7 @@ import com.hollingsworth.arsnouveau.ArsNouveau;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
+import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -38,9 +39,9 @@ public class DecoBlockPack {
         return this;
     }
 
-    public DecoBlockPack addFence() {
+    public DecoBlockPack addFence(WoodType type) {
         this.fence = addBlock(this.basename + "_fence", () ->  new FenceBlock(this.props));
-        this.fence_gate = addBlock(this.basename + "_fence_gate", () ->  new FenceGateBlock(this.props));
+        this.fence_gate = addBlock(this.basename + "_fence_gate", () ->  new FenceGateBlock(this.props, type));
         return this;
     }
 

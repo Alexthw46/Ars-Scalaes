@@ -25,7 +25,7 @@ public class PehkuiEffect extends AbstractEffect implements IPotionEffect {
     @Override
     public void onResolveEntity(EntityHitResult rayTraceResult, Level world, @NotNull LivingEntity shooter, SpellStats spellStats, SpellContext spellContext, SpellResolver resolver) {
         if (isTimeLimited.get() && rayTraceResult.getEntity() instanceof LivingEntity living && (living != shooter || spellStats.getDurationMultiplier() < 1)) {
-            ((IPotionEffect) this).applyConfigPotion(living, PkCompatHandler.RESIZE.get(), spellStats, false);
+            this.applyConfigPotion(living, PkCompatHandler.RESIZE.get(), spellStats, false);
         }
     }
 

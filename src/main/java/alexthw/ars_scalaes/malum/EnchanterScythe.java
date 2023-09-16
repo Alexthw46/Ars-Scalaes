@@ -1,6 +1,7 @@
 package alexthw.ars_scalaes.malum;
 
 import com.hollingsworth.arsnouveau.api.item.ICasterTool;
+import com.hollingsworth.arsnouveau.api.mana.IManaDiscountEquipment;
 import com.hollingsworth.arsnouveau.api.spell.*;
 import com.hollingsworth.arsnouveau.api.spell.wrapped_caster.IWrappedCaster;
 import com.hollingsworth.arsnouveau.api.spell.wrapped_caster.LivingCaster;
@@ -27,13 +28,13 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EnchanterScythe extends MagicScytheItem implements ICasterTool {
+public class EnchanterScythe extends MagicScytheItem implements ICasterTool, IManaDiscountEquipment {
     public EnchanterScythe(Tier tier, float attackDamageIn, float attackSpeedIn, float magicDamageIn, Properties builderIn) {
         super(tier, attackDamageIn, attackSpeedIn, magicDamageIn, new Item.Properties());
     }
 
     @Override
-    public void inventoryTick(ItemStack stack, Level world, Entity entity, int p_77663_4_, boolean p_77663_5_) {
+    public void inventoryTick(@NotNull ItemStack stack, @NotNull Level world, @NotNull Entity entity, int p_77663_4_, boolean p_77663_5_) {
         super.inventoryTick(stack, world, entity, p_77663_4_, p_77663_5_);
         if (entity instanceof Player player)
             RepairingPerk.attemptRepair(stack, player);
@@ -63,7 +64,7 @@ public class EnchanterScythe extends MagicScytheItem implements ICasterTool {
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity entity) {
         ISpellCaster caster = getSpellCaster(stack);
         IWrappedCaster wrappedCaster = entity instanceof Player player ? new PlayerCaster(player) : new LivingCaster(entity);
-        SpellContext context = new SpellContext(entity.level, caster.modifySpellBeforeCasting(target.level, entity, InteractionHand.MAIN_HAND, caster.getSpell()), entity, wrappedCaster);
+        SpellContext context = new SpellContext(entity.level(), caster.modifySpellBeforeCasting(target.level(), entity, InteractionHand.MAIN_HAND, caster.getSpell()), entity, wrappedCaster);
         SpellResolver resolver = entity instanceof Player ? new SpellResolver(context) : new EntitySpellResolver(context);
         EntityHitResult entityRes = new EntityHitResult(target);
         resolver.onCastOnEntity(stack, entityRes.getEntity(), InteractionHand.MAIN_HAND);
@@ -71,17 +72,13 @@ public class EnchanterScythe extends MagicScytheItem implements ICasterTool {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip2, TooltipFlag flagIn) {
+    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level worldIn, @NotNull List<Component> tooltip2, @NotNull TooltipFlag flagIn) {
         getInformation(stack, worldIn, tooltip2, flagIn);
         super.appendHoverText(stack, worldIn, tooltip2, flagIn);
     }
 
-    @NotNull
     @Override
-    public ISpellCaster getSpellCaster(ItemStack stack) {
-        return new BasicReductionCaster(stack, (spell -> {
-            spell.addDiscount(AugmentAmplify.INSTANCE.getCastingCost());
-            return spell;
-        }));
+    public int getManaDiscount(ItemStack i) {
+       return AugmentAmplify.INSTANCE.getCastingCost();
     }
 }

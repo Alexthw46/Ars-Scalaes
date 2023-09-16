@@ -29,7 +29,8 @@ import virtuoel.pehkui.Pehkui;
 import java.io.IOException;
 import java.nio.file.Path;
 
-import static com.hollingsworth.arsnouveau.api.RegistryHelper.getRegistryName;
+import static com.hollingsworth.arsnouveau.setup.registry.RegistryHelper.getRegistryName;
+
 
 @SuppressWarnings("unused")
 public class ArsProviders {
@@ -41,9 +42,7 @@ public class ArsProviders {
         }
 
         @Override
-        public void run(CachedOutput cache) throws IOException {
-
-            Path output = this.generator.getOutputFolder();
+        public void collectJsons(CachedOutput pOutput) {
 
             //add(get(EffectResize.INSTANCE).withItem(ItemsRegistry.MANIPULATION_ESSENCE).withItem(ItemsRegistry.ABJURATION_ESSENCE).withItem(Items.BROWN_MUSHROOM));
             //add(get(EffectShrink.INSTANCE).withItem(ItemsRegistry.MANIPULATION_ESSENCE).withItem(ItemsRegistry.ABJURATION_ESSENCE).withItem(Items.TURTLE_EGG));
@@ -53,7 +52,7 @@ public class ArsProviders {
 
             for (GlyphRecipe recipe : recipes) {
                 Path path = getScribeGlyphPath(output, recipe.output.getItem());
-                DataProvider.saveStable(cache, recipe.asRecipe(), path);
+                saveStable(pOutput, recipe.asRecipe(), path);
             }
 
         }
@@ -76,14 +75,13 @@ public class ArsProviders {
         }
 
         @Override
-        public void run(CachedOutput cache) throws IOException {
+        public void collectJsons(CachedOutput pOutput) {
 
 
-            Path output = this.generator.getOutputFolder();
             for (EnchantingApparatusRecipe g : recipes) {
                 if (g != null) {
                     Path path = getRecipePath(output, g.getId().getPath());
-                    DataProvider.saveStable(cache, g.asRecipe(), path);
+                    saveStable(pOutput, g.asRecipe(), path);
                 }
             }
 
@@ -106,12 +104,11 @@ public class ArsProviders {
         }
 
         @Override
-        public void run(CachedOutput cache) throws IOException {
+        public void collectJsons(CachedOutput pOutput) {
 
-            Path output = generator.getOutputFolder();
             for (ImbuementRecipe g : recipes) {
                 Path path = getRecipePath(output, g.getId().getPath());
-                DataProvider.saveStable(cache, g.asRecipe(), path);
+                saveStable(pOutput, g.asRecipe(), path);
             }
 
         }
@@ -134,8 +131,7 @@ public class ArsProviders {
         }
 
         @Override
-        public void run(CachedOutput cache) throws IOException {
-
+        public void collectJsons(CachedOutput pOutput) {
 
             addGlyphPage(EffectResize.INSTANCE, Pehkui.MOD_ID);
             addGlyphPage(EffectExpand.INSTANCE, Pehkui.MOD_ID);
@@ -144,7 +140,7 @@ public class ArsProviders {
             addGlyphPage(EffectSoulShatter.INSTANCE, MalumMod.MALUM);
 
             for (PatchouliPage patchouliPage : pages) {
-                DataProvider.saveStable(cache, patchouliPage.build(), patchouliPage.path());
+                saveStable(pOutput, patchouliPage.build(), patchouliPage.path());
             }
 
         }
@@ -212,14 +208,6 @@ public class ArsProviders {
             return "ArsScalaes Patchouli Datagen";
         }
 
-        @Override
-        public Path getPath(ResourceLocation category, String fileName) {
-            return this.generator.getOutputFolder().resolve("data/" + root + "/patchouli_books/scalaes/en_us/entries/" + category.getPath() + "/" + fileName + ".json");
-        }
-
-        ImbuementPage ImbuementPage(ItemLike item) {
-            return new ImbuementPage(root + ":imbuement_" + getRegistryName(item.asItem()).getPath());
-        }
 
     }
 

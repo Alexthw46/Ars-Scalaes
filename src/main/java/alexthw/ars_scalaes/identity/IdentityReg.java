@@ -6,6 +6,7 @@ import alexthw.ars_scalaes.identity.rendering.StarbuncleTypeProvider;
 import alexthw.ars_scalaes.identity.tick_handlers.StalkerTickHandler;
 import alexthw.ars_scalaes.identity.tick_handlers.WhirlSprigTickHandler;
 import com.hollingsworth.arsnouveau.common.entity.*;
+import com.hollingsworth.arsnouveau.setup.registry.ModEntities;
 import draylar.identity.ability.AbilityRegistry;
 import draylar.identity.api.IdentityTickHandlers;
 import draylar.identity.api.variant.IdentityType;

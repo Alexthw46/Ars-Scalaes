@@ -25,7 +25,7 @@ import static alexthw.ars_scalaes.datagen.Setup.takeAll;
 public class ModBlockStateProvider extends BlockStateProvider {
 
     public ModBlockStateProvider(DataGenerator gen, ExistingFileHelper exFileHelper) {
-        super(gen, ArsScalaes.MODID, exFileHelper);
+        super(gen.getPackOutput(), ArsScalaes.MODID, exFileHelper);
     }
 
     @Override

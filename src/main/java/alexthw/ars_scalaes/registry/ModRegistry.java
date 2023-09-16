@@ -1,16 +1,10 @@
 package alexthw.ars_scalaes.registry;
 
 import alexthw.ars_scalaes.ArsScalaes;
-import alexthw.ars_scalaes.block.DecoBlockPack;
-import com.hollingsworth.arsnouveau.common.lib.LibBlockNames;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -31,6 +25,14 @@ public class ModRegistry {
 
     }
 
+    public static RegistryObject<Block> addBlock(String name, Supplier<Block> blockSupp) {
+        RegistryObject<Block> block = BLOCKS.register(name, blockSupp);
+        ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
+        return block;
+    }
+
+}
+/*
     //simple sourcestone
     public static final DecoBlockPack SOURCESTONE;
     public static final DecoBlockPack SOURCESTONE_MOSAIC;
@@ -109,11 +111,7 @@ public class ModRegistry {
         return new Item.Properties().tab(ArsScalaes.TAB);
     }
 
-    public static RegistryObject<Block> addBlock(String name, Supplier<Block> blockSupp) {
-        RegistryObject<Block> block = BLOCKS.register(name, blockSupp);
-        ITEMS.register(name, () -> new BlockItem(block.get(), addTabProp()));
-        return block;
-    }
+
 
     static BlockBehaviour.Properties stoneBlockProps() {
         return BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_PURPLE).sound(SoundType.STONE)
@@ -121,3 +119,4 @@ public class ModRegistry {
     }
 
 }
+ */

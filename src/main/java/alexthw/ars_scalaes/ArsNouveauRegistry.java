@@ -2,6 +2,7 @@ package alexthw.ars_scalaes;
 
 import alexthw.ars_scalaes.glyph.*;
 import com.hollingsworth.arsnouveau.api.ArsNouveauAPI;
+import com.hollingsworth.arsnouveau.api.registry.GlyphRegistry;
 import com.hollingsworth.arsnouveau.api.spell.AbstractSpellPart;
 import net.minecraftforge.fml.ModList;
 
@@ -18,18 +19,22 @@ public class ArsNouveauRegistry {
         register(EffectShrink.INSTANCE);
     }
 
+    /*
     private static void registerMalumGlyphs() {
         register(EffectSoulShatter.INSTANCE);
     }
+     */
 
     public static void registerIdentityGlyphs() {
         register(EffectMorph.INSTANCE);
     }
 
     public static void registerCompatGlyphs() {
+        /*
         if (ModList.get().isLoaded("malum")) {
             registerMalumGlyphs();
         }
+         */
         if (ModList.get().isLoaded("identity")) {
             registerIdentityGlyphs();
         }
@@ -39,7 +44,7 @@ public class ArsNouveauRegistry {
     }
 
     public static void register(AbstractSpellPart spellPart) {
-        ArsNouveauAPI.getInstance().registerSpell(spellPart);
+        GlyphRegistry.registerSpell(spellPart);
         registeredSpells.add(spellPart);
     }
 

@@ -21,7 +21,7 @@ import static alexthw.ars_scalaes.datagen.Setup.takeAll;
 
 public class ModItemModelProvider extends ItemModelProvider {
     public ModItemModelProvider(DataGenerator generator, ExistingFileHelper existingFileHelper) {
-        super(generator, ArsScalaes.MODID, existingFileHelper);
+        super(generator.getPackOutput(), ArsScalaes.MODID, existingFileHelper);
     }
 
     @Override

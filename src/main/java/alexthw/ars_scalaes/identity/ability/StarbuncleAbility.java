@@ -2,7 +2,7 @@ package alexthw.ars_scalaes.identity.ability;
 
 import alexthw.ars_scalaes.ConfigHandler;
 import com.hollingsworth.arsnouveau.common.entity.Starbuncle;
-import com.hollingsworth.arsnouveau.setup.ItemsRegistry;
+import com.hollingsworth.arsnouveau.setup.registry.ItemsRegistry;
 import draylar.identity.ability.IdentityAbility;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;

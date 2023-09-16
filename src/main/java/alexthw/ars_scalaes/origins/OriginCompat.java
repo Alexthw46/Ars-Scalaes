@@ -4,11 +4,12 @@ import com.hollingsworth.arsnouveau.api.event.ManaRegenCalcEvent;
 import com.hollingsworth.arsnouveau.api.event.SpellCastEvent;
 import com.hollingsworth.arsnouveau.api.mana.IManaCap;
 import com.hollingsworth.arsnouveau.api.perk.PerkAttributes;
-import com.hollingsworth.arsnouveau.common.capability.CapabilityRegistry;
 import com.hollingsworth.arsnouveau.common.items.SpellBook;
-import com.hollingsworth.arsnouveau.common.potions.ModPotions;
 import com.hollingsworth.arsnouveau.setup.config.ServerConfig;
+import com.hollingsworth.arsnouveau.setup.registry.CapabilityRegistry;
+import com.hollingsworth.arsnouveau.setup.registry.ModPotions;
 import io.github.edwinmindcraft.apoli.api.component.IPowerContainer;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.MinecraftForge;
@@ -67,7 +68,7 @@ public class OriginCompat {
 
     @SubscribeEvent
     public static void painToGain(LivingHurtEvent event) {
-        if (event.getSource().isMagic() && event.getEntity() instanceof Player player && IPowerContainer.get(player).isPresent()) {
+        if (event.getSource().is(DamageTypeTags.WITCH_RESISTANT_TO) && event.getEntity() instanceof Player player && IPowerContainer.get(player).isPresent()) {
             Optional<IPowerContainer> container = IPowerContainer.get(player).resolve();
             if (container.isPresent() && container.get().hasPower(prefix("mana_absorber"))) {
                 IManaCap mana = CapabilityRegistry.getMana(player).resolve().orElse(null);

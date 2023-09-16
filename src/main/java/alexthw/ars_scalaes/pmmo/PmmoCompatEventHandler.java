@@ -22,6 +22,7 @@ import java.util.UUID;
 import static alexthw.ars_scalaes.datagen.ArsProviders.prefix;
 
 public class PmmoCompatEventHandler {
+    /*
     public static void setupPerks() {
         CompoundTag regenDefaults = new CompoundTag();
         regenDefaults.putDouble(APIUtils.MAX_BOOST, 100d);
@@ -39,6 +40,8 @@ public class PmmoCompatEventHandler {
         APIUtils.registerPerk(prefix("spell_damage_boost"), damageDefaults, (player, tag, integer) -> true, DAMAGE_BOOST, DAMAGE_BOOST_TERM, PerkSide.BOTH);
 
     }
+
+     */
 
     @SubscribeEvent
     public static void awardSpellCastXp(SpellSuccessEvent event) {

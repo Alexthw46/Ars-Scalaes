@@ -7,8 +7,6 @@ public class ConfigHandler {
 
     public static class Common {
 
-        public static ForgeConfigSpec.ConfigValue<Boolean> ALL_MAGIC;
-
         //Pmmo x AN
         public static ForgeConfigSpec.ConfigValue<Double> MANA_XP;
         public static ForgeConfigSpec.ConfigValue<Double> LEVEL_TO_SPELL_DMG;
@@ -32,10 +30,6 @@ public class ConfigHandler {
 
 
         public Common(ForgeConfigSpec.Builder builder) {
-
-            builder.push("general configs");
-            ALL_MAGIC = builder.comment("Enable or disable magic flag on spell damage, for interaction with magic reduction or proficiency").define("turn spells magic", true);
-            builder.pop();
 
             builder.comment("Pmmo scaling").push("PMMO");
             MANA_XP = builder.comment("XP gained per Mana spent").define("ars_mana", .1d);

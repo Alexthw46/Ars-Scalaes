@@ -3,6 +3,7 @@ package alexthw.ars_scalaes.identity.ability;
 import alexthw.ars_scalaes.ConfigHandler;
 import com.hollingsworth.arsnouveau.ArsNouveau;
 import com.hollingsworth.arsnouveau.api.ArsNouveauAPI;
+import com.hollingsworth.arsnouveau.api.registry.RitualRegistry;
 import com.hollingsworth.arsnouveau.api.spell.EntitySpellResolver;
 import com.hollingsworth.arsnouveau.api.spell.SpellContext;
 import com.hollingsworth.arsnouveau.api.spell.wrapped_caster.LivingCaster;
@@ -38,7 +39,7 @@ public class WealdWalkerAbility<E extends WealdWalker> extends IdentityAbility<E
     }
 
     public RitualTablet getRitualItem(String name) {
-        return ArsNouveauAPI.getInstance().getRitualItemMap().get(new ResourceLocation(ArsNouveau.MODID, name));
+        return RitualRegistry.getRitualItemMap().get(new ResourceLocation(ArsNouveau.MODID, name));
     }
 
     @Override

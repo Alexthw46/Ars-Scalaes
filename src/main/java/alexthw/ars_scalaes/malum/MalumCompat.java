@@ -1,7 +1,7 @@
 package alexthw.ars_scalaes.malum;
 
 import com.hollingsworth.arsnouveau.api.item.ICasterTool;
-import com.hollingsworth.arsnouveau.common.enchantment.EnchantmentRegistry;
+import com.hollingsworth.arsnouveau.setup.registry.EnchantmentRegistry;
 import com.hollingsworth.arsnouveau.common.light.LightManager;
 import com.sammy.malum.common.entity.boomerang.ScytheBoomerangEntity;
 import com.sammy.malum.registry.common.entity.EntityRegistry;
@@ -14,7 +14,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.RegistryObject;
 
 import static alexthw.ars_scalaes.registry.ModRegistry.ITEMS;
-import static alexthw.ars_scalaes.registry.ModRegistry.addTabProp;
 import static com.hollingsworth.arsnouveau.common.event.ReactiveEvents.castSpell;
 
 public class MalumCompat {
@@ -29,7 +28,7 @@ public class MalumCompat {
     public static void init() {
         MinecraftForge.EVENT_BUS.register(MalumCompat.class);
 
-        ENCHANTER_SCYTHE = ITEMS.register("enchanter_scythe", () -> new EnchanterScythe(Tiers.NETHERITE, -4F, 0F, 3.0F, addTabProp()));
+        ENCHANTER_SCYTHE = ITEMS.register("enchanter_scythe", () -> new EnchanterScythe(Tiers.NETHERITE, -4F, 0F, 3.0F, new Item.Properties()));
 
     }
 

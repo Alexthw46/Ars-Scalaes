@@ -2,8 +2,9 @@ package alexthw.ars_scalaes.identity.ability;
 
 import alexthw.ars_scalaes.ConfigHandler;
 import com.hollingsworth.arsnouveau.common.entity.EntityWixie;
-import com.hollingsworth.arsnouveau.common.potions.ModPotions;
-import com.hollingsworth.arsnouveau.setup.ItemsRegistry;
+
+import com.hollingsworth.arsnouveau.setup.registry.ItemsRegistry;
+import com.hollingsworth.arsnouveau.setup.registry.ModPotions;
 import draylar.identity.ability.IdentityAbility;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;

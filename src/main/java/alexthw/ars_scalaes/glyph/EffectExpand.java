@@ -8,6 +8,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.common.ForgeConfigSpec;
+import org.jetbrains.annotations.NotNull;
 import virtuoel.pehkui.api.ScaleData;
 
 public class EffectExpand extends PehkuiEffect {
@@ -19,7 +20,7 @@ public class EffectExpand extends PehkuiEffect {
     }
 
     @Override
-    public void onResolveEntity(EntityHitResult rayTraceResult, Level world, LivingEntity shooter, SpellStats spellStats, SpellContext spellContext, SpellResolver resolver) {
+    public void onResolveEntity(EntityHitResult rayTraceResult, Level world, @NotNull LivingEntity shooter, SpellStats spellStats, SpellContext spellContext, SpellResolver resolver) {
 
         ScaleData data = PkCompatHandler.magicScale.getScaleData(rayTraceResult.getEntity());
         float cScale = data.getScale();

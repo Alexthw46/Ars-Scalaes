@@ -24,7 +24,7 @@ public class ModifyMagiCraftResultPower extends PowerFactory<ModifyCraftResultCo
 
     public static ItemStack modify(Player player, ItemStack stack) {
         Mutable<ItemStack> mutable = new MutableObject<>(stack);
-        IPowerContainer.getPowers(player, null).stream().filter((cp) -> check((ConfiguredPower) cp.get(), player.level, stack)).map((cp) -> ((ModifyCraftResultConfiguration) ((ConfiguredPower<?, ?>) cp.get()).getConfiguration()).itemAction()).forEach((action) -> ConfiguredItemAction.execute(action, player.level, mutable));
+        IPowerContainer.getPowers(player, null).stream().filter((cp) -> check((ConfiguredPower) cp.get(), player.level(), stack)).map((cp) -> ((ModifyCraftResultConfiguration) ((ConfiguredPower<?, ?>) cp.get()).getConfiguration()).itemAction()).forEach((action) -> ConfiguredItemAction.execute(action, player.level(), mutable));
         return mutable.getValue();
     }
 

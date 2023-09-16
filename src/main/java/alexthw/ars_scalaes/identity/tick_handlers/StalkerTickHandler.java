@@ -8,9 +8,9 @@ public class StalkerTickHandler implements IdentityTickHandler<WildenStalker> {
 
     @Override
     public void tick(Player player, WildenStalker stalker) {
-        if (player.level.isClientSide() && player.level.getGameTime() % 10 == 0) {
-            if (player.isFallFlying() || player.isOnGround() || player.isInWater())
-                stalker.setFlying(!player.isOnGround() && !player.isInWater());
+        if (player.level().isClientSide() && player.level().getGameTime() % 10 == 0) {
+            if (player.isFallFlying() || player.onGround() || player.isInWater())
+                stalker.setFlying(!player.onGround() && !player.isInWater());
         }
     }
 
