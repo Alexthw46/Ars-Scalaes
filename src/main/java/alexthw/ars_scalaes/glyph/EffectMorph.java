@@ -5,11 +5,13 @@ import com.hollingsworth.arsnouveau.api.entity.IDecoratable;
 import com.hollingsworth.arsnouveau.api.spell.*;
 import com.hollingsworth.arsnouveau.client.particle.ParticleUtil;
 import com.hollingsworth.arsnouveau.common.entity.familiar.FamiliarEntity;
+import com.hollingsworth.arsnouveau.common.items.MobJarItem;
 import draylar.identity.api.PlayerIdentity;
 import draylar.identity.api.variant.IdentityType;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -31,29 +33,40 @@ public class EffectMorph extends AbstractEffect implements IPotionEffect {
     }
 
     @Override
-    public void onResolveEntity(EntityHitResult rayTraceResult, Level world, @NotNull LivingEntity shooter, SpellStats spellStats, SpellContext spellContext, SpellResolver resolver) {
+    public void onResolveEntity(EntityHitResult rayTraceResult, Level level, @NotNull LivingEntity shooter, SpellStats spellStats, SpellContext spellContext, SpellResolver resolver) {
 
-        if (shooter instanceof ServerPlayer player && isRealPlayer(shooter) && rayTraceResult.getEntity() instanceof LivingEntity living) {
+        if (level instanceof ServerLevel world && shooter instanceof ServerPlayer player && isRealPlayer(shooter) && rayTraceResult.getEntity() instanceof LivingEntity living) {
             if (living instanceof FamiliarEntity) return;
-            if (living == shooter) {
-                PlayerIdentity.updateIdentity(player, null, null);
-                ((ServerLevel) world).sendParticles(ParticleTypes.LARGE_SMOKE, shooter.getX(), shooter.getY() + 0.5, shooter.getZ(), 30,
-                        ParticleUtil.inRange(-0.1, 0.1), ParticleUtil.inRange(-0.1, 0.1), ParticleUtil.inRange(-0.1, 0.1), 0.3);
-                return;
+            IdentityType<?> type = null;
+            LivingEntity morph = null;
+            if (shooter.getItemInHand(InteractionHand.OFF_HAND).getItem() instanceof MobJarItem && MobJarItem.fromItem(shooter.getItemInHand(InteractionHand.OFF_HAND), world) instanceof LivingEntity toMorph) {
+                morph = toMorph;
+                type = IdentityType.from(toMorph);
             }
-            if (!(living instanceof Player) && living.getMaxHealth() < GENERIC_INT.get()) {
-                IdentityType<?> type = IdentityType.from(living);
+            if (living == shooter) {
+                PlayerIdentity.updateIdentity(player, type, morph);
+                world.sendParticles(ParticleTypes.LARGE_SMOKE, shooter.getX(), shooter.getY() + 0.5, shooter.getZ(), 30,
+                        ParticleUtil.inRange(-0.1, 0.1), ParticleUtil.inRange(-0.1, 0.1), ParticleUtil.inRange(-0.1, 0.1), 0.3);
+            } else if (!(living instanceof Player) && living.getMaxHealth() < GENERIC_INT.get()) {
+                type = IdentityType.from(living);
                 if (type != null) {
-                    LivingEntity morph = type.create(world);
+                    morph = type.create(world);
                     if (morph instanceof IDecoratable toDeco && living instanceof IDecoratable fromDeco) {
                         toDeco.setCosmeticItem(fromDeco.getCosmeticItem());
                     }
                     if (PlayerIdentity.updateIdentity(player, type, morph)) {
-                        ((ServerLevel) world).sendParticles(ParticleTypes.LARGE_SMOKE, shooter.getX(), shooter.getY() + 0.5, shooter.getZ(), 30,
+                        world.sendParticles(ParticleTypes.LARGE_SMOKE, shooter.getX(), shooter.getY() + 0.5, shooter.getZ(), 30,
                                 ParticleUtil.inRange(-0.1, 0.1), ParticleUtil.inRange(-0.1, 0.1), ParticleUtil.inRange(-0.1, 0.1), 0.3);
                         if (isTimeLimited.get())
                             ((IPotionEffect) this).applyConfigPotion(living, IdentityReg.MORPH.get(), spellStats, false);
                     }
+                }
+            } else if (living instanceof ServerPlayer otherPlayer) {
+                if (PlayerIdentity.updateIdentity(otherPlayer, type, morph)) {
+                    world.sendParticles(ParticleTypes.LARGE_SMOKE, shooter.getX(), shooter.getY() + 0.5, shooter.getZ(), 30,
+                            ParticleUtil.inRange(-0.1, 0.1), ParticleUtil.inRange(-0.1, 0.1), ParticleUtil.inRange(-0.1, 0.1), 0.3);
+                    if (isTimeLimited.get())
+                        ((IPotionEffect) this).applyConfigPotion(living, IdentityReg.MORPH.get(), spellStats, false);
                 }
             }
         }
