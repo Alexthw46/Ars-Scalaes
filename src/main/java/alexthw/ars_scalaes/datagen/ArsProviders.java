@@ -2,6 +2,7 @@ package alexthw.ars_scalaes.datagen;
 
 import alexthw.ars_scalaes.ArsScalaes;
 import alexthw.ars_scalaes.glyph.*;
+import alexthw.ars_scalaes.immersive_portals.IPCompat;
 import com.hollingsworth.arsnouveau.api.enchanting_apparatus.EnchantingApparatusRecipe;
 import com.hollingsworth.arsnouveau.api.familiar.AbstractFamiliarHolder;
 import com.hollingsworth.arsnouveau.api.ritual.AbstractRitual;
@@ -15,6 +16,7 @@ import com.hollingsworth.arsnouveau.common.datagen.GlyphRecipeProvider;
 import com.hollingsworth.arsnouveau.common.datagen.ImbuementRecipeProvider;
 import com.hollingsworth.arsnouveau.common.datagen.PatchouliProvider;
 import com.hollingsworth.arsnouveau.common.datagen.patchouli.*;
+import com.hollingsworth.arsnouveau.setup.ItemsRegistry;
 import com.sammy.malum.MalumMod;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
@@ -22,6 +24,7 @@ import net.minecraft.data.DataProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.ItemLike;
 import virtuoel.pehkui.Pehkui;
@@ -78,6 +81,11 @@ public class ArsProviders {
         @Override
         public void run(CachedOutput cache) throws IOException {
 
+            recipes.add(builder().withResult(IPCompat.IMMERSIVE_WARP_SCROLL.get().getDefaultInstance())
+                    .keepNbtOfReagent(true)
+                    .withSourceCost(9000)
+                    .withReagent(Ingredient.of(ItemsRegistry.WARP_SCROLL, ItemsRegistry.STABLE_WARP_SCROLL))
+                    .build());
 
             Path output = this.generator.getOutputFolder();
             for (EnchantingApparatusRecipe g : recipes) {
@@ -89,8 +97,8 @@ public class ArsProviders {
 
         }
 
-        protected static Path getRecipePath(Path pathIn, String str){
-            return pathIn.resolve("data/"+ root +"/recipes/" + str + ".json");
+        protected static Path getRecipePath(Path pathIn, String str) {
+            return pathIn.resolve("data/" + root + "/recipes/" + str + ".json");
         }
 
         @Override
@@ -101,7 +109,7 @@ public class ArsProviders {
 
     public static class ImbuementProvider extends ImbuementRecipeProvider {
 
-        public ImbuementProvider(DataGenerator generatorIn){
+        public ImbuementProvider(DataGenerator generatorIn) {
             super(generatorIn);
         }
 
@@ -116,8 +124,8 @@ public class ArsProviders {
 
         }
 
-        protected Path getRecipePath(Path pathIn, String str){
-            return pathIn.resolve("data/"+ root +"/recipes/" + str + ".json");
+        protected Path getRecipePath(Path pathIn, String str) {
+            return pathIn.resolve("data/" + root + "/recipes/" + str + ".json");
         }
 
         @Override
@@ -135,7 +143,6 @@ public class ArsProviders {
 
         @Override
         public void run(CachedOutput cache) throws IOException {
-
 
             addGlyphPage(EffectResize.INSTANCE, Pehkui.MOD_ID);
             addGlyphPage(EffectExpand.INSTANCE, Pehkui.MOD_ID);

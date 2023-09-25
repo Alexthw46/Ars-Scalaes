@@ -3,6 +3,7 @@ package alexthw.ars_scalaes;
 import alexthw.ars_scalaes.hexcast.HexCompat;
 import alexthw.ars_scalaes.hexerei.HexereiCompat;
 import alexthw.ars_scalaes.identity.IdentityReg;
+import alexthw.ars_scalaes.immersive_portals.IPCompat;
 import alexthw.ars_scalaes.malum.MalumCompat;
 import alexthw.ars_scalaes.origins.OriginCompat;
 import alexthw.ars_scalaes.pehkui.PkCompatHandler;
@@ -60,6 +61,9 @@ public class ArsScalaes {
         }
         if (ModList.get().isLoaded("origins")) {
             OriginCompat.init();
+        }
+        if (ModList.get().isLoaded("immersive_portals")) {
+            IPCompat.init();
         }
         ArsNouveauRegistry.registerCompatGlyphs();
         modbus.addListener(this::setup);
