@@ -1,0 +1,25 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "immersive_portals"
+    }
+  ],
+  "type": "ars_nouveau:enchanting_apparatus",
+  "keepNbtOfReagent": true,
+  "output": {
+    "item": "ars_scalaes:immersive_warp_scroll"
+  },
+  "pedestalItems": [],
+  "reagent": [
+    [
+      {
+        "item": "ars_nouveau:warp_scroll"
+      },
+      {
+        "item": "ars_nouveau:stable_warp_scroll"
+      }
+    ]
+  ],
+  "sourceCost": 9000
+}

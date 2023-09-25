@@ -175,7 +175,6 @@ dependencies {
 
     runtimeOnly fg.deobf("curse.maven:architectury-api-419699:4663010")
     //runtimeOnly fg.deobf("curse.maven:tpw-435044:3834422")
-
     /*compileOnly */ compileOnly fg.deobf("curse.maven:identity-391390:4687498")
 
     implementation fg.deobf("team.lodestar.lodestone:lodestone:1.20.1-1.4.25.26")
@@ -192,6 +191,8 @@ dependencies {
     compileOnly fg.deobf("io.github.edwinmindcraft:calio-forge:${mc_version}-1.11.0.0")
 
     runtimeOnly fg.deobf("curse.maven:caelus-308989:4581481")
+    implementation fg.deobf("curse.maven:immersive-portals-for-forge-355440:4477626")
+
 
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
 
