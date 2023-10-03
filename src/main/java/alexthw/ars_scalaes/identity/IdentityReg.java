@@ -8,11 +8,17 @@ import alexthw.ars_scalaes.identity.tick_handlers.WhirlSprigTickHandler;
 import com.hollingsworth.arsnouveau.common.entity.*;
 import draylar.identity.ability.AbilityRegistry;
 import draylar.identity.api.IdentityTickHandlers;
+import draylar.identity.api.PlayerIdentity;
 import draylar.identity.api.variant.IdentityType;
 import draylar.identity.api.variant.TypeProvider;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
 import net.minecraftforge.registries.RegistryObject;
@@ -28,6 +34,7 @@ public class IdentityReg {
 
     public static void preInit() {
         MORPH = EFFECTS.register("morph", MorphEffect::new);
+        MinecraftForge.EVENT_BUS.register(IdentityReg.class);
     }
 
     public static void postInit() {
@@ -87,6 +94,14 @@ public class IdentityReg {
         IdentityTickHandlers.register(ModEntities.WILDEN_STALKER.get(), new StalkerTickHandler());
 
         if (ModList.get().isLoaded("ars_elemental")) ElementalModule.initAbilities();
+    }
+
+    @SubscribeEvent
+    public static void onLivingAttack(LivingAttackEvent event) {
+        if (event.getEntity() instanceof Player player && event.getSource().getMsgId().equals(DamageSource.SWEET_BERRY_BUSH.getMsgId())) {
+            if (PlayerIdentity.getIdentity(player) instanceof Starbuncle) event.setCanceled(true);
+        }
+
     }
 
 
