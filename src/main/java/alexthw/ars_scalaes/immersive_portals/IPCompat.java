@@ -1,6 +1,8 @@
 package alexthw.ars_scalaes.immersive_portals;
 
 import com.hollingsworth.arsnouveau.common.items.WarpScroll;
+import com.mojang.math.Quaternion;
+import com.mojang.math.Vector3f;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -43,10 +45,48 @@ public class IPCompat {
                 //applies the data from the scroll to the immersive portal entity
                 if (portal instanceof Portal immersivePortal) {
                     var portalHeight = immersivePortal.getBoundingBox().maxY - immersivePortal.getBoundingBox().minY;
+                    var portalX = immersivePortal.getBoundingBox().maxX - immersivePortal.getBoundingBox().minX;
+                    var portalZ = immersivePortal.getBoundingBox().maxZ - immersivePortal.getBoundingBox().minZ;
+                    float destX = data.getPos().getX();
+                    float destY = data.getPos().getY();
+                    float destZ = data.getPos().getZ();
+                    float rotation = Math.round(data.getRotation().y / 90);
+                    if (portalX < portalZ)
+                        rotation += 1;
+                    if (portalHeight >= 1)
+                    {
+                        destY += portalHeight / 2;
+                    }
+                    else
+                    {
+                        destY += 0.5;
+                    }
+                    if (portalX  < 1 || portalX % 2 == 1) {
+                        destX += 0.5;
+                    }
+                    if (portalZ < 1 || portalZ % 2 == 1) {
+                        destZ += 0.5;
+                    }
+                    if (Math.abs(rotation % 2) == 1 && (portalX % 2 == 0 || portalZ % 2 == 0)) {
+                        var trigo = ((rotation-2)%4+2 == 1);
+                        if (trigo && portalZ >= 1.0){
+                            destX += 0.5;
+                            destZ += 0.5;
+                        } else if (trigo && portalX >= 1.0){
+                            destX += 0.5;
+                            destZ -= 0.5;
+                        } else if (!trigo && portalZ >= 1.0){
+                            destX -= 0.5;
+                            destZ += 0.5;
+                        } else if (!trigo && portalX >= 1.0){
+                            destX += 0.5;
+                            destZ += 0.5;
+                        }
+                    }
                     if (scrollItem.allowCrossDim || data.canTeleportWithDim(portal.level))
                         immersivePortal.setDestinationDimension(ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(data.getDimension())));
-                    immersivePortal.setDestination(new Vec3(data.getPos().getX(), data.getPos().getY() + portalHeight / 2, data.getPos().getZ()));
-                    //if (data.getRotation() != null) immersivePortal.setRotationTransformation(new Quaternion(new Vector3f(0, 1, 0), data.getRotation().y, true));
+                    immersivePortal.setDestination(new Vec3(destX, destY, destZ));
+                    immersivePortal.setRotationTransformation(new Quaternion(new Vector3f(0, 1, 0), rotation*90, true));
                     reloadPortal(immersivePortal);
                 }
 
