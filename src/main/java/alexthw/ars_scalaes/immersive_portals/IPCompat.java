@@ -53,40 +53,37 @@ public class IPCompat {
                     float rotation = Math.round(data.getRotation().y / 90);
                     if (portalX < portalZ)
                         rotation += 1;
-                    if (portalHeight >= 1)
-                    {
-                        destY += portalHeight / 2;
+                    if (portalHeight >= 1) {
+                        destY += (float) (portalHeight / 2);
+                    } else {
+                        destY += 0.5F;
                     }
-                    else
-                    {
-                        destY += 0.5;
-                    }
-                    if (portalX  < 1 || portalX % 2 == 1) {
-                        destX += 0.5;
+                    if (portalX < 1 || portalX % 2 == 1) {
+                        destX += 0.5F;
                     }
                     if (portalZ < 1 || portalZ % 2 == 1) {
-                        destZ += 0.5;
+                        destZ += 0.5F;
                     }
                     if (Math.abs(rotation % 2) == 1 && (portalX % 2 == 0 || portalZ % 2 == 0)) {
-                        var trigo = ((rotation-2)%4+2 == 1);
-                        if (trigo && portalZ >= 1.0){
-                            destX += 0.5;
-                            destZ += 0.5;
-                        } else if (trigo && portalX >= 1.0){
-                            destX += 0.5;
-                            destZ -= 0.5;
-                        } else if (!trigo && portalZ >= 1.0){
-                            destX -= 0.5;
-                            destZ += 0.5;
-                        } else if (!trigo && portalX >= 1.0){
-                            destX += 0.5;
-                            destZ += 0.5;
+                        var trigo = ((rotation - 2) % 4 + 2 == 1);
+                        if (trigo && portalZ >= 1.0) {
+                            destX += 0.5F;
+                            destZ += 0.5F;
+                        } else if (trigo && portalX >= 1.0) {
+                            destX += 0.5F;
+                            destZ -= 0.5F;
+                        } else if (!trigo && portalZ >= 1.0) {
+                            destX -= 0.5F;
+                            destZ += 0.5F;
+                        } else if (!trigo && portalX >= 1.0) {
+                            destX += 0.5F;
+                            destZ += 0.5F;
                         }
                     }
                     if (scrollItem.allowCrossDim || data.canTeleportWithDim(portal.level))
                         immersivePortal.setDestinationDimension(ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(data.getDimension())));
                     immersivePortal.setDestination(new Vec3(destX, destY, destZ));
-                    immersivePortal.setRotationTransformation(new Quaternion(new Vector3f(0, 1, 0), rotation*90, true));
+                    immersivePortal.setRotationTransformation(new Quaternion(new Vector3f(0, 1, 0), rotation * 90, true));
                     reloadPortal(immersivePortal);
                 }
 

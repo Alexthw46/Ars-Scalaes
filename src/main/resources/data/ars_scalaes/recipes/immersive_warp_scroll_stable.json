@@ -8,13 +8,13 @@
   "type": "ars_nouveau:enchanting_apparatus",
   "keepNbtOfReagent": true,
   "output": {
-    "item": "ars_scalaes:immersive_warp_scroll"
+    "item": "ars_scalaes:immersive_stabilized_warp_scroll"
   },
   "pedestalItems": [],
   "reagent": [
     [
       {
-        "item": "ars_nouveau:warp_scroll"
+        "item": "ars_nouveau:stable_warp_scroll"
       }
     ]
   ],
