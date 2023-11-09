@@ -1,7 +1,6 @@
 package alexthw.ars_scalaes.identity.ability;
 
 import alexthw.ars_elemental.common.entity.FirenandoEntity;
-import alexthw.ars_elemental.common.entity.spells.EntityHomingProjectile;
 import alexthw.ars_elemental.common.glyphs.MethodHomingProjectile;
 import alexthw.ars_elemental.registry.ModItems;
 import alexthw.ars_scalaes.ConfigHandler;
@@ -9,6 +8,7 @@ import com.hollingsworth.arsnouveau.api.spell.EntitySpellResolver;
 import com.hollingsworth.arsnouveau.api.spell.SpellContext;
 import com.hollingsworth.arsnouveau.api.spell.wrapped_caster.LivingCaster;
 import com.hollingsworth.arsnouveau.client.particle.ParticleColor;
+import com.hollingsworth.arsnouveau.common.entity.EntityHomingProjectileSpell;
 import draylar.identity.ability.IdentityAbility;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Enemy;
@@ -31,7 +31,7 @@ public class FirenandoAbility extends IdentityAbility<FirenandoEntity> {
         if (resolver.postEvent()) {
             return;
         }
-        EntityHomingProjectile projectileSpell = new EntityHomingProjectile(level, resolver);
+        EntityHomingProjectileSpell projectileSpell = new EntityHomingProjectileSpell(level, resolver);
         List<Predicate<LivingEntity>> ignore = MethodHomingProjectile.basicIgnores(player, false, resolver.spell);
         ignore.add((entity) -> !(entity instanceof Enemy));
 

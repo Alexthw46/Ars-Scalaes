@@ -187,7 +187,7 @@ dependencies {
     compileOnly fg.deobf("at.petra-k.hexcasting:hexcasting-forge-1.19.2:0.11.0-pre-603") { transitive = false }
     //runtimeOnly 'thedarkcolour:kotlinforforge:3.9.1'
 
-    /*compileOnly*/ implementation fg.deobf("curse.maven:origins-forge-474438:4749011")
+    /*implementation*/  compileOnly fg.deobf("curse.maven:origins-forge-474438:4749011")
     //runtimeOnly fg.deobf("curse.maven:origin_classes-610127:3942224")
     compileOnly fg.deobf("io.github.edwinmindcraft:apoli-forge:${mc_version}-2.9.0.0")
     compileOnly fg.deobf("io.github.edwinmindcraft:calio-forge:${mc_version}-1.11.0.0")

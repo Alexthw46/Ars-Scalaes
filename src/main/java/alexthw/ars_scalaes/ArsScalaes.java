@@ -64,10 +64,11 @@ public class ArsScalaes {
             event.enqueueWork(IdentityReg::postInit);
         }
 
-        /* disabled for now
         if (ModList.get().isLoaded("pmmo")) {
             event.enqueueWork(PmmoCompatEventHandler::setupPerks);
         }
+
+           /* disabled for now
         if (ModList.get().isLoaded("hexerei")) {
             event.enqueueWork(HexereiCompat::postInit);
         }
