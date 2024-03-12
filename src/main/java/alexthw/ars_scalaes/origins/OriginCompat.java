@@ -73,7 +73,8 @@ public class OriginCompat {
             if (container.isPresent() && container.get().hasPower(prefix("mana_absorber"))) {
                 IManaCap mana = CapabilityRegistry.getMana(player).resolve().orElse(null);
                 if (mana == null) return;
-                mana.addMana((int) (event.getAmount() * 2));
+                event.setAmount(event.getAmount() * 0.75f);
+                mana.addMana((int) (event.getAmount() * 2.5 * 10));
             }
         }
     }

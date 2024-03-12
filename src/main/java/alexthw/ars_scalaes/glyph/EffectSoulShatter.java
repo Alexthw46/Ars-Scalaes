@@ -1,6 +1,7 @@
 package alexthw.ars_scalaes.glyph;
 
 import com.hollingsworth.arsnouveau.api.spell.*;
+import com.hollingsworth.arsnouveau.api.util.DamageUtil;
 import com.hollingsworth.arsnouveau.common.spell.augment.AugmentAmplify;
 import com.hollingsworth.arsnouveau.common.spell.augment.AugmentDampen;
 import com.sammy.malum.registry.common.DamageSourceRegistry;
@@ -35,7 +36,7 @@ public class EffectSoulShatter extends AbstractEffect implements IDamageEffect {
     }
 
     public DamageSource buildDamageSource(Level world, LivingEntity shooter) {
-        return DamageSourceRegistry.VOODOO;
+        return DamageUtil.source(world, DamageSourceRegistry.VOODOO, shooter);
     }
 
     public void buildConfig(ForgeConfigSpec.Builder builder) {
