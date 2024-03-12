@@ -144,6 +144,7 @@ dependencies {
     minecraft "net.neoforged:forge:${mc_version}-${forge_version}"
 
     implementation fg.deobf("com.hollingsworth.ars_nouveau:ars_nouveau-${mc_version}:${ars_version}")
+    implementation fg.deobf("curse.maven:ars-elemental-561470:4864937")
 
     implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${mc_version}:${gecko_version}")
 
@@ -164,30 +165,28 @@ dependencies {
     implementation(annotationProcessor("com.github.llamalad7.mixinextras:mixinextras-common:0.2.0-beta.8"))
     implementation("com.github.llamalad7.mixinextras:mixinextras-forge:0.2.0-beta.8")
     
-    /*compileOnly*/ implementation fg.deobf("curse.maven:project-mmo-353935:4729828")
-    /*implementation*/ compileOnly fg.deobf("curse.maven:scaling_health-248027:3943340")
-    //runtimeOnly fg.deobf("curse.maven:silent_chaos-242998:3968715")
-    /*compileOnly*/ implementation fg.deobf("com.github.Virtuoel:Pehkui:3.7.8-${mc_version}-forge")
+    /*compileOnly*/ implementation fg.deobf("curse.maven:project-mmo-353935:4890177")
+    /*implementation*/ compileOnly fg.deobf("curse.maven:scaling-health-248027:5065403")
+    //runtimeOnly fg.deobf("curse.maven:silent_chaos-242998:4585754")
+    /*compileOnly*/ implementation fg.deobf("com.github.Virtuoel:Pehkui:3.7.11-${mc_version}-forge")
 
     /*implementation*/ compileOnly fg.deobf("joefoxe:hexerei:0.3.2.2")
 
-
-    implementation fg.deobf("alexthw:ars_elemental:${mc_version}-0.6.0-beta4")
 
     runtimeOnly fg.deobf("curse.maven:architectury-api-419699:4663010")
     //runtimeOnly fg.deobf("curse.maven:tpw-435044:3834422")
 
     /*compileOnly */ compileOnly fg.deobf("curse.maven:identity-391390:4687498")
 
-    compileOnly fg.deobf("team.lodestar.lodestone:lodestone:1.19.2-1.4.1.82")
-    compileOnly fg.deobf("com.sammy.malum:malum:1.19.2-1.5.1-19")
+    implementation fg.deobf("team.lodestar.lodestone:lodestone:1.20.1-1.4.25.26")
+    implementation fg.deobf("com.sammy.malum:malum:1.20.1-1.6.8")
 
     //runtimeOnly fg.deobf("at.petra-k.paucal:paucal-forge-${mc_version}:0.5.0")
     compileOnly fg.deobf("at.petra-k.hexcasting:hexcasting-common-1.19.2:0.11.0-pre-603")
     compileOnly fg.deobf("at.petra-k.hexcasting:hexcasting-forge-1.19.2:0.11.0-pre-603") { transitive = false }
     //runtimeOnly 'thedarkcolour:kotlinforforge:3.9.1'
 
-    /*implementation*/  compileOnly fg.deobf("curse.maven:origins-forge-474438:4749011")
+    /*implementation*/  compileOnly fg.deobf("curse.maven:origins-forge-474438:4771676")
     //runtimeOnly fg.deobf("curse.maven:origin_classes-610127:3942224")
     compileOnly fg.deobf("io.github.edwinmindcraft:apoli-forge:${mc_version}-2.9.0.0")
     compileOnly fg.deobf("io.github.edwinmindcraft:calio-forge:${mc_version}-1.11.0.0")

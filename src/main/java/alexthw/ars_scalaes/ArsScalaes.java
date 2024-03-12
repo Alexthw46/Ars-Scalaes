@@ -5,6 +5,7 @@ import alexthw.ars_scalaes.origins.OriginCompat;
 import alexthw.ars_scalaes.pehkui.PkCompatHandler;
 import alexthw.ars_scalaes.pmmo.PmmoCompatEventHandler;
 import alexthw.ars_scalaes.registry.ModRegistry;
+import alexthw.ars_scalaes.sh.ScalingHealthCompatEventHandler;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -28,11 +29,9 @@ public class ArsScalaes {
         if (ModList.get().isLoaded("pmmo")) {
             MinecraftForge.EVENT_BUS.register(PmmoCompatEventHandler.class);
         }
-        /* disabled for now
         if (ModList.get().isLoaded("scalinghealth")) {
             MinecraftForge.EVENT_BUS.register(ScalingHealthCompatEventHandler.class);
         }
-         */
         if (ModList.get().isLoaded("pehkui")) {
             PkCompatHandler.init();
         }
