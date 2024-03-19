@@ -1,15 +1,23 @@
 package alexthw.ars_scalaes;
 
-import alexthw.ars_scalaes.glyph.*;
-import com.hollingsworth.arsnouveau.api.ArsNouveauAPI;
+import alexthw.ars_scalaes.glyph.EffectExpand;
+import alexthw.ars_scalaes.glyph.EffectMorph;
+import alexthw.ars_scalaes.glyph.EffectResize;
+import alexthw.ars_scalaes.glyph.EffectShrink;
 import com.hollingsworth.arsnouveau.api.registry.GlyphRegistry;
 import com.hollingsworth.arsnouveau.api.spell.AbstractSpellPart;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.damagesource.DamageType;
 import net.minecraftforge.fml.ModList;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ArsNouveauRegistry {
+
+    public static TagKey<DamageType> FORGE_MAGIC = TagKey.create(Registries.DAMAGE_TYPE, new ResourceLocation("forge", "is_magic"));
 
     public static final List<AbstractSpellPart> registeredSpells = new ArrayList<>(); //this will come handy for datagen
 
