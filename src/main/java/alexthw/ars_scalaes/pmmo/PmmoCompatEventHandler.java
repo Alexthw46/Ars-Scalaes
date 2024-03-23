@@ -25,7 +25,6 @@ import static alexthw.ars_scalaes.datagen.ArsProviders.prefix;
 
 public class PmmoCompatEventHandler {
 
-
     public static void setupPerks() {
 
         CompoundTag regenDefaults = new CompoundTag();
@@ -33,7 +32,7 @@ public class PmmoCompatEventHandler {
         regenDefaults.putDouble(APIUtils.PER_LEVEL, .5d);
         regenDefaults.putBoolean(APIUtils.MULTIPLICATIVE, false);
         regenDefaults.putString("skill", "magic");
-        var RegenPerk = Perk.begin().addDefaults(regenDefaults).setStart(MANA_REGEN).build();
+        var RegenPerk = Perk.begin().addDefaults(regenDefaults).setStart(MANA_REGEN).setStop(MANA_REGEN_TERM).build();
 
         APIUtils.registerPerk(prefix("mana_regen"), RegenPerk, PerkSide.BOTH);
 
@@ -43,7 +42,7 @@ public class PmmoCompatEventHandler {
         manaDefaults.putBoolean(APIUtils.MULTIPLICATIVE, false);
         manaDefaults.putString("skill", "magic");
 
-        var ManaPerk = Perk.begin().addDefaults(manaDefaults).setStart(MANA_BOOST).build();
+        var ManaPerk = Perk.begin().addDefaults(manaDefaults).setStart(MANA_BOOST).setStop(MANA_BOOST_TERM).build();
         APIUtils.registerPerk(prefix("mana_boost"), ManaPerk, PerkSide.BOTH);
 
         CompoundTag damageDefaults = new CompoundTag();
@@ -52,7 +51,7 @@ public class PmmoCompatEventHandler {
         damageDefaults.putBoolean(APIUtils.MULTIPLICATIVE, false);
         damageDefaults.putString("skill", "magic");
 
-        var DamagePerk = Perk.begin().addDefaults(damageDefaults).setStart(DAMAGE_BOOST).build();
+        var DamagePerk = Perk.begin().addDefaults(damageDefaults).setStart(DAMAGE_BOOST).setStop(DAMAGE_BOOST_TERM).build();
         APIUtils.registerPerk(prefix("spell_damage_boost"), DamagePerk, PerkSide.BOTH);
 
     }
@@ -165,7 +164,6 @@ public class PmmoCompatEventHandler {
             AttributeModifier manaModifier = new AttributeModifier(damageModifierID, "Spell Damage bonus thanks to Pmmo Magic Level", damageBoost, operation);
             manaAttribute.removeModifier(damageModifierID);
             manaAttribute.addPermanentModifier(manaModifier);
-
         }
 
         return NONE;
