@@ -1,9 +1,7 @@
 package alexthw.ars_scalaes.immersive_portals;
 
 import com.hollingsworth.arsnouveau.common.items.WarpScroll;
-import com.mojang.math.Quaternion;
-import com.mojang.math.Vector3f;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
@@ -35,7 +33,7 @@ public class IPCompat {
 
         if (portal != null) {
             //get item entities around the spot and fetch the nearest warp scroll one
-            portal.level.getEntities(portal, portal.getBoundingBox().inflate(4), entity -> entity instanceof ItemEntity ie && (ie.getItem().getItem() instanceof ImmersiveWarpScroll)).stream().findFirst().ifPresent(entity -> {
+            portal.level().getEntities(portal, portal.getBoundingBox().inflate(4), entity -> entity instanceof ItemEntity ie && (ie.getItem().getItem() instanceof ImmersiveWarpScroll)).stream().findFirst().ifPresent(entity -> {
                 ItemStack scrollStack = ((ItemEntity) entity).getItem();
                 WarpScroll.WarpScrollData data = WarpScroll.WarpScrollData.get(scrollStack);
                 if (data.getPos() == null || !(scrollStack.getItem() instanceof ImmersiveWarpScroll scrollItem)) {
@@ -80,10 +78,10 @@ public class IPCompat {
                             destZ += 0.5F;
                         }
                     }
-                    if (scrollItem.allowCrossDim || data.canTeleportWithDim(portal.level))
-                        immersivePortal.setDestinationDimension(ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(data.getDimension())));
+                    if (scrollItem.allowCrossDim || data.canTeleportWithDim(portal.level()))
+                        immersivePortal.setDestinationDimension(ResourceKey.create(Registries.DIMENSION, new ResourceLocation(data.getDimension())));
                     immersivePortal.setDestination(new Vec3(destX, destY, destZ));
-                    immersivePortal.setRotationTransformation(new Quaternion(new Vector3f(0, 1, 0), rotation * 90, true));
+                    //immersivePortal.setRotationTransformation(new Quaternionf(new Vector3f(0, 1, 0), rotation * 90, true));
                     reloadPortal(immersivePortal);
                 }
 

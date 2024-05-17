@@ -1,7 +1,7 @@
 {
   "replace": false,
   "order": 10,
-  "enabled": true,
+  "enabled": false,
   "origins": [
     "ars_scalaes:class/arsificer"
   ]
