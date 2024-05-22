@@ -28,6 +28,7 @@ public class OriginCompat {
 
     @SubscribeEvent
     public static void negateCasting(SpellCastEvent event) {
+        if (true) return; //temporarily disabled
         if (event.context.getCasterTool().getItem() instanceof SpellBook && event.getEntity() instanceof Player player && IPowerContainer.get(player).isPresent()) {
             Optional<IPowerContainer> container = IPowerContainer.get(player).resolve();
             if (container.isPresent() && container.get().hasPower(prefix("book_inept"))) {

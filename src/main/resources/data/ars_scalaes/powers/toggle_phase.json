@@ -2,7 +2,7 @@
   "type": "origins:multiple",
   "togglephase": {
     "type": "origins:toggle",
-    "active_by_default": true,
+    "active_by_default": false,
     "retain_state": true
   },
   "phase": {
@@ -12,23 +12,50 @@
     },
     "type": "origins:phasing",
     "render_type": "blindness",
+    "blacklist": true,
     "view_distance": 30,
     "block_condition": {
-      "type": "origins:and",
+      "type": "origins:or",
       "conditions": [
         {
-          "type": "origins:material",
-          "material": "stone",
-          "materials": [
-            "soil",
-            "leaves",
-            "solid_organic",
-            "moss_block",
-            "aggregate"
+          "type": "origins:or",
+          "inverted": true,
+          "conditions": [
+            {
+              "type": "origins:in_tag",
+              "tag": "minecraft:logs"
+            },
+            {
+              "type": "origins:in_tag",
+              "tag": "minecraft:dirt"
+            },
+            {
+              "type": "origins:in_tag",
+              "tag": "minecraft:leaves"
+            },
+            {
+              "type": "origins:in_tag",
+              "tag": "forge:stone"
+            },
+            {
+              "type": "origins:in_tag",
+              "tag": "forge:cobblestone"
+            },
+            {
+              "type": "origins:in_tag",
+              "tag": "forge:gravel"
+            },
+            {
+              "type": "origins:in_tag",
+              "tag": "forge:ores"
+            },
+            {
+              "type": "origins:in_tag",
+              "tag": "minecraft:sand"
+            }
           ]
         },
         {
-          "inverted": true,
           "type": "origins:in_tag",
           "tag": "origins:unphasable"
         }

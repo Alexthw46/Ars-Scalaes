@@ -14,7 +14,7 @@
     "modifier": {
       "name": "Physical Damage nerf",
       "attribute": "minecraft:generic.attack_damage",
-      "value": 0.8,
+      "value": -0.2,
       "operation": "multiply_total"
     }
   }
