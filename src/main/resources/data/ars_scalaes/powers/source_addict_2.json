@@ -14,7 +14,7 @@
     "type": "origins:attribute",
     "hidden": true,
     "modifier": {
-      "attribute": "ars_nouveau:ars_nouveau.mana_regen",
+      "attribute": "ars_nouveau:ars_nouveau.perk.mana_regen",
       "operation": "multiply_total",
       "value": 0.75,
       "name": "Mana regen reduction"

@@ -34,7 +34,8 @@ public class PehkuiEffect extends AbstractEffect implements IPotionEffect {
         super.buildConfig(builder);
         isTimeLimited = builder.comment("Enable a timer on the resize effects. Target will return to original size when potion effect is removed.").define("limitedSizeTime", true);
         addPotionConfig(builder, 120);
-        addExtendTimeConfig(builder, 60);
+        addExtendTimeConfig(builder, 60 *20);
+        //addExtendTimeTicksConfig(builder, 60 *20);
     }
 
     @Override

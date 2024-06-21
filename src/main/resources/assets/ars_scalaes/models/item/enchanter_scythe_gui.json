@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "ars_scalaes:item/spell_scythe"
+  }
+}

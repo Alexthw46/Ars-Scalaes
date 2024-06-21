@@ -10,7 +10,7 @@ import com.hollingsworth.arsnouveau.common.perk.RepairingPerk;
 import com.hollingsworth.arsnouveau.common.spell.augment.AugmentAmplify;
 import com.hollingsworth.arsnouveau.common.spell.method.MethodTouch;
 import com.hollingsworth.arsnouveau.common.util.PortUtil;
-import com.sammy.malum.common.item.curiosities.weapons.MagicScytheItem;
+import com.sammy.malum.common.item.curiosities.weapons.scythe.MagicScytheItem;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;

@@ -3,6 +3,7 @@ package alexthw.ars_scalaes.datagen;
 import alexthw.ars_scalaes.ArsScalaes;
 import alexthw.ars_scalaes.glyph.*;
 import alexthw.ars_scalaes.immersive_portals.IPCompat;
+import alexthw.ars_scalaes.malum.MalumCompat;
 import com.hollingsworth.arsnouveau.api.enchanting_apparatus.EnchantingApparatusRecipe;
 import com.hollingsworth.arsnouveau.api.familiar.AbstractFamiliarHolder;
 import com.hollingsworth.arsnouveau.api.ritual.AbstractRitual;
@@ -11,22 +12,22 @@ import com.hollingsworth.arsnouveau.api.spell.AbstractEffect;
 import com.hollingsworth.arsnouveau.api.spell.AbstractSpellPart;
 import com.hollingsworth.arsnouveau.common.crafting.recipes.GlyphRecipe;
 import com.hollingsworth.arsnouveau.common.crafting.recipes.ImbuementRecipe;
-import com.hollingsworth.arsnouveau.common.datagen.ApparatusRecipeProvider;
-import com.hollingsworth.arsnouveau.common.datagen.GlyphRecipeProvider;
-import com.hollingsworth.arsnouveau.common.datagen.ImbuementRecipeProvider;
-import com.hollingsworth.arsnouveau.common.datagen.PatchouliProvider;
+import com.hollingsworth.arsnouveau.common.datagen.*;
 import com.hollingsworth.arsnouveau.common.datagen.patchouli.*;
 import com.hollingsworth.arsnouveau.setup.registry.ItemsRegistry;
 import com.sammy.malum.MalumMod;
+import com.sammy.malum.registry.common.item.ItemRegistry;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.ItemLike;
+import net.minecraftforge.common.Tags;
 import virtuoel.pehkui.Pehkui;
 
 import java.io.IOException;
@@ -80,10 +81,20 @@ public class ArsProviders {
         @Override
         public void collectJsons(CachedOutput pOutput) {
 
+            /*
             recipes.add(builder().withResult(IPCompat.IMMERSIVE_WARP_SCROLL.get().getDefaultInstance())
                     .keepNbtOfReagent(true)
                     .withSourceCost(9000)
                     .withReagent(Ingredient.of(ItemsRegistry.WARP_SCROLL, ItemsRegistry.STABLE_WARP_SCROLL))
+                    .build());
+             */
+
+            recipes.add(builder().withResult(MalumCompat.ENCHANTER_SCYTHE.get().getDefaultInstance())
+                    .keepNbtOfReagent(true)
+                    .withPedestalItem(Ingredient.of(ItemTagProvider.SOURCE_GEM_BLOCK_TAG))
+                    .withPedestalItem(Ingredient.of(Tags.Items.STORAGE_BLOCKS_GOLD))
+                    .withPedestalItem(3, Ingredient.of(ItemTagProvider.ARCHWOOD_LOG_TAG))
+                    .withReagent(ItemRegistry.SOUL_STAINED_STEEL_SCYTHE.get())
                     .build());
 
             for (EnchantingApparatusRecipe g : recipes) {

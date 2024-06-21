@@ -4,7 +4,7 @@ import com.hollingsworth.arsnouveau.api.spell.*;
 import com.hollingsworth.arsnouveau.api.util.DamageUtil;
 import com.hollingsworth.arsnouveau.common.spell.augment.AugmentAmplify;
 import com.hollingsworth.arsnouveau.common.spell.augment.AugmentDampen;
-import com.sammy.malum.registry.common.DamageSourceRegistry;
+import com.sammy.malum.registry.common.DamageTypeRegistry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
@@ -36,7 +36,7 @@ public class EffectSoulShatter extends AbstractEffect implements IDamageEffect {
     }
 
     public DamageSource buildDamageSource(Level world, LivingEntity shooter) {
-        return DamageUtil.source(world, DamageSourceRegistry.VOODOO, shooter);
+        return DamageUtil.source(world, DamageTypeRegistry.VOODOO, shooter);
     }
 
     public void buildConfig(ForgeConfigSpec.Builder builder) {

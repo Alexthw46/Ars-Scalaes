@@ -49,7 +49,6 @@ minecraft {
             workingDirectory project.file('run')
 
             // Recommended logging data for a userdev environment
-            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'mixin.env.remapRefMap', 'true'
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
             arg "-mixin.config=ars_scalaes.mixins.json"
@@ -169,15 +168,15 @@ dependencies {
     //runtimeOnly fg.deobf("curse.maven:silent_chaos-242998:4585754")
     /*compileOnly*/ implementation fg.deobf("com.github.Virtuoel:Pehkui:3.7.11-${mc_version}-forge")
 
-    /*implementation*/ compileOnly fg.deobf("joefoxe:hexerei:0.3.3.1")
+    implementation fg.deobf("joefoxe:hexerei:0.4.0")
 
 
     runtimeOnly fg.deobf("curse.maven:architectury-api-419699:4663010")
     //runtimeOnly fg.deobf("curse.maven:tpw-435044:3834422")
-    /*compileOnly */ compileOnly fg.deobf("curse.maven:identity-391390:4687498")
+    /*compileOnly */ implementation fg.deobf("curse.maven:identity-391390:4687498")
 
-    implementation fg.deobf("team.lodestar.lodestone:lodestone:1.20.1-1.4.25.26")
-    implementation fg.deobf("com.sammy.malum:malum:1.20.1-1.6.8")
+    implementation fg.deobf("team.lodestar.lodestone:lodestone:1.20.1-1.6.192")
+    implementation fg.deobf("com.sammy.malum:malum:1.20.1-1.6.166")
 
     //runtimeOnly fg.deobf("at.petra-k.paucal:paucal-forge-${mc_version}:0.5.0")
     compileOnly fg.deobf("at.petra-k.hexcasting:hexcasting-common-1.19.2:0.11.0-pre-603")

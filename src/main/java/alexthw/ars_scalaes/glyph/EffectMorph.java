@@ -66,6 +66,7 @@ public class EffectMorph extends AbstractEffect implements IPotionEffect {
         isTimeLimited = builder.comment("Enable a timer on the resize effects. Caster will return to original self when potion effect is removed.").define("limitedMorphTime", false);
         addPotionConfig(builder, 120);
         addExtendTimeConfig(builder, 60);
+        //addExtendTimeTicksConfig(builder, 60 *20);
         GENERIC_INT = builder.comment("Morph will only allow you to transform is the target have less maximum hp than this value.").defineInRange("max_hp_morph", 100, 20, Integer.MAX_VALUE);
     }
 

@@ -1,10 +1,12 @@
 package alexthw.ars_scalaes.registry;
 
 import alexthw.ars_scalaes.ArsScalaes;
+import com.hollingsworth.arsnouveau.setup.registry.CreativeTabRegistry;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -22,7 +24,7 @@ public class ModRegistry {
         BLOCKS.register(bus);
         ITEMS.register(bus);
         EFFECTS.register(bus);
-
+        bus.addListener(ModRegistry::doTabsStuff);
     }
 
     public static RegistryObject<Block> addBlock(String name, Supplier<Block> blockSupp) {
@@ -31,6 +33,13 @@ public class ModRegistry {
         return block;
     }
 
+    private static void doTabsStuff(BuildCreativeModeTabContentsEvent event) {
+        if (event.getTab() == CreativeTabRegistry.BLOCKS.get()) {
+            for (var item : ITEMS.getEntries()) {
+                event.accept(item::get);
+            }
+        }
+    }
 }
 /*
     //simple sourcestone

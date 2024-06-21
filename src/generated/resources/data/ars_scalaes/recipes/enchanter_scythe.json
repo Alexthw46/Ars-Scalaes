@@ -1,0 +1,30 @@
+{
+  "type": "ars_nouveau:enchanting_apparatus",
+  "keepNbtOfReagent": true,
+  "output": {
+    "item": "ars_scalaes:enchanter_scythe"
+  },
+  "pedestalItems": [
+    {
+      "tag": "forge:storage_blocks/source"
+    },
+    {
+      "tag": "forge:storage_blocks/gold"
+    },
+    {
+      "tag": "forge:logs/archwood"
+    },
+    {
+      "tag": "forge:logs/archwood"
+    },
+    {
+      "tag": "forge:logs/archwood"
+    }
+  ],
+  "reagent": [
+    {
+      "item": "malum:soul_stained_steel_scythe"
+    }
+  ],
+  "sourceCost": 0
+}

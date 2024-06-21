@@ -1,5 +1,6 @@
 package alexthw.ars_scalaes;
 
+import alexthw.ars_scalaes.hexerei.HexereiCompat;
 import alexthw.ars_scalaes.identity.IdentityReg;
 
 import alexthw.ars_scalaes.immersive_portals.IPCompat;
@@ -46,16 +47,16 @@ public class ArsScalaes {
         if (ModList.get().isLoaded("hexcasting")) {
             HexCompat.init();
         }
+        */
+        if (ModList.get().isLoaded("malum")) {
+            MalumCompat.init();
+        }
         if (ModList.get().isLoaded("hexerei")) {
             HexereiCompat.init();
         }
-        if (ModList.get().isLoaded("malum")) {
-            MalumCompat.init();
-        }*/
         if (ModList.get().isLoaded("origins")) {
             OriginCompat.init();
         }
-
         if (ModList.get().isLoaded("immersive_portals")) {
             IPCompat.init();
         }
@@ -69,28 +70,21 @@ public class ArsScalaes {
         if (ModList.get().isLoaded("identity")) {
             event.enqueueWork(IdentityReg::postInit);
         }
-
         if (ModList.get().isLoaded("pmmo")) {
             event.enqueueWork(PmmoCompatEventHandler::setupPerks);
         }
-
-           /* disabled for now
         if (ModList.get().isLoaded("hexerei")) {
             event.enqueueWork(HexereiCompat::postInit);
         }
         if (ModList.get().isLoaded("malum")) {
             event.enqueueWork(MalumCompat::postInit);
         }
-         */
-
     }
 
     private void doClientStuff(final EntityRenderersEvent.RegisterLayerDefinitions event) {
-        /*
         if (ModList.get().isLoaded("hexerei")) {
             HexereiCompat.layerDefinitions(event);
-        }*/
+        }
     }
-
 
 }

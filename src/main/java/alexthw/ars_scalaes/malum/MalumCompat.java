@@ -32,7 +32,7 @@ public class MalumCompat {
 
     }
 
-    static RegistryObject<Item> ENCHANTER_SCYTHE;
+    public static RegistryObject<Item> ENCHANTER_SCYTHE;
 
 
     @SubscribeEvent
