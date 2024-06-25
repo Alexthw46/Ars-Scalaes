@@ -41,11 +41,11 @@ public class HexCompat {
 
         if (stack.is(ItemTagProvider.SOURCE_GEM_TAG)) {
             evt.addCapability(MEDIA_STATIC_CAP, provide(stack, HexCapabilities.MEDIA, () ->
-                    new CapStaticMediaHolder(Common.SOURCE_GEM_MEDIA, ADMediaHolder.AMETHYST_SHARD_PRIORITY,
+                    new CapStaticMediaHolder(() -> Common.SOURCE_GEM_MEDIA.get().longValue(), ADMediaHolder.AMETHYST_SHARD_PRIORITY,
                             stack)));
         }if (stack.is(ItemTagProvider.SOURCE_GEM_BLOCK_TAG)) {
             evt.addCapability(MEDIA_STATIC_CAP, provide(stack, HexCapabilities.MEDIA, () ->
-                    new CapStaticMediaHolder(() -> (Common.SOURCE_GEM_MEDIA.get() * 4), ADMediaHolder.CHARGED_AMETHYST_PRIORITY,
+                    new CapStaticMediaHolder(() -> (Common.SOURCE_GEM_MEDIA.get().longValue() * 4), ADMediaHolder.CHARGED_AMETHYST_PRIORITY,
                             stack)));
         }
     }

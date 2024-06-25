@@ -26,7 +26,7 @@ public class ConfigHandler {
         public static ForgeConfigSpec.ConfigValue<Integer> WIXIE_COOLDOWN;
 
         //Hexcasting
-        public static ForgeConfigSpec.ConfigValue<Integer> SOURCE_GEM_MEDIA;
+        public static ForgeConfigSpec.ConfigValue<Double> SOURCE_GEM_MEDIA;
 
 
         public Common(ForgeConfigSpec.Builder builder) {
@@ -56,7 +56,7 @@ public class ConfigHandler {
 
             builder.comment("Hexcasting Compat").push("HEX CASTING");
 
-            SOURCE_GEM_MEDIA = builder.comment("media value of a source gem").define("source_media", 50000);
+            SOURCE_GEM_MEDIA = builder.comment("media value of a source gem").define("source_media", 50000D);
 
             builder.pop();
         }

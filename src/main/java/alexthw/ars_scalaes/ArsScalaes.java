@@ -1,5 +1,6 @@
 package alexthw.ars_scalaes;
 
+import alexthw.ars_scalaes.hexcast.HexCompat;
 import alexthw.ars_scalaes.hexerei.HexereiCompat;
 import alexthw.ars_scalaes.identity.IdentityReg;
 
@@ -43,11 +44,9 @@ public class ArsScalaes {
         if (ModList.get().isLoaded("identity")) {
             IdentityReg.preInit();
         }
-        /* disabled for now
         if (ModList.get().isLoaded("hexcasting")) {
             HexCompat.init();
         }
-        */
         if (ModList.get().isLoaded("malum")) {
             MalumCompat.init();
         }
