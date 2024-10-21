@@ -117,7 +117,10 @@ repositories {
         url = "https://maven.theillusivec4.top/"
     }
     maven { url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }
-
+    maven {
+        // Shadows_of_Fire's Maven
+        url "https://maven.shadowsoffire.dev/releases"
+    }
     maven {
         // location of a maven mirror for JEI files, as a fallback
         name = "ModMaven"
@@ -163,19 +166,21 @@ dependencies {
     implementation(annotationProcessor("com.github.llamalad7.mixinextras:mixinextras-common:0.2.0-beta.8"))
     implementation("com.github.llamalad7.mixinextras:mixinextras-forge:0.2.0-beta.8")
     
-    /*compileOnly*/ implementation fg.deobf("curse.maven:project-mmo-353935:4890177")
+    /*compileOnly*/ implementation fg.deobf("curse.maven:project-mmo-353935:4966175")
     /*implementation*/ compileOnly fg.deobf("curse.maven:scaling-health-248027:5065403")
     //runtimeOnly fg.deobf("curse.maven:silent_chaos-242998:4585754")
-    /*compileOnly*/ implementation fg.deobf("com.github.Virtuoel:Pehkui:3.7.11-${mc_version}-forge")
+    /*compileOnly*/ implementation fg.deobf("com.github.Virtuoel:Pehkui:3.8.2-${mc_version}-forge")
 
-    implementation fg.deobf("joefoxe:hexerei:0.4.0")
+    implementation fg.deobf("joefoxe:hexerei:0.4.1")
 
+    implementation fg.deobf("curse.maven:apothic-attributes-898963:5634071")
+    implementation fg.deobf("curse.maven:placebo-283644:5414631")
 
     runtimeOnly fg.deobf("curse.maven:architectury-api-419699:4663010")
     //runtimeOnly fg.deobf("curse.maven:tpw-435044:3834422")
     /*implementation*/ compileOnly fg.deobf("curse.maven:identity-391390:4687498")
 
-    implementation fg.deobf("team.lodestar.lodestone:lodestone:1.20.1-1.6.192")
+    implementation fg.deobf("team.lodestar.lodestone:lodestone:1.20.1-1.6.4.239")
     implementation fg.deobf("com.sammy.malum:malum:1.20.1-1.6.166")
 
     runtimeOnly fg.deobf("at.petra-k.paucal:paucal-forge-${mc_version}:0.6.0-pre-118")
@@ -183,7 +188,7 @@ dependencies {
     implementation fg.deobf("at.petra-k.hexcasting:hexcasting-forge-1.20.1:0.11.1-7-pre-640") { transitive = false }
     runtimeOnly 'thedarkcolour:kotlinforforge:4.10.0'
 
-    implementation fg.deobf("curse.maven:origins-forge-474438:4771676")
+    implementation fg.deobf("curse.maven:origins-forge-474438:5314209")
     //runtimeOnly fg.deobf("curse.maven:origin_classes-610127:3942224")
     implementation fg.deobf("io.github.edwinmindcraft:apoli-forge:${mc_version}-2.9.0.8")
     implementation fg.deobf("io.github.edwinmindcraft:calio-forge:${mc_version}-1.11.0.5")

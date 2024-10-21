@@ -10,14 +10,16 @@ import com.hollingsworth.arsnouveau.api.spell.Spell;
 import harmonised.pmmo.api.APIUtils;
 import harmonised.pmmo.api.enums.PerkSide;
 import harmonised.pmmo.api.perks.Perk;
-import harmonised.pmmo.util.Functions;
+import harmonised.pmmo.setup.datagen.LangProvider;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
+import java.util.List;
 import java.util.UUID;
 import java.util.function.BiFunction;
 
@@ -32,7 +34,12 @@ public class PmmoCompatEventHandler {
         regenDefaults.putDouble(APIUtils.PER_LEVEL, .5d);
         regenDefaults.putBoolean(APIUtils.MULTIPLICATIVE, false);
         regenDefaults.putString("skill", "magic");
-        var RegenPerk = Perk.begin().addDefaults(regenDefaults).setStart(MANA_REGEN).setStop(MANA_REGEN_TERM).build();
+        var RegenPerk = Perk.begin().addDefaults(regenDefaults).setDescription(LangProvider.PERK_ATTRIBUTE_DESC.asComponent()).setStatus((player, settings) -> {
+            double perLevel = settings.getDouble("per_level");
+            String skillname = settings.getString("skill");
+            int skillLevel = settings.getInt("level");
+            return List.of(LangProvider.PERK_ATTRIBUTE_STATUS_1.asComponent(Component.translatable(PerkAttributes.MANA_REGEN_BONUS.get().getDescriptionId())), LangProvider.PERK_ATTRIBUTE_STATUS_2.asComponent(perLevel, Component.translatable("pmmo." + skillname)), LangProvider.PERK_ATTRIBUTE_STATUS_3.asComponent(perLevel * (double) skillLevel));
+        }).setStart(MANA_REGEN).build();
 
         APIUtils.registerPerk(prefix("mana_regen"), RegenPerk, PerkSide.BOTH);
 
@@ -40,18 +47,27 @@ public class PmmoCompatEventHandler {
         manaDefaults.putDouble(APIUtils.MAX_BOOST, 3000d);
         manaDefaults.putDouble(APIUtils.PER_LEVEL, 5.0d);
         manaDefaults.putBoolean(APIUtils.MULTIPLICATIVE, false);
-        manaDefaults.putString("skill", "magic");
+        manaDefaults.putString(APIUtils.SKILLNAME, "magic");
 
-        var ManaPerk = Perk.begin().addDefaults(manaDefaults).setStart(MANA_BOOST).setStop(MANA_BOOST_TERM).build();
+        var ManaPerk = Perk.begin().addDefaults(manaDefaults).setDescription(LangProvider.PERK_ATTRIBUTE_DESC.asComponent()).setStatus((player, settings) -> {
+            double perLevel = settings.getDouble("per_level");
+            String skillname = settings.getString("skill");
+            int skillLevel = settings.getInt("level");
+            return List.of(LangProvider.PERK_ATTRIBUTE_STATUS_1.asComponent(Component.translatable(PerkAttributes.MAX_MANA.get().getDescriptionId())), LangProvider.PERK_ATTRIBUTE_STATUS_2.asComponent(perLevel, Component.translatable("pmmo." + skillname)), LangProvider.PERK_ATTRIBUTE_STATUS_3.asComponent(perLevel * (double) skillLevel));
+        }).setStart(MANA_BOOST).build();
         APIUtils.registerPerk(prefix("mana_boost"), ManaPerk, PerkSide.BOTH);
 
         CompoundTag damageDefaults = new CompoundTag();
         damageDefaults.putDouble(APIUtils.MAX_BOOST, 0d);
         damageDefaults.putDouble(APIUtils.PER_LEVEL, 0.2d);
         damageDefaults.putBoolean(APIUtils.MULTIPLICATIVE, false);
-        damageDefaults.putString("skill", "magic");
-
-        var DamagePerk = Perk.begin().addDefaults(damageDefaults).setStart(DAMAGE_BOOST).setStop(DAMAGE_BOOST_TERM).build();
+        damageDefaults.putString(APIUtils.SKILLNAME, "magic");
+        var DamagePerk = Perk.begin().addDefaults(damageDefaults).setDescription(LangProvider.PERK_ATTRIBUTE_DESC.asComponent()).setStatus((player, settings) -> {
+            double perLevel = settings.getDouble("per_level");
+            String skillname = settings.getString("skill");
+            int skillLevel = settings.getInt("level");
+            return List.of(LangProvider.PERK_ATTRIBUTE_STATUS_1.asComponent(Component.translatable(PerkAttributes.SPELL_DAMAGE_BONUS.get().getDescriptionId())), LangProvider.PERK_ATTRIBUTE_STATUS_2.asComponent(perLevel, Component.translatable("pmmo." + skillname)), LangProvider.PERK_ATTRIBUTE_STATUS_3.asComponent(perLevel * (double) skillLevel));
+        }).setStart(DAMAGE_BOOST).build();
         APIUtils.registerPerk(prefix("spell_damage_boost"), DamagePerk, PerkSide.BOTH);
 
     }
@@ -119,13 +135,6 @@ public class PmmoCompatEventHandler {
         return NONE;
     };
 
-    public static final BiFunction<Player, CompoundTag, CompoundTag> MANA_REGEN_TERM = (p, nbt) -> {
-        AttributeInstance manaAttribute = p.getAttribute(PerkAttributes.MANA_REGEN_BONUS.get());
-        if (manaAttribute != null)
-            manaAttribute.removeModifier(manaRegenModifierID);
-        return NONE;
-    };
-
     public static final BiFunction<Player, CompoundTag, CompoundTag> MANA_BOOST = (player, nbt) -> {
         double maxManaBoost = nbt.contains(APIUtils.MAX_BOOST) ? nbt.getDouble(APIUtils.MAX_BOOST) : 3000d;
         double boostPerLevel = nbt.contains(APIUtils.PER_LEVEL) ? nbt.getDouble(APIUtils.PER_LEVEL) : 3.0d;
@@ -144,13 +153,6 @@ public class PmmoCompatEventHandler {
         return NONE;
     };
 
-    public static final BiFunction<Player, CompoundTag, CompoundTag> MANA_BOOST_TERM = (p, nbt) -> {
-        AttributeInstance manaAttribute = p.getAttribute(PerkAttributes.MAX_MANA.get());
-        if (manaAttribute != null)
-            manaAttribute.removeModifier(manaMaxModifierID);
-        return NONE;
-    };
-
     public static final BiFunction<Player, CompoundTag, CompoundTag> DAMAGE_BOOST = (player, nbt) -> {
         double maxDamageBoost = nbt.contains(APIUtils.MAX_BOOST) ? nbt.getDouble(APIUtils.MAX_BOOST) : 0d;
         double boostPerLevel = nbt.contains(APIUtils.PER_LEVEL) ? nbt.getDouble(APIUtils.PER_LEVEL) : 0.2d;
@@ -166,13 +168,6 @@ public class PmmoCompatEventHandler {
             manaAttribute.addPermanentModifier(manaModifier);
         }
 
-        return NONE;
-    };
-
-    public static final BiFunction<Player, CompoundTag, CompoundTag> DAMAGE_BOOST_TERM = (p, nbt) -> {
-        AttributeInstance manaAttribute = p.getAttribute(PerkAttributes.SPELL_DAMAGE_BONUS.get());
-        if (manaAttribute != null)
-            manaAttribute.removeModifier(damageModifierID);
         return NONE;
     };
 

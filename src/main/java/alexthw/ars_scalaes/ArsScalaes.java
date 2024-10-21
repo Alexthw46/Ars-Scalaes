@@ -12,6 +12,7 @@ import alexthw.ars_scalaes.pehkui.PkCompatHandler;
 import alexthw.ars_scalaes.pmmo.PmmoCompatEventHandler;
 import alexthw.ars_scalaes.registry.ModRegistry;
 import alexthw.ars_scalaes.sh.ScalingHealthCompatEventHandler;
+import com.hollingsworth.arsnouveau.api.ArsNouveauAPI;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -28,7 +29,7 @@ public class ArsScalaes {
     public static final String MODID = "ars_scalaes";
 
     public ArsScalaes() {
-        //ArsNouveauAPI.ENABLE_DEBUG_NUMBERS = true;
+        ArsNouveauAPI.ENABLE_DEBUG_NUMBERS = true;
         IEventBus modbus = FMLJavaModLoadingContext.get().getModEventBus();
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ConfigHandler.COMMON_SPEC);
         ModRegistry.registerRegistries(modbus);
