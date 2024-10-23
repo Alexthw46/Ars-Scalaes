@@ -171,7 +171,7 @@ dependencies {
     //runtimeOnly fg.deobf("curse.maven:silent_chaos-242998:4585754")
     /*compileOnly*/ implementation fg.deobf("com.github.Virtuoel:Pehkui:3.8.2-${mc_version}-forge")
 
-    implementation fg.deobf("joefoxe:hexerei:0.4.1")
+    implementation fg.deobf("joefoxe:hexerei:0.4.2.1")
 
     implementation fg.deobf("curse.maven:apothic-attributes-898963:5634071")
     implementation fg.deobf("curse.maven:placebo-283644:5414631")
