@@ -1,12 +1,10 @@
 package alexthw.ars_scalaes.glyph;
 
-import alexthw.ars_scalaes.identity.IdentityReg;
-import com.hollingsworth.arsnouveau.api.entity.IDecoratable;
+import alexthw.ars_scalaes.identity.MorphingAbstraction;
 import com.hollingsworth.arsnouveau.api.spell.*;
 import com.hollingsworth.arsnouveau.client.particle.ParticleUtil;
 import com.hollingsworth.arsnouveau.common.entity.familiar.FamiliarEntity;
-import draylar.identity.api.PlayerIdentity;
-import draylar.identity.api.variant.IdentityType;
+
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -16,6 +14,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.common.ForgeConfigSpec;
 import org.jetbrains.annotations.NotNull;
+
 
 import java.util.Set;
 
@@ -36,25 +35,17 @@ public class EffectMorph extends AbstractEffect implements IPotionEffect {
         if (shooter instanceof ServerPlayer player && isRealPlayer(shooter) && rayTraceResult.getEntity() instanceof LivingEntity living) {
             if (living instanceof FamiliarEntity) return;
             if (living == shooter) {
-                PlayerIdentity.updateIdentity(player, null, null);
+                MorphingAbstraction.morphInto(world, player, null);
                 ((ServerLevel) world).sendParticles(ParticleTypes.LARGE_SMOKE, shooter.getX(), shooter.getY() + 0.5, shooter.getZ(), 30,
                         ParticleUtil.inRange(-0.1, 0.1), ParticleUtil.inRange(-0.1, 0.1), ParticleUtil.inRange(-0.1, 0.1), 0.3);
                 return;
             }
             if (!(living instanceof Player) && living.getMaxHealth() < GENERIC_INT.get()) {
-                IdentityType<?> type = IdentityType.from(living);
-                if (type != null) {
-                    LivingEntity morph = type.create(world);
-                    if (morph instanceof IDecoratable toDeco && living instanceof IDecoratable fromDeco) {
-                        toDeco.setCosmeticItem(fromDeco.getCosmeticItem());
-                    }
-                    if (PlayerIdentity.updateIdentity(player, type, morph)) {
-                        ((ServerLevel) world).sendParticles(ParticleTypes.LARGE_SMOKE, shooter.getX(), shooter.getY() + 0.5, shooter.getZ(), 30,
-                                ParticleUtil.inRange(-0.1, 0.1), ParticleUtil.inRange(-0.1, 0.1), ParticleUtil.inRange(-0.1, 0.1), 0.3);
-                        if (isTimeLimited.get())
-                            ((IPotionEffect) this).applyConfigPotion(living, IdentityReg.MORPH.get(), spellStats, false);
-                    }
-                }
+                MorphingAbstraction.morphInto(world, player, living);
+                ((ServerLevel) world).sendParticles(ParticleTypes.LARGE_SMOKE, shooter.getX(), shooter.getY() + 0.5, shooter.getZ(), 30,
+                        ParticleUtil.inRange(-0.1, 0.1), ParticleUtil.inRange(-0.1, 0.1), ParticleUtil.inRange(-0.1, 0.1), 0.3);
+                if (EffectMorph.INSTANCE.isTimeLimited.get())
+                    EffectMorph.INSTANCE.applyConfigPotion(living, MorphingAbstraction.MORPH.get(), spellStats, false);
             }
         }
 

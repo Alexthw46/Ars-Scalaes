@@ -3,7 +3,7 @@ package alexthw.ars_scalaes.malum;
 import com.hollingsworth.arsnouveau.api.item.ICasterTool;
 import com.hollingsworth.arsnouveau.setup.registry.EnchantmentRegistry;
 import com.hollingsworth.arsnouveau.common.light.LightManager;
-import com.sammy.malum.common.entity.boomerang.ScytheBoomerangEntity;
+import com.sammy.malum.common.entity.scythe.ScytheBoomerangEntity;
 import com.sammy.malum.registry.common.entity.EntityRegistry;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;

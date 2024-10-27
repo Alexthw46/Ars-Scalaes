@@ -2,11 +2,9 @@ package alexthw.ars_scalaes;
 
 import alexthw.ars_scalaes.hexcast.HexCompat;
 import alexthw.ars_scalaes.hexerei.HexereiCompat;
-import alexthw.ars_scalaes.identity.IdentityReg;
-
+import alexthw.ars_scalaes.identity.MorphingAbstraction;
 import alexthw.ars_scalaes.immersive_portals.IPCompat;
 import alexthw.ars_scalaes.malum.MalumCompat;
-
 import alexthw.ars_scalaes.origins.OriginCompat;
 import alexthw.ars_scalaes.pehkui.PkCompatHandler;
 import alexthw.ars_scalaes.pmmo.PmmoCompatEventHandler;
@@ -29,6 +27,7 @@ import net.minecraftforge.fml.loading.FMLEnvironment;
 public class ArsScalaes {
     public static final String MODID = "ars_scalaes";
 
+    @SuppressWarnings("removal")
     public ArsScalaes() {
         ArsNouveauAPI.ENABLE_DEBUG_NUMBERS = !FMLEnvironment.production;
         IEventBus modbus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -43,8 +42,8 @@ public class ArsScalaes {
         if (ModList.get().isLoaded("pehkui")) {
             PkCompatHandler.init();
         }
-        if (ModList.get().isLoaded("identity")) {
-            IdentityReg.preInit();
+        if (ModList.get().isLoaded("identity") || ModList.get().isLoaded("walkers")) {
+            MorphingAbstraction.preInit();
         }
         if (ModList.get().isLoaded("hexcasting")) {
             HexCompat.init();
@@ -68,8 +67,8 @@ public class ArsScalaes {
     }
 
     private void setup(final FMLCommonSetupEvent event) {
-        if (ModList.get().isLoaded("identity")) {
-            event.enqueueWork(IdentityReg::postInit);
+        if (ModList.get().isLoaded("identity") || ModList.get().isLoaded("walkers")) {
+            event.enqueueWork(MorphingAbstraction::postInit);
         }
         if (ModList.get().isLoaded("pmmo")) {
             event.enqueueWork(PmmoCompatEventHandler::setupPerks);

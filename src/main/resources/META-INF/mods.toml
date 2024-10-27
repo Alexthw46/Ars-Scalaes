@@ -83,7 +83,7 @@ side = "BOTH"
 [[dependencies.ars_scalaes]]
 modId = "ars_elemental"
 mandatory = false
-versionRange = "[1.20-0.5,)"
+versionRange = "[0.6.7,)"
 ordering = "AFTER"
 side = "BOTH"
 

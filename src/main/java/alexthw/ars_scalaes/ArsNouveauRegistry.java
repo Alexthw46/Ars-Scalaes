@@ -36,7 +36,7 @@ public class ArsNouveauRegistry {
         if (ModList.get().isLoaded("malum")) {
             registerMalumGlyphs();
         }
-        if (ModList.get().isLoaded("identity")) {
+        if (ModList.get().isLoaded("identity") || ModList.get().isLoaded("walkers")) {
             registerIdentityGlyphs();
         }
         if (ModList.get().isLoaded("pehkui")) {

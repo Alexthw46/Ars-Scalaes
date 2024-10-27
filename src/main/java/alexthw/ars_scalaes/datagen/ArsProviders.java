@@ -156,6 +156,7 @@ public class ArsProviders {
             addGlyphPage(EffectExpand.INSTANCE, Pehkui.MOD_ID);
             addGlyphPage(EffectShrink.INSTANCE, Pehkui.MOD_ID);
             addGlyphPage(EffectMorph.INSTANCE, "identity");
+            addGlyphPage(EffectMorph.INSTANCE, "walkers");
             addGlyphPage(EffectSoulShatter.INSTANCE, MalumMod.MALUM);
 
             for (PatchouliPage patchouliPage : pages) {

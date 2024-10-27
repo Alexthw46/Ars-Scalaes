@@ -1,11 +1,11 @@
 package alexthw.ars_scalaes.identity;
 
-import draylar.identity.api.PlayerIdentity;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeMap;
+import org.jetbrains.annotations.NotNull;
 
 public class MorphEffect extends MobEffect {
 
@@ -14,9 +14,9 @@ public class MorphEffect extends MobEffect {
     }
 
     @Override
-    public void removeAttributeModifiers(LivingEntity pLivingEntity, AttributeMap pAttributeMap, int pAmplifier) {
+    public void removeAttributeModifiers(@NotNull LivingEntity pLivingEntity, @NotNull AttributeMap pAttributeMap, int pAmplifier) {
         if (pLivingEntity instanceof ServerPlayer player)
-            PlayerIdentity.updateIdentity(player, null, null);
+            MorphingAbstraction.morphInto(player.level(), player,null);
         super.removeAttributeModifiers(pLivingEntity, pAttributeMap, pAmplifier);
     }
 
